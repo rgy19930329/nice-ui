@@ -6,25 +6,17 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "webpack",
-    "build:prod": "cross-env NODE_ENV=production webpack",
-    "dll": "webpack --config webpack.dll.config.js",
-    "http-server": "cd ./dist && http-server -c-1 -o -P https://easy-mock.com/mock/5ad07a89909da41e79f4a8a3"
+    "build:prod": "cross-env NODE_ENV=production webpack"
   },
   "author": "rgy",
   "license": "ISC",
   "dependencies": {
     "antd": "^3.12.4",
     "axios": "^0.18.0",
-    "echarts": "^4.2.0-rc.2",
-    "echarts-for-react": "^2.0.15-beta.0",
-    "js-cookie": "^2.2.0",
-    "mobx": "^4.8.0",
-    "mobx-react": "^5.2.8",
     "prop-types": "^15.6.2",
     "rc-queue-anim": "^1.6.11",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-quill": "^1.3.3",
     "react-router-dom": "^4.3.1",
     "react-transition-group": "^2.5.3",
     "uniqueid": "^1.0.0"
