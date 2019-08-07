@@ -1,0 +1,32 @@
+/**
+ * @desc 组件 - {{componentName}}
+ * @author {{author}}
+ * @date {{date}}
+ */
+
+import "./index.less";
+import React from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+
+export default class {{componentName}} extends React.Component {
+
+  static propTypes = {
+    
+  }
+
+  static defaultProps = {
+    
+  }
+
+  render() {
+    const className = classnames({
+      [{{className}}]: true,
+    });
+    return (
+      <div className={className}>
+        {{componentName}}
+      </div>
+    )
+  }
+}

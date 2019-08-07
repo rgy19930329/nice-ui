@@ -1,0 +1,33 @@
+/**
+ * @desc 组件演示 - {{componentName}}
+ * @author {{author}}
+ * @date {{date}}
+ */
+
+import React from "react";
+import { render } from "react-dom";
+import Label from "@components/Label";
+
+class Preview{{componentName}} extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+
+  }
+
+  render() {
+    return (
+      <div className="page-{{componentName}}-wrapper">
+        <h1>{{componentName}}</h1>
+        <div className="page-{{componentName}}-content">
+          <{{componentName}} />
+        </div>
+      </div>
+    )
+  }
+}
+
+render(<Preview{{componentName}} />, document.getElementById("app"));
