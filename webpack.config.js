@@ -3,19 +3,17 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const webpackConfig = {
-  entry: autoWebPlugin.entry({
-    base: path.resolve(__dirname, 'src/base.js'),
-  }),
+  entry: path.resolve(__dirname, 'index.js'),
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-    filename: isProd ? '[name]_[hash:6].js' : '[name].js',
+    filename: 'nice-ui.js',
   },
 	module: {
     loaders: [
       {
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',
-        include: path.resolve(__dirname, 'src'),
+        include: path.resolve(__dirname, 'components'),
         exclude: path.resolve(__dirname, 'node_modules'),
       },
       {

@@ -1,12 +1,11 @@
 {
-  "name": "ky-react-multiple",
+  "name": "nice-ui",
   "version": "1.0.0",
-  "description": "A pure front end frame base on react, combine antd. Support multiple pages app",
+  "description": "react ui components base on antd",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
-    "build": "webpack",
-    "build:prod": "cross-env NODE_ENV=production webpack"
+    "build": "webpack"
   },
   "author": "rgy",
   "license": "ISC",
