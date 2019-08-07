@@ -1,11 +1,11 @@
 function camelCase(name) {
-  return name.charAt(0).toUpperCase() + name.slice(1).replace(/-(\w)/g, (m, n) => n.toUpperCase());
+  return name.charAt(0).toUpperCase() + 
+    name.slice(1).replace(/-(\w)/g, (m, n) => { return n.toUpperCase() });
 }
 
-// Just import style for https://github.com/ant-design/ant-design/issues/3745
-const req = require.context('./components', true, /^\.\/[^_][\w-]+\/index\.jsx?$/);
+const req = require.context('./components', false, /^\.\/[^_][\w-]+\/index\.jsx?$/);
 
-req.keys().forEach(mod => {
+req.keys().forEach((mod) => {
   let v = req(mod);
   if (v && v.default) {
     v = v.default;
@@ -15,5 +15,3 @@ req.keys().forEach(mod => {
     exports[camelCase(match[1])] = v;
   }
 });
-
-module.exports = require('./components');
