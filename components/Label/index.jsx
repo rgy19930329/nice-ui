@@ -9,6 +9,7 @@ import React from "react";
 import classnames from "classnames";
 
 export default class Label extends React.Component {
+  
   static defaultProps = {
     title: "字段说明",
     value: "值",
