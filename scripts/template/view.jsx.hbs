@@ -6,7 +6,7 @@
 
 import React from "react";
 import { render } from "react-dom";
-import Label from "@components/Label";
+import {{componentName}} from "@components/{{componentName}}";
 
 class Preview{{componentName}} extends React.Component {
 
@@ -20,9 +20,9 @@ class Preview{{componentName}} extends React.Component {
 
   render() {
     return (
-      <div className="page-{{componentName}}-wrapper">
+      <div className="{{previewClassName}}">
         <h1>{{componentName}}</h1>
-        <div className="page-{{componentName}}-content">
+        <div className="inner">
           <{{componentName}} />
         </div>
       </div>

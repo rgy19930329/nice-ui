@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 /**
  * @desc 驼峰命名转中划线
  * @param {String} name 
@@ -13,7 +15,7 @@ const camel2line = (name) => {
  * @return {String}
  */
 const line2camel = (name) => {
-  return name.replace(/[-_](\w)/, function(all, $1) {
+  return name.replace(/[-_](\w)/, function (all, $1) {
     return $1.toUpperCase();
   });
 }
@@ -24,11 +26,32 @@ const line2camel = (name) => {
  * @return {String}
  */
 const firstLetterUpper = (name) => {
-  return name.replace(/^\w/, function(all) {
+  return name.replace(/^\w/, function (all) {
     return all.toUpperCase();
   });
+}
+
+/**
+ * 删除整个文件夹及其下属文件
+ * @param {*} path 
+ */
+const delDir = (path) => {
+  let files = [];
+  if (fs.existsSync(path)) {
+    files = fs.readdirSync(path);
+    files.forEach((file, index) => {
+      let curPath = path + "/" + file;
+      if (fs.statSync(curPath).isDirectory()) {
+        delDir(curPath); //递归删除文件夹
+      } else {
+        fs.unlinkSync(curPath); //删除文件
+      }
+    });
+    fs.rmdirSync(path);
+  }
 }
 
 exports.camel2line = camel2line;
 exports.line2camel = line2camel;
 exports.firstLetterUpper = firstLetterUpper;
+exports.delDir = delDir;
