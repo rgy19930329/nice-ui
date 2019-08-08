@@ -25,6 +25,8 @@ const autoWebPlugin = new AutoWebPlugin('preview', {
       }),
     });
   },
+  // 将全局样式注入页面
+  preEntrys: [path.resolve(__dirname, 'preview/global.less')],
   // 提取所有页面的公共代码
   commonsChunk: {
     name: 'common',
@@ -46,6 +48,7 @@ const webpackConfig = {
     extensions: ['.js', '.jsx'],
     alias: {
       '@components': path.resolve(__dirname, 'components'),
+      '@utils': path.resolve(__dirname, 'preview/utils'),
     }
   },
   devtool: 'cheap-module-source-map',
