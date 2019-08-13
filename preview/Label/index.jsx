@@ -22,7 +22,7 @@ class PreviewLabel extends React.Component {
     return (
       <div className="page-label-wrapper">
         <h1>Label</h1>
-        <div style={{position: "relative"}}>
+        <div className="inner">
           <Label />
         </div>
       </div>

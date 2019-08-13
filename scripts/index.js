@@ -154,4 +154,8 @@ const handleCreate = (comp) => {
   }
 }`;
   fs.writeFileSync(path.resolve(__dirname, `../preview/${componentName}/index.less`), pageStyleContent);
+
+  // 写 README.md
+  let componentInfo = `\n| [${componentName}](./components/${componentName}/README.md)  | ${componentDesc} | ${author} | ${date} |`;
+  fs.appendFileSync(path.resolve(__dirname, '../README.md'), componentInfo);
 }
