@@ -31,3 +31,7 @@ class PreviewLabel extends React.Component {
 }
 
 render(<PreviewLabel />, document.getElementById("app"));
+
+if (module.hot) {
+  module.hot.accept();
+}

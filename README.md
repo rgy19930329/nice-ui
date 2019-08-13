@@ -44,7 +44,9 @@ import { Label } from "nice-ui";
 | ---- | ---- | :----: | ------ |
 | [Label](./components/Label/README.md)  | 数据展示 - 字段名和值 | rgy | 2019-5-1 |
 | [EnumSelect](./components/EnumSelect/README.md)  | 表单组件 - 下拉选择组件 | rgy | 2019-08-08 15:25:34 |
-| [CellLimit](./components/CellLimit/README.md)  | 数据展示 - 超出限制宽度部分通过省略号展示 | rgy | 2019-08-13 17:17:11 |
 | [RichText](./components/RichText/README.md)  | 表单组件 - 富文本编辑器 | rgy | 2019-08-12 10:08:10 |
 | [HOCAsync](./components/HOCAsync/README.md)  | 高阶组件 - 代码分割，按需加载 | rgy | 2019-08-13 13:58:31 |
 | [HOCLoading](./components/HOCLoading/README.md)  | 高阶组件 - 为组件添加数据加载Loading效果 | rgy | 2019-08-13 14:05:54 |
+| [CellLimit](./components/CellLimit/README.md)  | 数据展示 - 超出限制宽度部分通过省略号展示 | rgy | 2019-08-13 17:17:11 |
+| [EnumChoice](./components/EnumChoice/README.md)  | 表单组件 - 选择组件（包括单选、复选） | rgy | 2019-08-13 22:41:53 |
+| [Section](./components/Section/README.md)  | 布局组件 - 区域包裹工具 | rgy | 2019-08-13 23:28:53 |

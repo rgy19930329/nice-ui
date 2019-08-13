@@ -32,3 +32,7 @@ class PreviewRichText extends React.Component {
 }
 
 render(<PreviewRichText />, document.getElementById("app"));
+
+if (module.hot) {
+  module.hot.accept();
+}

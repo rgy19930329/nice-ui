@@ -39,3 +39,7 @@ class PreviewEnumSelect extends React.Component {
 }
 
 render(<PreviewEnumSelect />, document.getElementById("app"));
+
+if (module.hot) {
+  module.hot.accept();
+}

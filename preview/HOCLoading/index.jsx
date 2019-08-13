@@ -33,3 +33,7 @@ class PreviewHOCLoading extends React.Component {
 }
 
 render(<PreviewHOCLoading />, document.getElementById("app"));
+
+if (module.hot) {
+  module.hot.accept();
+}

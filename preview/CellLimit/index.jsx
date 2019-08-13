@@ -32,3 +32,7 @@ class PreviewCellLimit extends React.Component {
 }
 
 render(<PreviewCellLimit />, document.getElementById("app"));
+
+if (module.hot) {
+  module.hot.accept();
+}

@@ -33,3 +33,7 @@ class PreviewHOCAsync extends React.Component {
 }
 
 render(<PreviewHOCAsync />, document.getElementById("app"));
+
+if (module.hot) {
+  module.hot.accept();
+}
