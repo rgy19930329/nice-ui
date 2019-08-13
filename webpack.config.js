@@ -8,7 +8,7 @@ const webpackConfig = {
   entry: path.resolve(__dirname, 'index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'nice-ui.js',
+    filename: 'nice-ui.min.js',
   },
   module: {
     loaders: [{
