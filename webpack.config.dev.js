@@ -10,9 +10,9 @@ const serverProxy = require('./serverProxy');
 const { isEmptyObject, getFirstKey } = require('./helper');
 
 // 自动寻找 pages 目录下的所有目录，把每个目录看成一个单页应用
-const autoWebPlugin = new AutoWebPlugin('preview', {
+const autoWebPlugin = new AutoWebPlugin('src/preview', {
   // 指定 ejs 模板文件所在的文件路径
-  template: 'preview/template.ejs',
+  template: 'src/template.ejs',
   templateCompiler: function(pageName, templateFulPath) {
     const ejsTemplate = fs.readFileSync(templateFulPath, {
       encoding: 'utf8',
@@ -26,7 +26,7 @@ const autoWebPlugin = new AutoWebPlugin('preview', {
     });
   },
   // 将全局样式注入页面
-  preEntrys: [path.resolve(__dirname, 'preview/global.less')],
+  preEntrys: [path.resolve(__dirname, 'src/global.less')],
   // 提取所有页面的公共代码
   commonsChunk: {
     name: 'common',
@@ -39,6 +39,8 @@ const autoWebPlugin = new AutoWebPlugin('preview', {
 
 const entry = autoWebPlugin.entry();
 
+console.log(entry);
+
 const webpackConfig = {
   entry,
 	output: {
@@ -48,7 +50,9 @@ const webpackConfig = {
     extensions: ['.js', '.jsx'],
     alias: {
       '@components': path.resolve(__dirname, 'components'),
-      '@utils': path.resolve(__dirname, 'preview/utils'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
+      '@preview': path.resolve(__dirname, 'src/preview'),
+      '@src': path.resolve(__dirname, 'src'),
     }
   },
   devtool: 'cheap-module-source-map',
@@ -60,7 +64,7 @@ const webpackConfig = {
         include: [
           path.resolve(__dirname, 'index'),
           path.resolve(__dirname, 'components'),
-          path.resolve(__dirname, 'preview'),
+          path.resolve(__dirname, 'src'),
         ],
         exclude: [path.resolve(__dirname, 'node_modules')],
       },
@@ -108,7 +112,7 @@ const webpackConfig = {
     new webpack.BannerPlugin('版权所有，翻版必究'),
     new ExtractTextPlugin({
       filename: '[name].css',
-      // disable: true,
+      disable: true,
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),

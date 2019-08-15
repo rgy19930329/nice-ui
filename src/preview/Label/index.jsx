@@ -4,6 +4,7 @@
  * @date 2019-08-07 14:05:18
  */
 
+import "./index.less";
 import React from "react";
 import { render } from "react-dom";
 import Label from "@components/Label";

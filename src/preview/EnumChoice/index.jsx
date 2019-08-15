@@ -8,6 +8,7 @@ import "./index.less";
 import React from "react";
 import { render } from "react-dom";
 import EnumChoice from "@components/EnumChoice";
+import Section from "@components/Section";
 import { fetch } from "@utils";
 
 class PreviewEnumChoice extends React.Component {
@@ -25,21 +26,21 @@ class PreviewEnumChoice extends React.Component {
       <div className="page-enum-choice-wrapper">
         <h1>EnumChoice</h1>
         <div className="inner">
-          <div>
+          <Section title="EnumChoice.Radio">
             <EnumChoice.Radio
               list={[
                 { code: "1", name: "type A" },
                 { code: "2", name: "type B" },
               ]}
             />
-          </div>
-          <div>
+          </Section>
+          <Section title="EnumChoice.Checkbox">
             <EnumChoice.Checkbox
               createPromise={() => fetch({
                 url: "/example/fruits",
               }).then(res => res.data.list)}
             />
-          </div>
+          </Section>
         </div>
       </div>
     )
