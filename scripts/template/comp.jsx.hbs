@@ -21,12 +21,13 @@ export default class {{componentName}} extends React.Component {
 
   render() {
     const { className } = this.props;
-    const cls = classnames({
-      ["{{componentClassName}}"]: true,
-      [className]: className
-    });
     return (
-      <div className={cls}>
+      <div
+        className={classnames({
+          ["{{componentClassName}}"]: true,
+          [className]: !!className
+        })}
+      >
         {{componentName}}
       </div>
     )

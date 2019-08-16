@@ -31,9 +31,9 @@ class Home extends React.Component {
         <h1>Preview All Components</h1>
         <hr />
         <div>
-          {navs && navs.map(item => {
+          {navs && navs.map((item, index) => {
             return (
-              <div key={item}><a href={`/${item}.html`}>{item}</a></div>
+              <div key={item}>{index + 1}、<a href={`/${item}.html`}>{item}</a></div>
             )
           })}
         </div>

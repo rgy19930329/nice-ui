@@ -119,7 +119,7 @@ const webpackConfig = {
     new OpenBrowserPlugin({
       url: isEmptyObject(entry)
             ? 'http://127.0.0.1:7777'
-            : `http://127.0.0.1:7777/${getFirstKey(entry)}.html`,
+            : `http://127.0.0.1:7777/HomePage.html`,
     }),
   ]
 }

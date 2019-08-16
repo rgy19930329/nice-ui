@@ -50,3 +50,4 @@ import { Label } from "nice-ui";
 | [CellLimit](./components/CellLimit/README.md)  | 数据展示 - 超出限制宽度部分通过省略号展示 | rgy | 2019-08-13 17:17:11 |
 | [EnumChoice](./components/EnumChoice/README.md)  | 表单组件 - 选择组件（包括单选、复选） | rgy | 2019-08-13 22:41:53 |
 | [Section](./components/Section/README.md)  | 布局组件 - 区域包裹工具 | rgy | 2019-08-13 23:28:53 |
+| [Tabs](./components/Tabs/README.md)  | 布局组件 - 区域现实隐藏切换 | rgy | 2019-08-16 15:33:54 |

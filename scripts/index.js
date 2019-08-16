@@ -137,9 +137,9 @@ const handleCreate = (comp) => {
   // 写 preview jsx
   let viewJsxSource = fs.readFileSync(path.resolve(__dirname, './template/view.jsx.hbs'), 'utf-8');
   let viewJsxTemplate = Handlebars.compile(viewJsxSource);
-  delDir(path.resolve(__dirname, `../preview/${componentName}`));
-  fs.mkdirSync(path.resolve(__dirname, `../preview/${componentName}`));
-  fs.writeFileSync(path.resolve(__dirname, `../preview/${componentName}/index.jsx`), viewJsxTemplate({
+  delDir(path.resolve(__dirname, `../src/preview/${componentName}`));
+  fs.mkdirSync(path.resolve(__dirname, `../src/preview/${componentName}`));
+  fs.writeFileSync(path.resolve(__dirname, `../src/preview/${componentName}/index.jsx`), viewJsxTemplate({
     componentName,
     author,
     date,
@@ -153,7 +153,7 @@ const handleCreate = (comp) => {
     position: relative;
   }
 }`;
-  fs.writeFileSync(path.resolve(__dirname, `../preview/${componentName}/index.less`), pageStyleContent);
+  fs.writeFileSync(path.resolve(__dirname, `../src/preview/${componentName}/index.less`), pageStyleContent);
 
   // 写 README.md
   let componentInfo = `\n| [${componentName}](./components/${componentName}/README.md)  | ${componentDesc} | ${author} | ${date} |`;
