@@ -12,6 +12,7 @@ static propTypes = {
   hasSN: PropTypes.bool, // 是否需要支持序号
   onChange: PropTypes.func, // 列表变更回调
   id: PropTypes.string, // edit table id
+  context: PropTypes.object.isRequired, // 父组件执行环境，必填（通常为this）
 }
 
 static defaultProps = {
@@ -27,6 +28,37 @@ static defaultProps = {
 import EditTable from "nice-ui";
 
 <EditTable
-  // props
+  id="et1"
+  context={this}
+  hasSN={true}
+  columns={this.createColumns()}
+  dataSource={this.state.dataSource}
 />
+
+<EditTable
+  id="et2"
+  context={this}
+  hasSN={true}
+  columns={this.createColumns()}
+  dataSource={this.state.dataSource}
+/>
+
+<div className="handler">
+  <Button
+    type="primary"
+    onClick={async () => {
+      Promise.all([
+        this["et1"].doSubmit(),
+        this["et2"].doSubmit(),
+      ]).then(results => {
+        console.log(results);
+        console.log("校验通过，允许提交");
+      }).catch(e => {
+        console.error("校验失败");
+      });
+    }}
+  >
+    提交
+  </Button>
+</div>
 ```
