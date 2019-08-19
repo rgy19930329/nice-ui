@@ -52,3 +52,4 @@ import { Label } from "nice-ui";
 | [Section](./components/Section/README.md)  | 布局组件 - 区域包裹工具 | rgy | 2019-08-13 23:28:53 |
 | [Tabs](./components/Tabs/README.md)  | 布局组件 - 区域现实隐藏切换 | rgy | 2019-08-16 15:33:54 |
 | [EditTable](./components/EditTable/README.md)  | 表单组件 - 可编辑表格 | rgy | 2019-08-16 15:59:24 |
+| [HOCDebounce](./components/HOCDebounce/README.md)  | 高阶组件 - 防抖 | rgy | 2019-08-19 14:49:21 |
