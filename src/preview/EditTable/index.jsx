@@ -8,7 +8,7 @@ import "./index.less";
 import React from "react";
 import { render } from "react-dom";
 import EditTable from "@components/EditTable";
-import { DatePicker, Button, Input, } from "antd";
+import { DatePicker, Button, Input, message } from "antd";
 import EnumSelect from "@components/EnumSelect";
 import moment from "moment";
 
@@ -128,8 +128,10 @@ class PreviewEditTable extends React.Component {
                 ]).then(results => {
                   console.log(results);
                   console.log("校验通过，允许提交");
+                  message.success(`校验通过，允许提交！data: ${JSON.stringify(results)}`);
                 }).catch(e => {
                   console.error("校验失败");
+                  message.error("校验失败");
                 });
               }}
             >

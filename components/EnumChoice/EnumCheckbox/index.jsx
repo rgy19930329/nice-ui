@@ -7,7 +7,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Checkbox } from "antd";
-import HOCLoading from "@components/HOCLoading";
+import HOCLoading from "../../HOCLoading";
 import classnames from "classnames";
 
 @HOCLoading()
