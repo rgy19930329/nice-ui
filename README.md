@@ -30,6 +30,17 @@ npm run build
 
 ```
 npm install nice-ui@https://github.com/rgy19930329/nice-ui.git#master --save
+
+修改 webpack 配置：
+
+module: {
+  loaders: [
+    include: [
+      ...
+      path.resolve(__dirname, 'node_modules/nice-ui'),
+    ],
+  ]
+}
 ```
 
 ## Import
@@ -53,3 +64,4 @@ import { Label } from "nice-ui";
 | [Tabs](./components/Tabs/README.md)  | 布局组件 - 区域现实隐藏切换 | rgy | 2019-08-16 15:33:54 |
 | [EditTable](./components/EditTable/README.md)  | 表单组件 - 可编辑表格 | rgy | 2019-08-16 15:59:24 |
 | [HOCDebounce](./components/HOCDebounce/README.md)  | 高阶组件 - 防抖 | rgy | 2019-08-19 14:49:21 |
+| [ValidateWrapper](./components/ValidateWrapper/README.md)  | 数据展示 - 校验信息提示容器 | rgy | 2019-08-27 17:42:46 |
