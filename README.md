@@ -65,3 +65,4 @@ import { Label } from "nice-ui";
 | [EditTable](./components/EditTable/README.md)  | 表单组件 - 可编辑表格 | rgy | 2019-08-16 15:59:24 |
 | [HOCDebounce](./components/HOCDebounce/README.md)  | 高阶组件 - 防抖 | rgy | 2019-08-19 14:49:21 |
 | [ValidateWrapper](./components/ValidateWrapper/README.md)  | 数据展示 - 校验信息提示容器 | rgy | 2019-08-27 17:42:46 |
+| [FormTable](./components/FormTable/README.md)  | 表单组件 - 表格表单项组件 | rgy | 2019-08-30 18:00:28 |
