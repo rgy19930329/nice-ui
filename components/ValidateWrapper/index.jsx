@@ -12,6 +12,10 @@ import { Popover } from "antd";
 
 export default class ValidateWrapper extends React.Component {
 
+  static contextTypes = {
+    form: PropTypes.object,
+  }
+
   static propTypes = {
     validateStatus: PropTypes.object,
     form: PropTypes.object,
@@ -25,12 +29,11 @@ export default class ValidateWrapper extends React.Component {
    * 获取字段校验结果
    */
   getValidateStatus = (field) => {
-    
     const {
       isFieldValidating,
       getFieldError,
       getFieldValue,
-    } = this.props.form;
+    } = this.props.form || this.context.form;
     if (!field) {
       return {};
     }
@@ -54,9 +57,9 @@ export default class ValidateWrapper extends React.Component {
   }
 
   render() {
-    const { className, validateStatus, form, children } = this.props;
+    const { className, validateStatus, children } = this.props;
     let { status, message } = validateStatus;
-    if (form) {
+    if (this.props.form || this.context.form) {
       let { id } = children.props;
       status = this.getValidateStatus(id).status;
       message = this.getValidateStatus(id).message;

@@ -17,7 +17,7 @@ export default mode => WrappedComponent => class extends WrappedComponent {
           spinning={!this.state.loaded}
         /> :
         super.render();
-    } else if (mode === "all") {
+    } else if (mode === "cover") {
       return (
         <Spin
           indicator={<Icon type="loading" style={{ fontSize: 20 }} spin />}

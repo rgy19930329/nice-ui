@@ -7,7 +7,31 @@
 import "./index.less";
 import React from "react";
 import { render } from "react-dom";
+import { HashRouter, Route } from "react-router-dom";
 import Label from "@components/Label";
+
+const PLabel = (props) => {
+  return (
+    <div className="page-label-wrapper">
+      <h1>Label</h1>
+      <div className="inner">
+        <Label />
+      </div>
+    </div>
+  )
+}
+
+const SLabel = (props) => {
+  let newProps = Object.assign({}, props, {
+    query: {
+      name: "rgy",
+    }
+  });
+  console.log(newProps);
+  return (
+    <PLabel {...newProps} />
+  );
+}
 
 class PreviewLabel extends React.Component {
 
@@ -21,12 +45,12 @@ class PreviewLabel extends React.Component {
 
   render() {
     return (
-      <div className="page-label-wrapper">
-        <h1>Label</h1>
-        <div className="inner">
-          <Label />
+      <HashRouter>
+        <div>
+          <Route path="/" exact component={PLabel}></Route>
+          <Route path="/SLabel" exact component={SLabel}></Route>
         </div>
-      </div>
+      </HashRouter>
     )
   }
 }

@@ -6,12 +6,23 @@
 
 import "./index.less";
 import React from "react";
+import PropTypes from "prop-types";
 import { render } from "react-dom";
 import ValidateWrapper from "@components/ValidateWrapper";
 import { Form, Input } from "antd";
 
 @Form.create()
 class PreviewValidateWrapper extends React.Component {
+
+  static childContextTypes = {
+    form: PropTypes.object,
+  }
+
+  getChildContext() {
+    return {
+      form: this.props.form,
+    }
+  }
 
   constructor(props) {
     super(props);
@@ -82,6 +93,19 @@ class PreviewValidateWrapper extends React.Component {
             })(
               <Input
                 placeholder="请输入年龄"
+                style={{width: 200, marginRight: 20}}
+              />
+            )}
+          </ValidateWrapper>
+
+          <ValidateWrapper>
+            {getFieldDecorator("sex", {
+              rules: [
+                { required: true, message: "性别不能为空" },
+              ]
+            })(
+              <Input
+                placeholder="请输入性别"
                 style={{width: 200}}
               />
             )}
@@ -93,3 +117,7 @@ class PreviewValidateWrapper extends React.Component {
 }
 
 render(<PreviewValidateWrapper />, document.getElementById("app"));
+
+if (module.hot) {
+  module.hot.accept();
+}

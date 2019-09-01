@@ -32,3 +32,7 @@ class PreviewFormTable extends React.Component {
 }
 
 render(<PreviewFormTable />, document.getElementById("app"));
+
+if (module.hot) {
+  module.hot.accept();
+}
