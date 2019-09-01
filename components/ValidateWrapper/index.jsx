@@ -14,15 +14,53 @@ export default class ValidateWrapper extends React.Component {
 
   static propTypes = {
     validateStatus: PropTypes.object,
+    form: PropTypes.object,
   }
 
   static defaultProps = {
     validateStatus: {},
   }
 
+  /**
+   * 获取字段校验结果
+   */
+  getValidateStatus = (field) => {
+    
+    const {
+      isFieldValidating,
+      getFieldError,
+      getFieldValue,
+    } = this.props.form;
+    if (!field) {
+      return {};
+    }
+    if (isFieldValidating(field)) {
+      return {
+        status: "validating",
+      };
+    }
+    if (!!getFieldError(field)) {
+      return {
+        status: "error",
+        message: getFieldError(field),
+      };
+    }
+    if (getFieldValue(field)) {
+      return {
+        status: "success",
+      }
+    }
+    return {};
+  }
+
   render() {
-    const { className } = this.props;
-    const { status, message } = this.props.validateStatus;
+    const { className, validateStatus, form, children } = this.props;
+    let { status, message } = validateStatus;
+    if (form) {
+      let { id } = children.props;
+      status = this.getValidateStatus(id).status;
+      message = this.getValidateStatus(id).message;
+    }
     const isError = status === "error";
     return (
       <Popover
@@ -33,13 +71,13 @@ export default class ValidateWrapper extends React.Component {
           "popover-error": isError,
         })}
       >
-        <div
+        <span
           className={classnames({
             "field-error": isError
           })}
         >
-          {this.props.children}
-        </div>
+          {children}
+        </span>
       </Popover>
     )
   }
