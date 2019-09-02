@@ -10,7 +10,7 @@
 ## 组件使用
 
 ```javascript
-import HOCAsync from "nice-ui";
+import { HOCAsync } from "nice-ui";
 import { Route } from "react-router-dom";
 
 const AsyncPage = HOCAsync(() => import("@pages/async-page"));

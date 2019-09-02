@@ -13,7 +13,7 @@ mode: "part"（默认）, "all"
 ## 组件使用
 
 ```javascript
-import HOCLoading from "nice-ui";
+import { HOCLoading } from "nice-ui";
 
 @HOCLoading()
 export default class EnumRadio extends React.Component {

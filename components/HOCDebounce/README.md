@@ -21,7 +21,8 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import HOCDebounce from "nice-ui";
+import { Input } from "antd";
+import { HOCDebounce } from "nice-ui";
 
 const DebounceInput = HOCDebounce(Input);
 

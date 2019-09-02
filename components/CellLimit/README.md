@@ -19,7 +19,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import CellLimit from "nice-ui";
+import { CellLimit } from "nice-ui";
 
 <CellLimit>xxxxxxxxxxx</CellLimit>
 ```

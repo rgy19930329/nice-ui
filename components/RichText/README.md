@@ -23,7 +23,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import RichText from "nice-ui";
+import { RichText } from "nice-ui";
 
 <Form.Item>
   <RichText

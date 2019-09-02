@@ -12,7 +12,7 @@
 url: #/user?title=title&value=ranguangyu
 
 ```javascript
-import withQuery from "nice-ui";
+import { withQuery } from "nice-ui";
 
 @withQuery
 export default class User extends React.Component {

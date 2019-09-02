@@ -19,7 +19,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import ValidateWrapper from "nice-ui";
+import { ValidateWrapper } from "nice-ui";
 
 <ValidateWrapper
   // props

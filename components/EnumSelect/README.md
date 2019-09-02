@@ -37,7 +37,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import EnumSelect from "nice-ui";
+import { EnumSelect } from "nice-ui";
 
 <EnumSelect
   placeholder="请选择"

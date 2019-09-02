@@ -25,7 +25,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import EditTable from "nice-ui";
+import { EditTable } from "nice-ui";
 
 <EditTable
   id="et1"

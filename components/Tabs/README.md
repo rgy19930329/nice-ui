@@ -19,7 +19,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import Tabs from "nice-ui";
+import { Tabs } from "nice-ui";
 
 <Tabs
   defaultActiveKey="2"
