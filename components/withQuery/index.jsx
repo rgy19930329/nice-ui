@@ -4,7 +4,6 @@
  * @date 2019-09-02 11:35:13
  */
 
-import "./index.less";
 import React from "react";
 import { parseUrl } from "./utils";
 

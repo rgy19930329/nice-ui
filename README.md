@@ -67,3 +67,4 @@ import { Label } from "nice-ui";
 | [ValidateWrapper](./components/ValidateWrapper/README.md)  | 数据展示 - 校验信息提示容器 | rgy | 2019-08-27 17:42:46 |
 | [FormTable](./components/FormTable/README.md)  | 表单组件 - 表格表单项组件 | rgy | 2019-08-30 18:00:28 |
 | [withQuery](./components/withQuery/README.md)  | 高阶组件 - 参数解析 | rgy | 2019-09-02 11:35:13 |
+| [withFormInChild](./components/withFormInChild/README.md)  | 高阶组件 - 在context中传递form | rgy | 2019-09-02 17:13:03 |
