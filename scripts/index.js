@@ -35,7 +35,7 @@ inquirer.prompt([
   {
     type: 'input',
     name: 'componentName',
-    message: '请输入组件类名（首字母大写）：',
+    message: '请输入组件类名（首字母大写, with高阶组件除外）：',
     validate: function(input) {
       const done = this.async();
       if (!input) {
@@ -44,6 +44,10 @@ inquirer.prompt([
       } else {
         if (fs.existsSync(path.resolve(__dirname, `../components/${input}`))) {
           done('组件类名已存在，请重新输入');
+          return;
+        }
+        if (/\bwith[A-Z][a-zA-Z]+\b/.test(input)) {
+          done(null, true);
           return;
         }
         if (!/\b[A-Z][a-zA-Z]+\b$/.test(input)) {

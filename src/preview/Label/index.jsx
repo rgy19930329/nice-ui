@@ -22,14 +22,9 @@ const PLabel = (props) => {
 }
 
 const SLabel = (props) => {
-  let newProps = Object.assign({}, props, {
-    query: {
-      name: "rgy",
-    }
-  });
-  console.log(newProps);
+  console.log(props);
   return (
-    <PLabel {...newProps} />
+    <PLabel {...props} />
   );
 }
 
