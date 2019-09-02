@@ -45,6 +45,19 @@ class PreviewFormTable extends React.Component {
 
           <br></br>
 
+          <FormTable labelWidth="15%">
+            <RTRow>
+              <RItem label="测试一">sssssss</RItem>
+            </RTRow>
+            <RTRow>
+              <RItem label="测试二">222222</RItem>
+              <RItem label="测试二">33333333333</RItem>
+              <RItem label="测试四">444444444</RItem>
+            </RTRow>
+          </FormTable>
+
+          <br></br>
+
           <Section title="员工信息">
             <FormTable form={this.props.form}>
               <RTRow>
