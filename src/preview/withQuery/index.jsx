@@ -14,7 +14,7 @@ import User from "./pages/user";
 const Home = (props) => {
   return (
     <div className="page-with-query-wrapper">
-      <h1>Label</h1>
+      <h1>withQuery</h1>
       <div className="inner">
         <a href={`#/user?title=title&value=ranguangyu`}>User</a>
       </div>

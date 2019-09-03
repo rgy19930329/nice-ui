@@ -8,7 +8,7 @@ export default class User extends React.Component {
   render() {
     const { title, value } = this.props.query;
     return (
-      <Section title="测试 withQuery">
+      <Section title="Label">
         <Label title={title} value={value} />
       </Section>
     )
