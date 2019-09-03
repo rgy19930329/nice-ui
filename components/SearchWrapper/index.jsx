@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 import { Form, Row, Button, Icon } from "antd";
 import isArray from "lodash/isArray";
+import RotateToggle from "../RotateToggle";
 
 export default class SearchWrapper extends React.Component {
 
@@ -131,7 +132,9 @@ export default class SearchWrapper extends React.Component {
         {this.hasToggle() && (
           <div className="icon-area">
             <a onClick={() => this.setState({ isOpen: !isOpen })}>
-              <Icon type={isOpen ? "up" : "down"} />
+              <RotateToggle isOpen={isOpen}>
+                <Icon type={"up"} />
+              </RotateToggle>
             </a>
           </div>
         )}

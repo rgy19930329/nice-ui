@@ -70,3 +70,4 @@ import { Label } from "nice-ui";
 | [withFormInChild](./components/withFormInChild/README.md)  | 高阶组件 - 在context中传递form | rgy | 2019-09-02 17:13:03 |
 | [PureField](./components/PureField/README.md)  | 表单组件 - 纯数据展示 | rgy | 2019-09-03 13:39:31 |
 | [SearchWrapper](./components/SearchWrapper/README.md)  | 布局组件 - 搜索区包裹组件 | rgy | 2019-09-03 15:39:49 |
+| [RotateToggle](./components/RotateToggle/README.md)  | 控制组件 - 旋转开关 | rgy | 2019-09-03 18:27:17 |
