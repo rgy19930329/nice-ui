@@ -8,11 +8,11 @@
 
 ```javascript
 static propTypes = {
-  
+  transform: PropTypes.func,
 }
 
 static defaultProps = {
-  
+  transform: null,
 }
 ```
 
@@ -21,7 +21,7 @@ static defaultProps = {
 ```javascript
 import { PureField } from "nice-ui";
 
-<PureField
-  // props
-/>
+{getFieldDecorator("name")(
+  <PureField transform={(value) => `【${value}】`} />
+)}
 ```
