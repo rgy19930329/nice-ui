@@ -97,7 +97,7 @@ const webpackConfig = {
         }
       },
       {
-        test: /\.(eot|woff|woff2|ttf|svg|md)$/,
+        test: /\.(eot|woff|woff2|ttf|svg)$/,
         loader: 'file-loader',
       }
     ]
