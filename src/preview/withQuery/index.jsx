@@ -8,17 +8,18 @@ import "./index.less";
 import React from "react";
 import { render } from "react-dom";
 import { HashRouter, Route } from "react-router-dom";
+import PageWrapper from "@src/components/PageWrapper";
 
 import User from "./pages/user";
 
 const Home = (props) => {
   return (
-    <div className="page-with-query-wrapper">
-      <h1>withQuery</h1>
-      <div className="inner">
-        <a href={`#/user?title=title&value=ranguangyu`}>User</a>
-      </div>
-    </div>
+    <PageWrapper
+      comp="withQuery"
+      className="page-with-query-wrapper"
+    >
+      <a href={`#/user?title=title&value=ranguangyu`}>User</a>
+    </PageWrapper>
   )
 }
 

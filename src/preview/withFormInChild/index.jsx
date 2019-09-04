@@ -10,6 +10,7 @@ import { render } from "react-dom";
 import withFormInChild from "@components/withFormInChild";
 import ValidateWrapper from "@components/ValidateWrapper";
 import { Form, Input } from "antd";
+import PageWrapper from "@src/components/PageWrapper";
 
 @Form.create()
 @withFormInChild
@@ -24,25 +25,25 @@ class PreviewwithFormInChild extends React.Component {
   }
 
   render() {
-    const { getFieldDecorator } = this.props.form; 
+    const { getFieldDecorator } = this.props.form;
     return (
-      <div className="pagewith-form-in-child-wrapper">
-        <h1>withFormInChild</h1>
-        <div className="inner">
-          <ValidateWrapper>
-            {getFieldDecorator("sex", {
-              rules: [
-                { required: true, message: "性别不能为空" },
-              ]
-            })(
-              <Input
-                placeholder="请输入性别"
-                style={{ width: 200 }}
-              />
-            )}
-          </ValidateWrapper>
-        </div>
-      </div>
+      <PageWrapper
+        comp="withFormInChild"
+        className="page-with-form-in-child-wrapper"
+      >
+        <ValidateWrapper>
+          {getFieldDecorator("name", {
+            rules: [
+              { required: true, message: "姓名不能为空" },
+            ]
+          })(
+            <Input
+              placeholder="请输入姓名"
+              style={{ width: 200 }}
+            />
+          )}
+        </ValidateWrapper>
+      </PageWrapper>
     )
   }
 }
