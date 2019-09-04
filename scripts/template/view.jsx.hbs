@@ -8,6 +8,7 @@ import "./index.less";
 import React from "react";
 import { render } from "react-dom";
 import {{componentName}} from "@components/{{componentName}}";
+import PageWrapper from "@src/components/PageWrapper";
 
 class Preview{{componentName}} extends React.Component {
 
@@ -21,12 +22,12 @@ class Preview{{componentName}} extends React.Component {
 
   render() {
     return (
-      <div className="{{previewClassName}}">
-        <h1>{{componentName}}</h1>
-        <div className="inner">
-          <{{componentName}} />
-        </div>
-      </div>
+      <PageWrapper
+        comp="{{componentName}}"
+        className="{{previewClassName}}"
+      >
+        <{{componentName}} />
+      </PageWrapper>
     )
   }
 }

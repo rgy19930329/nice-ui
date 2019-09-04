@@ -8,6 +8,7 @@ import "./index.less";
 import React from "react";
 import { render } from "react-dom";
 import RichText from "@components/RichText";
+import PageWrapper from "@src/components/PageWrapper";
 
 class PreviewRichText extends React.Component {
 
@@ -21,12 +22,12 @@ class PreviewRichText extends React.Component {
 
   render() {
     return (
-      <div className="page-rich-text-wrapper">
-        <h1>RichText</h1>
-        <div className="inner">
-          <RichText />
-        </div>
-      </div>
+      <PageWrapper
+        comp="RichText"
+        className="page-rich-text-wrapper"
+      >
+        <RichText />
+      </PageWrapper>
     )
   }
 }

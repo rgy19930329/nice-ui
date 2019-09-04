@@ -8,6 +8,7 @@ import "./index.less";
 import React from "react";
 import { render } from "react-dom";
 // import HOCLoading from "@components/HOCLoading";
+import PageWrapper from "@src/components/PageWrapper";
 
 class PreviewHOCLoading extends React.Component {
 
@@ -21,13 +22,13 @@ class PreviewHOCLoading extends React.Component {
 
   render() {
     return (
-      <div className="page-h-o-c-loading-wrapper">
-        <h1>HOCLoading</h1>
-        <div className="inner">
-          {/* <HOCLoading /> */}
-          高阶组件，无法演示
-        </div>
-      </div>
+      <PageWrapper
+        comp="HOCLoading"
+        className="page-h-o-c-loading-wrapper"
+      >
+        {/* <HOCLoading /> */}
+        高阶组件，无法演示
+      </PageWrapper>
     )
   }
 }

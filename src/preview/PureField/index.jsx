@@ -9,6 +9,7 @@ import React from "react";
 import { render } from "react-dom";
 import PureField from "@components/PureField";
 import { Form } from "antd";
+import PageWrapper from "@src/components/PageWrapper";
 
 @Form.create()
 class PreviewPureField extends React.Component {
@@ -26,15 +27,15 @@ class PreviewPureField extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <div className="page-pure-field-wrapper">
-        <h1>PureField</h1>
-        <div className="inner">
-          name：
-          {getFieldDecorator("name")(
-            <PureField transform={(value) => `【${value}】`} />
-          )}
-        </div>
-      </div>
+      <PageWrapper
+        comp="PureField"
+        className="page-pure-field-wrapper"
+      >
+        name:
+        {getFieldDecorator("name")(
+          <PureField transform={(value) => `【${value}】`} />
+        )}
+      </PageWrapper>
     )
   }
 }

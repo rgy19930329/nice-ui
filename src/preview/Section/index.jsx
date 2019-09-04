@@ -8,6 +8,7 @@ import "./index.less";
 import React from "react";
 import { render } from "react-dom";
 import Section from "@components/Section";
+import PageWrapper from "@src/components/PageWrapper";
 
 class PreviewSection extends React.Component {
 
@@ -21,17 +22,17 @@ class PreviewSection extends React.Component {
 
   render() {
     return (
-      <div className="page-section-wrapper">
-        <h1>Section</h1>
-        <div className="inner">
-          <Section
-            title="Section Test"
-            titleSlot={<a>关闭</a>}
-          >
-            xxxxxxxxxxxxxxxxxxx
+      <PageWrapper
+        comp="Section"
+        className="page-section-wrapper"
+      >
+        <Section
+          title="Section Test"
+          titleSlot={<a>关闭</a>}
+        >
+          xxxxxxxxxxxxxxxxxxx
           </Section>
-        </div>
-      </div>
+      </PageWrapper>
     )
   }
 }

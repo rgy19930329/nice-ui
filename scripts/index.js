@@ -153,9 +153,7 @@ const handleCreate = (comp) => {
   // 写 preview less
   let pageStyleContent =
 `.${previewClassName} {
-  .inner {
-    position: relative;
-  }
+  
 }`;
   fs.writeFileSync(path.resolve(__dirname, `../src/preview/${componentName}/index.less`), pageStyleContent);
 

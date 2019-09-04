@@ -9,22 +9,25 @@ import React from "react";
 import { render } from "react-dom";
 import { HashRouter, Route } from "react-router-dom";
 import Label from "@components/Label";
+import PageWrapper from "@src/components/PageWrapper";
 
 const PLabel = (props) => {
   return (
-    <div className="page-label-wrapper">
-      <h1>Label</h1>
-      <div className="inner">
-        <Label />
-      </div>
-    </div>
+    <PageWrapper
+      comp="Label"
+      className="page-label-wrapper"
+    >
+      <Label {...props} />
+      <a href="#/">PLabel</a><br />
+      <a href="#/SLabel">SLabel</a>
+    </PageWrapper>
   )
 }
 
 const SLabel = (props) => {
   console.log(props);
   return (
-    <PLabel {...props} />
+    <PLabel title="title" value="ranguangyu" />
   );
 }
 

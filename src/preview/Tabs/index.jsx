@@ -8,6 +8,7 @@ import "./index.less";
 import React from "react";
 import { render } from "react-dom";
 import Tabs from "@components/Tabs";
+import PageWrapper from "@src/components/PageWrapper";
 
 class PreviewTabs extends React.Component {
 
@@ -21,26 +22,26 @@ class PreviewTabs extends React.Component {
 
   render() {
     return (
-      <div className="page-tabs-wrapper">
-        <h1>Tabs</h1>
-        <div className="inner">
-          <Tabs
-            defaultActiveKey="1"
-            panes={[
-              {
-                tab: "原生表单",
-                key: "1",
-                content: <div>原生表单</div>
-              },
-              {
-                tab: "配置表单",
-                key: "2",
-                content: <div>配置表单</div>
-              }
-            ]}
-          />
-        </div>
-      </div>
+      <PageWrapper
+        comp="Tabs"
+        className="page-tabs-wrapper"
+      >
+        <Tabs
+          defaultActiveKey="1"
+          panes={[
+            {
+              tab: "原生表单",
+              key: "1",
+              content: <div>原生表单</div>
+            },
+            {
+              tab: "配置表单",
+              key: "2",
+              content: <div>配置表单</div>
+            }
+          ]}
+        />
+      </PageWrapper>
     )
   }
 }

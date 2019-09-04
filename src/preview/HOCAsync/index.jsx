@@ -8,6 +8,7 @@ import "./index.less";
 import React from "react";
 import { render } from "react-dom";
 // import HOCAsync from "@components/HOCAsync";
+import PageWrapper from "@src/components/PageWrapper";
 
 class PreviewHOCAsync extends React.Component {
 
@@ -21,13 +22,13 @@ class PreviewHOCAsync extends React.Component {
 
   render() {
     return (
-      <div className="page-h-o-c-async-wrapper">
-        <h1>HOCAsync</h1>
-        <div className="inner">
-          {/* <HOCAsync /> */}
-          高阶组件，无法演示
-        </div>
-      </div>
+      <PageWrapper
+        comp="HOCAsync"
+        className="page-h-o-c-async-wrapper"
+      >
+        {/* <HOCAsync /> */}
+        高阶组件，无法演示
+      </PageWrapper>
     )
   }
 }

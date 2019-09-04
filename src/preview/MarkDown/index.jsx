@@ -1,16 +1,16 @@
 /**
- * @desc 组件演示 - CellLimit
+ * @desc 组件演示 - MarkDown
  * @author rgy
- * @date 2019-08-13 17:17:11
+ * @date 2019-09-04 13:59:17
  */
 
 import "./index.less";
 import React from "react";
 import { render } from "react-dom";
-import CellLimit from "@components/CellLimit";
+import MarkDown from "@components/MarkDown";
 import PageWrapper from "@src/components/PageWrapper";
 
-class PreviewCellLimit extends React.Component {
+class PreviewMarkDown extends React.Component {
 
   constructor(props) {
     super(props);
@@ -23,16 +23,21 @@ class PreviewCellLimit extends React.Component {
   render() {
     return (
       <PageWrapper
-        comp="CellLimit"
+        comp="MarkDown"
         className="page-cell-limit-wrapper"
       >
-        <CellLimit width={120}>fdafasdffdafsdfasdfasdfasdf</CellLimit>
+        <MarkDown>
+          ```js
+            var a = 123;
+            console.log(a);
+          ```
+        </MarkDown>
       </PageWrapper>
     )
   }
 }
 
-render(<PreviewCellLimit />, document.getElementById("app"));
+render(<PreviewMarkDown />, document.getElementById("app"));
 
 if (module.hot) {
   module.hot.accept();

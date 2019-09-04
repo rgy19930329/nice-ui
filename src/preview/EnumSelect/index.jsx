@@ -9,6 +9,7 @@ import React from "react";
 import { render } from "react-dom";
 import EnumSelect from "@components/EnumSelect";
 import { fetch } from "@utils";
+import PageWrapper from "@src/components/PageWrapper";
 
 class PreviewEnumSelect extends React.Component {
 
@@ -22,18 +23,18 @@ class PreviewEnumSelect extends React.Component {
 
   render() {
     return (
-      <div className="page-enum-select-wrapper">
-        <h1>EnumSelect</h1>
-        <div className="inner">
-          <EnumSelect
-            placeholder="请选择"
-            style={{width: 200}}
-            createPromise={() => fetch({
-              url: "/example/fruits",
-            }).then(res => res.data.list)}
-          />
-        </div>
-      </div>
+      <PageWrapper
+        comp="EnumSelect"
+        className="page-enum-select-wrapper"
+      >
+        <EnumSelect
+          placeholder="请选择"
+          style={{ width: 200 }}
+          createPromise={() => fetch({
+            url: "/example/fruits",
+          }).then(res => res.data.list)}
+        />
+      </PageWrapper>
     )
   }
 }

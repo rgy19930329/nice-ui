@@ -10,6 +10,7 @@ import { render } from "react-dom";
 import EnumChoice from "@components/EnumChoice";
 import Section from "@components/Section";
 import { fetch } from "@utils";
+import PageWrapper from "@src/components/PageWrapper";
 
 class PreviewEnumChoice extends React.Component {
 
@@ -23,26 +24,26 @@ class PreviewEnumChoice extends React.Component {
 
   render() {
     return (
-      <div className="page-enum-choice-wrapper">
-        <h1>EnumChoice</h1>
-        <div className="inner">
-          <Section title="EnumChoice.Radio">
-            <EnumChoice.Radio
-              list={[
-                { code: "1", name: "type A" },
-                { code: "2", name: "type B" },
-              ]}
-            />
-          </Section>
-          <Section title="EnumChoice.Checkbox">
-            <EnumChoice.Checkbox
-              createPromise={() => fetch({
-                url: "/example/fruits",
-              }).then(res => res.data.list)}
-            />
-          </Section>
-        </div>
-      </div>
+      <PageWrapper
+        comp="EnumChoice"
+        className="page-enum-choice-wrapper"
+      >
+        <Section title="EnumChoice.Radio">
+          <EnumChoice.Radio
+            list={[
+              { code: "1", name: "type A" },
+              { code: "2", name: "type B" },
+            ]}
+          />
+        </Section>
+        <Section title="EnumChoice.Checkbox">
+          <EnumChoice.Checkbox
+            createPromise={() => fetch({
+              url: "/example/fruits",
+            }).then(res => res.data.list)}
+          />
+        </Section>
+      </PageWrapper>
     )
   }
 }

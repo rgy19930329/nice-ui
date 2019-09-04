@@ -7,7 +7,7 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const { AutoWebPlugin } = require('web-webpack-plugin');
 const serverProxy = require('./serverProxy');
-const { isEmptyObject, getFirstKey } = require('./helper');
+const { isEmptyObject } = require('./helper');
 
 // 自动寻找 pages 目录下的所有目录，把每个目录看成一个单页应用
 const autoWebPlugin = new AutoWebPlugin('src/preview', {
@@ -99,6 +99,23 @@ const webpackConfig = {
       {
         test: /\.(eot|woff|woff2|ttf|svg)$/,
         loader: 'file-loader',
+      },
+      {
+        test: /\.md$/,
+        use: [
+          { loader: 'html-loader' },
+          // {
+          //   loader: 'markdown-loader',
+          //   options: {
+          //     renderer,
+          //     pedantic: true,
+          //     highlight: function (code) {
+          //       console.log("code", code);
+          //       return hljs.highlightAuto(code).value;
+          //     }
+          //   }
+          // }
+        ]
       }
     ]
   },

@@ -11,6 +11,7 @@ import EditTable from "@components/EditTable";
 import { DatePicker, Button, Input, message } from "antd";
 import EnumSelect from "@components/EnumSelect";
 import moment from "moment";
+import PageWrapper from "@src/components/PageWrapper";
 
 class PreviewEditTable extends React.Component {
 
@@ -101,45 +102,45 @@ class PreviewEditTable extends React.Component {
 
   render() {
     return (
-      <div className="page-edit-table-wrapper">
-        <h1>EditTable</h1>
-        <div className="inner">
-          <EditTable
-            id="et1"
-            context={this}
-            hasSN={true}
-            columns={this.createColumns()}
-            dataSource={this.state.dataSource}
-          />
-          <EditTable
-            id="et2"
-            context={this}
-            hasSN={true}
-            columns={this.createColumns()}
-            dataSource={this.state.dataSource}
-          />
-          <div className="handler">
-            <Button
-              type="primary"
-              onClick={async () => {
-                Promise.all([
-                  this["et1"].doSubmit(),
-                  this["et2"].doSubmit(),
-                ]).then(results => {
-                  console.log(results);
-                  console.log("校验通过，允许提交");
-                  message.success(`校验通过，允许提交！data: ${JSON.stringify(results)}`);
-                }).catch(e => {
-                  console.error("校验失败");
-                  message.error("校验失败");
-                });
-              }}
-            >
-              提交
+      <PageWrapper
+        comp="EditTable"
+        className="page-edit-table-wrapper"
+      >
+        <EditTable
+          id="et1"
+          context={this}
+          hasSN={true}
+          columns={this.createColumns()}
+          dataSource={this.state.dataSource}
+        />
+        <EditTable
+          id="et2"
+          context={this}
+          hasSN={true}
+          columns={this.createColumns()}
+          dataSource={this.state.dataSource}
+        />
+        <div className="handler">
+          <Button
+            type="primary"
+            onClick={async () => {
+              Promise.all([
+                this["et1"].doSubmit(),
+                this["et2"].doSubmit(),
+              ]).then(results => {
+                console.log(results);
+                console.log("校验通过，允许提交");
+                message.success(`校验通过，允许提交！data: ${JSON.stringify(results)}`);
+              }).catch(e => {
+                console.error("校验失败");
+                message.error("校验失败");
+              });
+            }}
+          >
+            提交
 					  </Button>
-          </div>
         </div>
-      </div>
+      </PageWrapper>
     )
   }
 }

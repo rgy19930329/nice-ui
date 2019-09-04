@@ -16,6 +16,23 @@ navs = navs.filter(item => {
 }).map(item => item.replace(/^\.\//, "").replace(/\/[^/]+\.jsx$/, ""));
 navs = navs.filter(item => item !== "HomePage");
 
+/**
+ * 数据补位
+ * @param {*} num 
+ * @param {*} max 
+ * @return {String}
+ */
+const makeFill = (num, max = 2) => {
+  if (typeof max !== "number") {
+    max = String(max.length).length;
+  }
+  let s = "";
+  for (let i = 0; i < max - String(num).length; i++) {
+    s += "0";
+  }
+  return s + num;
+}
+
 class Home extends React.Component {
 
   constructor(props) {
@@ -59,7 +76,7 @@ class Home extends React.Component {
         <div>
           {list && list.map((item, index) => {
             return (
-              <div key={item}>{index + 1}、<a href={`/${item}.html`}>{item}</a></div>
+              <div key={item}>{makeFill(index + 1, list)}、<a href={`/${item}.html`}>{item}</a></div>
             )
           })}
         </div>

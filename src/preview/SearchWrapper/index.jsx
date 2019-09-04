@@ -10,6 +10,7 @@ import { render } from "react-dom";
 import SearchWrapper from "@components/SearchWrapper";
 import { Form, Row, Col, Input } from "antd";
 import withFormInChild from "@components/withFormInChild";
+import PageWrapper from "@src/components/PageWrapper";
 
 @Form.create()
 @withFormInChild
@@ -26,75 +27,75 @@ class PreviewSearchWrapper extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <div className="page-search-wrapper-wrapper">
-        <h1>SearchWrapper</h1>
-        <div className="inner">
-          <SearchWrapper>
-            <Row>
-              <Col span={8}>
-                <Form.Item label="name">
-                  {getFieldDecorator("name")(
-                    <Input />
-                  )}
-                </Form.Item>
-              </Col>
-              <Col span={8}>
-                <Form.Item label="age">
-                  {getFieldDecorator("age")(
-                    <Input />
-                  )}
-                </Form.Item>
-              </Col>
-              <Col span={8}>
-                <Form.Item label="dept">
-                  {getFieldDecorator("dept")(
-                    <Input />
-                  )}
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row>
-              <Col span={8}>
-                <Form.Item label="sex">
-                  {getFieldDecorator("sex")(
-                    <Input />
-                  )}
-                </Form.Item>
-              </Col>
-              <Col span={8}>
-                <Form.Item label="phone">
-                  {getFieldDecorator("phone")(
-                    <Input />
-                  )}
-                </Form.Item>
-              </Col>
-              <Col span={8}>
-                <Form.Item label="address">
-                  {getFieldDecorator("address")(
-                    <Input />
-                  )}
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row>
-              <Col span={8}>
-                <Form.Item label="id">
-                  {getFieldDecorator("id")(
-                    <Input />
-                  )}
-                </Form.Item>
-              </Col>
-              <Col span={8}>
-                <Form.Item label="email">
-                  {getFieldDecorator("email")(
-                    <Input />
-                  )}
-                </Form.Item>
-              </Col>
-            </Row>
-          </SearchWrapper>
-        </div>
-      </div>
+      <PageWrapper
+        comp="SearchWrapper"
+        className="page-search-wrapper-wrapper"
+      >
+        <SearchWrapper>
+          <Row>
+            <Col span={8}>
+              <Form.Item label="name">
+                {getFieldDecorator("name")(
+                  <Input />
+                )}
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item label="age">
+                {getFieldDecorator("age")(
+                  <Input />
+                )}
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item label="dept">
+                {getFieldDecorator("dept")(
+                  <Input />
+                )}
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row>
+            <Col span={8}>
+              <Form.Item label="sex">
+                {getFieldDecorator("sex")(
+                  <Input />
+                )}
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item label="phone">
+                {getFieldDecorator("phone")(
+                  <Input />
+                )}
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item label="address">
+                {getFieldDecorator("address")(
+                  <Input />
+                )}
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row>
+            <Col span={8}>
+              <Form.Item label="id">
+                {getFieldDecorator("id")(
+                  <Input />
+                )}
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item label="email">
+                {getFieldDecorator("email")(
+                  <Input />
+                )}
+              </Form.Item>
+            </Col>
+          </Row>
+        </SearchWrapper>
+      </PageWrapper>
     )
   }
 }
