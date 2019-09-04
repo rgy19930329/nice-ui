@@ -7,12 +7,15 @@
 import "./index.less";
 import React from "react";
 import { render } from "react-dom";
-import { Input } from "antd";
+import { Input, Icon } from "antd";
+import MarkDown from "@components/MarkDown";
+import RotateToggle from "@components/RotateToggle";
+import { CSSTransition } from "react-transition-group";
 
 const req = require.context("@preview", true, /\.jsx$/);
 let navs = req.keys();
 navs = navs.filter(item => {
-	return item.match(/\.\/[^/]+\/[^/]+\.jsx$/);
+  return item.match(/\.\/[^/]+\/[^/]+\.jsx$/);
 }).map(item => item.replace(/^\.\//, "").replace(/\/[^/]+\.jsx$/, ""));
 navs = navs.filter(item => item !== "HomePage");
 
@@ -41,6 +44,7 @@ class Home extends React.Component {
     this.state = {
       value: "",
       list: navs,
+      isOpen: false,
     }
   }
 
@@ -49,29 +53,46 @@ class Home extends React.Component {
   }
 
   render() {
-    let { value, list } = this.state; 
+    let { value, list, isOpen } = this.state;
     return (
       <div className="page-home-wrapper">
-        <h1>Preview All Components</h1>
-        <hr />
-        <div style={{marginBottom: 10}}>
-          <Input
-            placeholder="组件搜索"
-            style={{width: 200}}
-            value={value}
-            onChange={(e) => {
-              let value = e.target.value;
-              if (value) {
-                list = list.filter(item => item.match(new RegExp(value, "i")));
-              } else {
-                list = navs;
-              }
-              this.setState({
-                value,
-                list,
-              });
-            }}
-          />
+        <CSSTransition
+          in={isOpen}
+          timeout={300}
+          classNames="star"
+          unmountOnExit
+        >
+          <div className="markdown">
+            <MarkDown>{require(`@root/README.md`)}</MarkDown>
+          </div>
+        </CSSTransition>
+        <div className="title">
+          <h2>
+            Preview Components
+            <a className="icon-qa" onClick={() => this.setState({ isOpen: !isOpen })}>
+              <RotateToggle isOpen={isOpen}>
+                <Icon type="question-circle" />
+              </RotateToggle>
+            </a>
+          </h2>
+          <div style={{ marginBottom: 10 }}>
+            <Input
+              placeholder="组件搜索"
+              style={{ width: 200 }}
+              value={value}
+              onChange={(e) => {
+                let value = e.target.value;
+                let list = navs;
+                if (value) {
+                  list = navs.filter(item => item.match(new RegExp(value, "i")));
+                }
+                this.setState({
+                  value,
+                  list,
+                });
+              }}
+            />
+          </div>
         </div>
         <div>
           {list && list.map((item, index) => {

@@ -49,6 +49,7 @@ const webpackConfig = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
+      '@root': __dirname,
       '@components': path.resolve(__dirname, 'components'),
       '@utils': path.resolve(__dirname, 'src/utils'),
       '@preview': path.resolve(__dirname, 'src/preview'),
