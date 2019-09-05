@@ -8,9 +8,9 @@
 
 ```javascript
 static propTypes = {
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]), // 标题
+  title: PropTypes.node, // 标题
   hasBorder: PropTypes.bool, // 是否有边框
-  titleSlot: PropTypes.oneOfType([PropTypes.string, PropTypes.node]), // 标题右侧内容展示
+  titleSlot: PropTypes.node, // 标题右侧内容展示
 }
 
 static defaultProps = {

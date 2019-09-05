@@ -8,9 +8,9 @@
 
 ```javascript
 static propTypes = {
-  title: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-  value: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-  isLongText: PropTypes.bool,
+  title: PropTypes.node, // 字段说明
+  value: PropTypes.node, // 值
+  isLongText: PropTypes.bool, // 是否是长文本
 }
 
 static defaultProps = {

@@ -12,8 +12,8 @@ import classnames from "classnames";
 export default class Label extends React.Component {
 
   static propTypes = {
-    title: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-    value: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+    title: PropTypes.node,
+    value: PropTypes.node,
     isLongText: PropTypes.bool,
   }
   
