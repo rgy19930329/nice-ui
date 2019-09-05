@@ -27,10 +27,7 @@ class PreviewMarkDown extends React.Component {
         className="page-cell-limit-wrapper"
       >
         <MarkDown>
-          ```js
-            var a = 123;
-            console.log(a);
-          ```
+          {"```javascript\nfunction(){\n\tconsole.log(123)\n}\n```"}
         </MarkDown>
       </PageWrapper>
     )

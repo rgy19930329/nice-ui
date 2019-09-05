@@ -21,7 +21,7 @@ static defaultProps = {
 ```javascript
 import { MarkDown } from "nice-ui";
 
-<MarkDown
-  // props
-/>
+<MarkDown>
+  {"```javascript\nfunction(){\n\tconsole.log(123)\n}\n```"}
+</MarkDown>
 ```

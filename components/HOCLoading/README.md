@@ -7,7 +7,7 @@
 ## 参数说明
 
 ```
-mode: "part"（默认）, "all"
+mode: "part"（默认）, "cover"
 ```
 
 ## 组件使用

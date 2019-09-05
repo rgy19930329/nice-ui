@@ -7,12 +7,8 @@
 ## 参数说明
 
 ```javascript
-static propTypes = {
-  
-}
-
-static defaultProps = {
-  
+static childContextTypes = {
+  form: PropTypes.object,
 }
 ```
 

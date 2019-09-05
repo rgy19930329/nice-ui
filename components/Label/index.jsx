@@ -6,9 +6,16 @@
 
 import "./index.less";
 import React from "react";
+import PropTypes from "prop-types";
 import classnames from "classnames";
 
 export default class Label extends React.Component {
+
+  static propTypes = {
+    title: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+    value: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+    isLongText: PropTypes.bool,
+  }
   
   static defaultProps = {
     title: "字段说明",
@@ -16,13 +23,23 @@ export default class Label extends React.Component {
     isLongText: false,
   }
 
+  /**
+   * 获取节点文本
+   */
+  dfsGetText = (children) => {
+    if (typeof children === "string") {
+      return children;
+    }
+    return this.dfsGetText(children.props.children);
+  };
+
   render() {
     const { title, value, isLongText } = this.props;
     const className = classnames("z-label", { "long-text": isLongText });
     return (
       <div className={className}>
         <label className="z-label-title">{title && `${title}：`}</label>
-        <span className="z-label-value" title={value}>{value}</span>
+        <span className="z-label-value" title={this.dfsGetText(value)}>{value}</span>
       </div>
     )
   }
