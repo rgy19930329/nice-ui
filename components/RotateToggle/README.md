@@ -29,4 +29,13 @@ import { RotateToggle } from "nice-ui";
     <Icon type={"up"} />
   </RotateToggle>
 </a>
+
+<a onClick={() => this.setState({ isOpen2: !isOpen2 })}>
+  <RotateToggle
+    isOpen={isOpen2}
+    rotate={[0, 90]}
+  >
+    <Icon type="caret-right" />
+  </RotateToggle>
+</a>
 ```
