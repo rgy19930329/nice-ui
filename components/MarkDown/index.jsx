@@ -4,7 +4,8 @@
  * @date 2019-09-04 13:59:17
  */
 
-import "./assets/github.css";
+import "./assets/github-markdown.css";
+import "./assets/github-highlight.css";
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
@@ -44,6 +45,7 @@ export default class MarkDown extends React.Component {
       <div
         className={classnames({
           ["comp-mark-down-wrapper"]: true,
+          ["markdown-body"]: true,
           [className]: !!className
         })}
         dangerouslySetInnerHTML={{ __html: marked(children) }}
