@@ -35,10 +35,13 @@ npm install nice-ui@https://github.com/rgy19930329/nice-ui.git#master --save
 
 module: {
   loaders: [
-    include: [
-      ...
-      path.resolve(__dirname, 'node_modules/nice-ui'),
-    ],
+    {
+      test: /\.(js|jsx)$/,
+      include: [
+        ...
+        path.resolve(__dirname, 'node_modules/nice-ui'),
+      ],
+    }
   ]
 }
 ```
