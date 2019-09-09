@@ -76,3 +76,4 @@ import { Label } from "nice-ui";
 | [RotateToggle](./components/RotateToggle/README.md)  | 控制组件 - 旋转开关 | rgy | 2019-09-03 18:27:17 |
 | [MarkDown](./components/MarkDown/README.md)  | 数据展示 - 解析markdown文本并展示 | rgy | 2019-09-04 13:59:17 |
 | [InlineList](./components/InlineList/README.md)  | 数据展示 - 行内列表数据展示 | rgy | 2019-09-05 15:41:56 |
+| [RConnect](./components/RConnect/README.md)  | 高阶组件 - 帮助使用react-redux时简化使用方式 | rgy | 2019-09-09 09:32:56 |
