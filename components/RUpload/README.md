@@ -55,7 +55,7 @@ import { RUpload } from "nice-ui";
       return {
         id: file.fileId,
         name: file.fileName,
-        url: "http://dummyimage.com/250x250",
+        url: `/yapi/download?id=${file.fileId}`,
       }
     }}
   />
