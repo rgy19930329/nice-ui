@@ -8,11 +8,32 @@
 
 ```javascript
 static propTypes = {
-  
+  value: PropTypes.array,
+  maxSize: PropTypes.number, // 文件最大多少M
+  maxNumber: PropTypes.number, // 文件最多上传多少个
+  readOnly: PropTypes.bool, // 是否只读模式
+  text: PropTypes.node, // 上传按钮区内容
+  uploadProps: PropTypes.object, // antd Upload 上传属性
+  tips: PropTypes.object, // 信息提示器
+  transformFrom: PropTypes.func, // 将上传接口返回的字段转换成组件内部使用的字段（转成这样 { id(必选), name(必选), url(可选) }）
+  transformTo: PropTypes.func, // 将组件内部使用的字段转换成提交接口需要的字段（从这样转 { id(必选), name(必选), url(可选) }）
 }
 
 static defaultProps = {
-  
+  maxSize: 10, // 10M
+  maxNumber: 5, // 5个
+  readOnly: false, // 可编辑状态
+  text: "文件上传",
+  uploadProps: {
+    action: "/yapi/upload",
+    headers: {
+      Authorization: "5cc8019d300000980a055e76",
+    },
+    beforeUpload: (file) => true,
+  },
+  tips: message, // 默认为antd的message
+  transformFrom: (file) => ({ id: file.fileId, name: file.fileName }),
+  transformTo: (file) => ({ fileId: file.id, fileName: file.name }),
 }
 ```
 
@@ -21,7 +42,22 @@ static defaultProps = {
 ```javascript
 import { RUpload } from "nice-ui";
 
-<RUpload
-  // props
-/>
+{getFieldDecorator("test", {
+  initialValue: [
+    {
+      fileId: "tgClJZxT94SFBVCAqle4nsOy5XFXQ6hp",
+      fileName: "ranguangyu.txt",
+    }
+  ]
+})(
+  <RUpload
+    transformFrom={(file) => {
+      return {
+        id: file.fileId,
+        name: file.fileName,
+        url: "http://dummyimage.com/250x250",
+      }
+    }}
+  />
+)}
 ```

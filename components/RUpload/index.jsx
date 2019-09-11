@@ -8,7 +8,7 @@ import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
-import { Upload, Button, Icon, message, Spin } from "antd";
+import { Upload, Button, Icon, message } from "antd";
 
 export default class RUpload extends React.Component {
 
@@ -20,7 +20,8 @@ export default class RUpload extends React.Component {
     text: PropTypes.node, // 上传按钮区内容
     uploadProps: PropTypes.object, // antd Upload 上传属性
     tips: PropTypes.object, // 信息提示器
-    transform: PropTypes.func, // 转换 response 数据（返回数据结构：{ id(必选), name(必选), url(可选) }）
+    transformFrom: PropTypes.func, // 将上传接口返回的字段转换成组件内部使用的字段（转成这样 { id(必选), name(必选), url(可选) }）
+    transformTo: PropTypes.func, // 将组件内部使用的字段转换成提交接口需要的字段（从这样转 { id(必选), name(必选), url(可选) }）
   }
 
   static defaultProps = {
@@ -29,28 +30,29 @@ export default class RUpload extends React.Component {
     readOnly: false, // 可编辑状态
     text: "文件上传",
     uploadProps: {
-      action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+      action: "/yapi/upload",
       headers: {
-        authorization: "authorization-text",
+        Authorization: "5cc8019d300000980a055e76",
       },
       beforeUpload: (file) => true,
     },
     tips: message,
-    transform: (file) => file,
+    transformFrom: (file) => ({ id: file.fileId, name: file.fileName }),
+    transformTo: (file) => ({ fileId: file.id, fileName: file.name }),
   }
 
   constructor(props) {
     super(props);
 
     this.state = {
-      fileList: props.value || [],
+      fileList: this.transformFrom(props.value) || [],
       loading: false,
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.value) {
-      this.setState({ fileList: nextProps.value });
+      this.setState({ fileList: this.transformFrom(nextProps.value) });
     }
   }
 
@@ -77,6 +79,23 @@ export default class RUpload extends React.Component {
     let { fileList } = this.state;
     fileList = fileList.filter(item => item.id !== file.id);
     this.setState({ fileList });
+    onChange && onChange(this.transformTo(fileList));
+  }
+
+  /**
+   * 将上传接口返回的字段转换成组件内部使用的字段
+   */
+  transformFrom = (fileList) => {
+    const { transformFrom } = this.props;
+    return fileList.map(file => transformFrom(file));
+  }
+
+  /**
+   * 将组件内部使用的字段转换成提交接口需要的字段
+   */
+  transformTo = (fileList) => {
+    const { transformTo } = this.props;
+    return fileList.map(file => transformTo(file));
   }
 
   render() {
@@ -87,7 +106,7 @@ export default class RUpload extends React.Component {
       text,
       uploadProps,
       tips,
-      transform,
+      transformFrom,
       onChange,
     } = this.props;
 
@@ -104,10 +123,11 @@ export default class RUpload extends React.Component {
         if (info.file.status === "uploading") {
           this.setState({ loading: true });
         } else {
+          console.log(info.file);
           let { fileList } = this.state;
-          fileList.push(transform(info.file.response));
+          fileList.push(transformFrom(info.file.response.data));
           this.setState({ loading: false, fileList });
-          onChange && onChange(fileList);
+          onChange && onChange(this.transformTo(fileList));
         }
         if (info.file.status === "done") {
           tips.success(`${info.file.name} 上传成功`);
@@ -126,7 +146,7 @@ export default class RUpload extends React.Component {
       >
         <Upload {...props}>
           {!readOnly && fileList.length < maxNumber && (
-            <Button>
+            <Button disabled={loading}>
               <Icon type={loading ? "loading" : "upload"} /> {text}
             </Button>
           )}
@@ -143,7 +163,9 @@ export default class RUpload extends React.Component {
                   )
                   : name
                 }
-                <Icon type="close" onClick={() => this.onRemove(file)} />
+                {!readOnly && (
+                  <Icon type="close" onClick={() => this.onRemove(file)} />
+                )}
               </div>
             )
           })}
