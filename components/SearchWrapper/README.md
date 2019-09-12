@@ -8,11 +8,29 @@
 
 ```javascript
 static propTypes = {
-  
+  form: PropTypes.object,
+  formItemLayout: PropTypes.object,
+  onSearch: PropTypes.func,
+  onReset: PropTypes.func,
+  hasHandleBar: PropTypes.bool, // 是否有操作行（查询，重置）
+  searchText: PropTypes.string,
+  resetText: PropTypes.string,
+  defaultRowCount: PropTypes.number, // 默认行数，超过默认隐藏
 }
 
 static defaultProps = {
-  
+  formItemLayout: {
+    labelCol: { span: 8 },
+    wrapperCol: { span: 16 },
+  },
+  hasHandleBar: true,
+  searchText: "查询",
+  resetText: "重置",
+  defaultRowCount: 2,
+}
+
+static contextTypes = {
+  form: PropTypes.object,
 }
 ```
 
