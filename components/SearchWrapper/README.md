@@ -22,19 +22,28 @@ static defaultProps = {
 import { Form, Row, Col, Input } from "antd";
 import { SearchWrapper } from "nice-ui";
 
-<SearchWrapper>
+onSearch = async (query) => {
+  console.log(query);
+  let result = await fetch("/yapi/test", query);
+  console.log(result);
+}
+
+<SearchWrapper
+  onSearch={this.onSearch}
+  setRef={(swRef) => this.swRef = swRef}
+>
   <Row>
     <Col span={8}>
       <Form.Item label="name">
         {getFieldDecorator("name")(
-          <Input />
+          <Input onPressEnter={this.swRef && this.swRef.onSearch} />
         )}
       </Form.Item>
     </Col>
     <Col span={8}>
       <Form.Item label="age">
         {getFieldDecorator("age")(
-          <Input />
+          <InputNumber style={{width: "100%"}} />
         )}
       </Form.Item>
     </Col>
@@ -50,7 +59,12 @@ import { SearchWrapper } from "nice-ui";
     <Col span={8}>
       <Form.Item label="sex">
         {getFieldDecorator("sex")(
-          <Input />
+          <EnumSelect
+            list={[
+              { code: "01", name: "男" },
+              { code: "02", name: "女" }
+            ]}
+          />
         )}
       </Form.Item>
     </Col>

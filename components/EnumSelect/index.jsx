@@ -103,7 +103,7 @@ export default class EnumSelect extends React.Component {
   }
 
   render() {
-    const { codeKey, labelKey, hasAll } = this.props;
+    const { className, codeKey, labelKey, hasAll } = this.props;
     const list = this.state.list || this.props.list || [];
     const options = list.map((item, index) => {
       if (typeof item !== "object") {
@@ -123,21 +123,18 @@ export default class EnumSelect extends React.Component {
     this.fixSearchProps();
     const cls = classnames({
       ["comp-enum-select-wrapper"]: true,
+      [className]: !!className
     });
     return (
-      <div className={cls}>
-        {
-          hasAll ?
-          <Select {...this.props}>
-            <Option value="">全部</Option>
-            {options}
-          </Select>
-          :
-          <Select {...this.props} {...this.searchProps}>
-            {options}
-          </Select>
-        }
-      </div>
+      hasAll ?
+        <Select {...this.props} className={cls}>
+          <Option value="">全部</Option>
+          {options}
+        </Select>
+        :
+        <Select {...this.props} {...this.searchProps} className={cls}>
+          {options}
+        </Select>
     )
   }
 }

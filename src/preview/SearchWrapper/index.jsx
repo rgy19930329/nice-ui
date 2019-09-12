@@ -8,9 +8,11 @@ import "./index.less";
 import React from "react";
 import { render } from "react-dom";
 import SearchWrapper from "@components/SearchWrapper";
-import { Form, Row, Col, Input } from "antd";
+import { Form, Row, Col, Input, InputNumber } from "antd";
 import withFormInChild from "@components/withFormInChild";
 import PageWrapper from "@src/components/PageWrapper";
+import { fetch } from "@utils";
+import EnumSelect from "@components/EnumSelect";
 
 @Form.create()
 @withFormInChild
@@ -24,6 +26,15 @@ class PreviewSearchWrapper extends React.Component {
 
   }
 
+  /**
+   * 查询
+   */
+  onSearch = async (query) => {
+    console.log(query);
+    let result = await fetch("/yapi/test", query);
+    console.log(result);
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
@@ -31,19 +42,22 @@ class PreviewSearchWrapper extends React.Component {
         comp="SearchWrapper"
         className="page-search-wrapper-wrapper"
       >
-        <SearchWrapper>
+        <SearchWrapper
+          onSearch={this.onSearch}
+          setRef={(swRef) => this.swRef = swRef}
+        >
           <Row>
             <Col span={8}>
               <Form.Item label="name">
                 {getFieldDecorator("name")(
-                  <Input />
+                  <Input onPressEnter={this.swRef && this.swRef.onSearch} />
                 )}
               </Form.Item>
             </Col>
             <Col span={8}>
               <Form.Item label="age">
                 {getFieldDecorator("age")(
-                  <Input />
+                  <InputNumber style={{width: "100%"}} />
                 )}
               </Form.Item>
             </Col>
@@ -59,7 +73,12 @@ class PreviewSearchWrapper extends React.Component {
             <Col span={8}>
               <Form.Item label="sex">
                 {getFieldDecorator("sex")(
-                  <Input />
+                  <EnumSelect
+                    list={[
+                      { code: "01", name: "男" },
+                      { code: "02", name: "女" }
+                    ]}
+                  />
                 )}
               </Form.Item>
             </Col>

@@ -40,8 +40,13 @@ export default class SearchWrapper extends React.Component {
     form: PropTypes.object,
   }
 
-  state = {
-    isOpen: false,
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isOpen: false,
+    }
+    props.setRef && props.setRef(this);
   }
 
   getForm = () => {
@@ -52,7 +57,6 @@ export default class SearchWrapper extends React.Component {
     const { onSearch } = this.props;
     const form = this.getForm();
     const query = form.getFieldsValue();
-    console.log(query);
     onSearch && onSearch(query);
   }
 
@@ -133,7 +137,7 @@ export default class SearchWrapper extends React.Component {
           <div className="icon-area">
             <a onClick={() => this.setState({ isOpen: !isOpen })}>
               <RotateToggle isOpen={isOpen}>
-                <Icon type={"up"} />
+                <Icon type={"down"} />
               </RotateToggle>
             </a>
           </div>

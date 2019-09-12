@@ -32,7 +32,7 @@ const filter = (data) => {
  * 遍历数据
  */
 const each = (ref, fn) => {
-  ref.on('child_added', (snap) => {
+  ref.on("child_added", (snap) => {
     let item = snap.val();
     let id = snap.key();
     fn && fn(item, id);
