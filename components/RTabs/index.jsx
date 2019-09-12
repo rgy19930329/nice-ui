@@ -1,5 +1,5 @@
 /**
- * @desc 组件 - Tabs
+ * @desc 组件 - RTabs
  * @author rgy
  * @date 2019-08-16 15:33:54
  */
@@ -12,7 +12,7 @@ import { Tabs } from "antd";
 
 const TabPane = Tabs.TabPane;
 
-export default class CustomTabs extends React.Component {
+export default class RTabs extends React.Component {
 
   static propTypes = {
     panes: PropTypes.array,
@@ -28,7 +28,7 @@ export default class CustomTabs extends React.Component {
       <div
         className={classnames({
           ["comp-tabs-wrapper"]: true,
-          [className]: className
+          [className]: !!className
         })}
       >
         <Tabs

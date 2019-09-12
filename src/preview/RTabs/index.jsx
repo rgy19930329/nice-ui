@@ -7,10 +7,10 @@
 import "./index.less";
 import React from "react";
 import { render } from "react-dom";
-import Tabs from "@components/Tabs";
+import RTabs from "@components/RTabs";
 import PageWrapper from "@src/components/PageWrapper";
 
-class PreviewTabs extends React.Component {
+class PreviewRTabs extends React.Component {
 
   constructor(props) {
     super(props);
@@ -23,10 +23,10 @@ class PreviewTabs extends React.Component {
   render() {
     return (
       <PageWrapper
-        comp="Tabs"
-        className="page-tabs-wrapper"
+        comp="RTabs"
+        className="page-r-tabs-wrapper"
       >
-        <Tabs
+        <RTabs
           defaultActiveKey="1"
           panes={[
             {
@@ -46,4 +46,4 @@ class PreviewTabs extends React.Component {
   }
 }
 
-render(<PreviewTabs />, document.getElementById("app"));
+render(<PreviewRTabs />, document.getElementById("app"));

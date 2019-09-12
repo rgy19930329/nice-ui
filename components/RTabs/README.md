@@ -1,4 +1,4 @@
-# 组件 - Tabs
+# 组件 - RTabs
 
 ## 功能描述
 
@@ -19,10 +19,10 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import { Tabs } from "nice-ui";
+import { RTabs } from "nice-ui";
 
-<Tabs
-  defaultActiveKey="2"
+<RTabs
+  defaultActiveKey="1"
   panes={[
     {
       tab: "原生表单",
