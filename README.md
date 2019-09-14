@@ -49,7 +49,7 @@ module: {
 ## Import
 
 ```
-import { Label } from "nice-ui";
+import { Label, fetch } from "nice-ui";
 ```
 
 ## Component List

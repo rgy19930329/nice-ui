@@ -1,4 +1,8 @@
 /**
+ * @desc 表单校验方法 validator
+ */
+
+/**
  * 金额校验（只校验格式，不校验必填）
  */
 const amountValidator = (rule, value, callback) => {
@@ -20,10 +24,6 @@ const amountValidator = (rule, value, callback) => {
     }
     callback();
   }
-}
-
-export {
-  amountValidator,
 }
 
 export default {

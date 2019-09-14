@@ -64,6 +64,8 @@ class Home extends React.Component {
         >
           <div className="markdown">
             <MarkDown>{require(`@root/README.md`)}</MarkDown>
+            <br />
+            <MarkDown>{require(`@root/utils/README.md`)}</MarkDown>
           </div>
         </CSSTransition>
         <div className="title">

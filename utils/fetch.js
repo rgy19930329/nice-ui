@@ -1,3 +1,7 @@
+/**
+ * @desc 客户端ajax网络请求封装
+ */
+
 import axios from "axios";
 
 let defaultOpts = {

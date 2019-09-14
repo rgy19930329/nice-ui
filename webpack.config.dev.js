@@ -49,9 +49,10 @@ const webpackConfig = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
+      'nice-ui': path.resolve(__dirname, 'index'),
       '@root': __dirname,
       '@components': path.resolve(__dirname, 'components'),
-      '@utils': path.resolve(__dirname, 'src/utils'),
+      '@utils': path.resolve(__dirname, 'utils'),
       '@preview': path.resolve(__dirname, 'src/preview'),
       '@src': path.resolve(__dirname, 'src'),
     }
@@ -105,17 +106,6 @@ const webpackConfig = {
         test: /\.md$/,
         use: [
           { loader: 'html-loader' },
-          // {
-          //   loader: 'markdown-loader',
-          //   options: {
-          //     renderer,
-          //     pedantic: true,
-          //     highlight: function (code) {
-          //       console.log("code", code);
-          //       return hljs.highlightAuto(code).value;
-          //     }
-          //   }
-          // }
         ]
       }
     ]

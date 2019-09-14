@@ -3,7 +3,7 @@
  */
 
 /**
- * 数据过滤，过滤掉所有值为undefined的字段（因为有这些字段的存在无法执行add操作）
+ * 数据过滤，过滤掉所有值为undefined的字段（因为有这些字段的存在无法执行add和set操作）
  */
 const filter = (data) => {
   const deepCopy = (p, c) => {
@@ -32,7 +32,7 @@ const filter = (data) => {
  * 遍历数据
  */
 const each = (ref, fn) => {
-  ref.on("child_added", (snap) => {
+  ref.on('child_added', (snap) => {
     let item = snap.val();
     let id = snap.key();
     fn && fn(item, id);
@@ -69,7 +69,7 @@ const get = (ref, fn) => {
   });
 };
 
-export {
+export default {
   each,
   remove,
   add,
