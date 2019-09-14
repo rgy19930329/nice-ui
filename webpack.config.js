@@ -17,6 +17,7 @@ const webpackConfig = {
         include: [
           path.resolve(__dirname, 'index'),
           path.resolve(__dirname, 'components'),
+          path.resolve(__dirname, 'utils'),
         ],
         exclude: path.resolve(__dirname, 'node_modules'),
       },
