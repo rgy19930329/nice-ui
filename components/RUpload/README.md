@@ -13,6 +13,7 @@ static propTypes = {
   maxNumber: PropTypes.number, // 文件最多上传多少个
   readOnly: PropTypes.bool, // 是否只读模式
   text: PropTypes.node, // 上传按钮区内容
+  triggerArea: PropTypes.func, // 触发区域（返回jsx），设置该属性，text属性会被覆盖
   uploadProps: PropTypes.object, // antd Upload 上传属性
   tips: PropTypes.object, // 信息提示器
   transformFrom: PropTypes.func, // 将上传接口返回的字段转换成组件内部使用的字段（转成这样 { id(必选), name(必选), url(可选) }）
@@ -24,6 +25,7 @@ static defaultProps = {
   maxNumber: 5, // 5个
   readOnly: false, // 可编辑状态
   text: "文件上传",
+  triggerArea: null,
   uploadProps: {
     action: "/yapi/upload",
     headers: {
