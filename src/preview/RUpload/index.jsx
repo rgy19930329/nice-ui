@@ -34,7 +34,7 @@ class PreviewRUpload extends React.Component {
         comp="RUpload"
         className="page-r-upload-wrapper"
       >
-        <Section title="测试一">
+        {/* <Section title="测试 数据搜集">
           {getFieldDecorator("test", {
             initialValue: [
               {
@@ -51,6 +51,26 @@ class PreviewRUpload extends React.Component {
                   url: `/yapi/download?id=${file.fileId}`,
                 }
               }}
+            />
+          )}
+        </Section> */}
+
+        <Section title="测试 triggerArea">
+          {getFieldDecorator("test2")(
+            <RUpload
+              transformFrom={(file) => {
+                return {
+                  id: file.fileId,
+                  name: file.fileName,
+                  url: `/yapi/download?id=${file.fileId}`,
+                }
+              }}
+              triggerArea={(loading) => (
+                <div>
+                  <a style={{marginRight: 20}}>上传</a>
+                  请选择要上传的文件
+                </div>
+              )}
             />
           )}
         </Section>
