@@ -120,7 +120,8 @@ export default class RUpload extends React.Component {
       name: "file",
       showUploadList: false,
       beforeUpload: (file) => {
-        return this.checkFile(file) && uploadProps.beforeUpload(file);
+        return this.checkFile(file) && 
+          uploadProps.beforeUpload && uploadProps.beforeUpload(file);
       },
       onChange: (info) => {
         if (info.file.status === "uploading") {

@@ -34,7 +34,7 @@ class PreviewRUpload extends React.Component {
         comp="RUpload"
         className="page-r-upload-wrapper"
       >
-        {/* <Section title="测试 数据搜集">
+        <Section title="测试 数据搜集">
           {getFieldDecorator("test", {
             initialValue: [
               {
@@ -53,7 +53,7 @@ class PreviewRUpload extends React.Component {
               }}
             />
           )}
-        </Section> */}
+        </Section>
 
         <Section title="测试 triggerArea">
           {getFieldDecorator("test2")(
