@@ -75,6 +75,28 @@ class PreviewRUpload extends React.Component {
           )}
         </Section>
 
+        <Section title="测试 readOnly">
+          {getFieldDecorator("test3", {
+            initialValue: [
+              {
+                fileId: "500000201904076749",
+                fileName: "ranguangyu.docx",
+              }
+            ]
+          })(
+            <RUpload
+              transformFrom={(file) => {
+                return {
+                  id: file.fileId,
+                  name: file.fileName,
+                  url: `/yapi/download?id=${file.fileId}`,
+                }
+              }}
+              readOnly
+            />
+          )}
+        </Section>
+
         <div>
           <Button onClick={() => {
             let values = this.props.form.getFieldsValue();
