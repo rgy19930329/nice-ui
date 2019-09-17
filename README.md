@@ -78,3 +78,4 @@ import { Label, fetch } from "nice-ui";
 | [InlineList](./components/InlineList/README.md)  | 数据展示 - 行内列表数据展示 | rgy | 2019-09-05 15:41:56 |
 | [RConnect](./components/RConnect/README.md)  | 高阶组件 - 帮助使用react-redux时简化使用方式 | rgy | 2019-09-09 09:32:56 |
 | [RUpload](./components/RUpload/README.md)  | 表单组件 - 文件上传 | rgy | 2019-09-10 14:53:45 |
+| [RCheckbox](./components/RCheckbox/README.md)  | 表单组件 - 映射 Checkbox 的值 | rgy | 2019-09-17 16:43:41 |
