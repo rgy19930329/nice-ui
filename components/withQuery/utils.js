@@ -6,6 +6,9 @@
  */
 const parseUrl = (url) => {
   url = url.slice(url.indexOf("?") + 1);
+  if (!url) {
+    return {};
+  }
   let paramList = url.split("&");
   let params = {};
   paramList.forEach(item => {
