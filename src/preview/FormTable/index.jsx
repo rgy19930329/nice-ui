@@ -13,6 +13,7 @@ import Section from "@components/Section";
 import EnumSelect from "@components/EnumSelect";
 import EnumChoice from "@components/EnumChoice";
 import PageWrapper from "@src/components/PageWrapper";
+import moment from "moment";
 
 const RTRow = FormTable.RTRow;
 const RItem = FormTable.RItem;
@@ -76,7 +77,7 @@ class PreviewFormTable extends React.Component {
               </RItem>
               <RItem label="联系方式">
                 139-xxxx-xxxx
-                </RItem>
+              </RItem>
             </RTRow>
             <RTRow>
               <RItem label="性别">
@@ -109,6 +110,12 @@ class PreviewFormTable extends React.Component {
                 })(
                   <Input.TextArea />
                 )}
+              </RItem>
+            </RTRow>
+            <RTRow>
+              <RItem label="当前时间">
+                {new Date()} <br />
+                {moment(new Date()).format("YYYY-MM-DD HH:mm")}
               </RItem>
             </RTRow>
           </FormTable>

@@ -42,7 +42,12 @@ export default class RItem extends React.Component {
     if (required) {
       return true;
     } else {
-      if (children && typeof children === "object" && children.props["data-__meta"]) {
+      if (
+        children && 
+        typeof children === "object" && 
+        children.props &&
+        children.props["data-__meta"]
+      ) {
         let { rules } = children.props["data-__meta"];
         if (rules) {
           for (let i = 0; i < rules.length; i++) {
@@ -59,6 +64,9 @@ export default class RItem extends React.Component {
   getChildField = (child) => {
     if (typeof child !== "object") {
       return child;
+    }
+    if (!child.props) {
+      return child.toString();
     }
     const { form } = this.context;
     let { id } = child.props;
