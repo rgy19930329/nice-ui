@@ -1,11 +1,12 @@
 import fetch from "./fetch";
 import wdio from "./wdio";
 import validator from "./validator";
-import storage from "./storage";
+import { local_storage, session_storage } from "./storage";
 
 export {
   fetch,
   wdio,
   validator,
-  storage,
+  local_storage,
+  session_storage,
 }
