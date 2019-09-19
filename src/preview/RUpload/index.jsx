@@ -10,7 +10,7 @@ import { render } from "react-dom";
 import RUpload from "@components/RUpload";
 import PageWrapper from "@src/components/PageWrapper";
 import Section from "@components/Section";
-import { Form, Button, Input } from "antd";
+import { Form, Button, Input, Spin, Icon } from "antd";
 
 @Form.create()
 class PreviewRUpload extends React.Component {
@@ -68,7 +68,11 @@ class PreviewRUpload extends React.Component {
               triggerArea={(loading) => (
                 <div>
                   <a style={{marginRight: 20}}>上传</a>
-                  请选择要上传的文件
+                  <span style={{marginRight: 10}}>请选择要上传的文件</span>
+                  <Spin
+                    indicator={<Icon type="loading" spin />}
+                    spinning={loading}
+                  />
                 </div>
               )}
             />

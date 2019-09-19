@@ -33,7 +33,7 @@ static defaultProps = {
     },
     beforeUpload: (file) => true,
   },
-  tips: message, // 默认为antd的message
+  tips: message, // 默认为antd 的 message（自定义时 至少需要提供 tips.success, tips.error）
   transformFrom: (file) => ({ id: file.fileId, name: file.fileName }),
   transformTo: (file) => ({ fileId: file.id, fileName: file.name }),
 }
