@@ -120,7 +120,7 @@ export default class RUpload extends React.Component {
       name: "file",
       showUploadList: false,
       beforeUpload: (file) => {
-        return this.checkFile(file) && 
+        return this.checkFile(file) &&
           uploadProps.beforeUpload && uploadProps.beforeUpload(file);
       },
       onChange: (info) => {
@@ -153,29 +153,31 @@ export default class RUpload extends React.Component {
             triggerArea
               ? triggerArea(loading)
               : <Button disabled={loading}>
-                  <Icon type={loading ? "loading" : "upload"} /> {text}
-                </Button>
+                <Icon type={loading ? "loading" : "upload"} /> {text}
+              </Button>
           )}
         </Upload>
-        <div className="r-upload-list">
-          {fileList.map((file, index) => {
-            const { id, name, url } = file;
-            return (
-              <div className="upload-item" key={id || index}>
-                <Icon type="paper-clip" />
-                {url
-                  ? (
-                    <a href={url} target="_blank">{name}</a>
-                  )
-                  : name
-                }
-                {!readOnly && (
-                  <Icon type="close" onClick={() => this.onRemove(file)} />
-                )}
-              </div>
-            )
-          })}
-        </div>
+        {fileList.length > 0 && (
+          <div className="r-upload-list">
+            {fileList.map((file, index) => {
+              const { id, name, url } = file;
+              return (
+                <div className="upload-item" key={id || index}>
+                  <Icon type="paper-clip" />
+                  {url
+                    ? (
+                      <a href={url} target="_blank">{name}</a>
+                    )
+                    : name
+                  }
+                  {!readOnly && (
+                    <Icon type="close" onClick={() => this.onRemove(file)} />
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        )}
       </div>
     )
   }
