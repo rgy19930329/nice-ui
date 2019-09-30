@@ -32,13 +32,13 @@ export default class RTabs extends React.Component {
         })}
       >
         <Tabs
-          type="card"
+          type="line"
           {...this.props}
         >
           {panes && panes.map((item, index) => {
-            const { tab, content, key = index } = item;
+            const { tab, content, key = index, forceRender = false } = item;
             return (
-              <TabPane tab={tab} key={key}>{content}</TabPane>
+              <TabPane tab={tab} key={key} forceRender={forceRender}>{content}</TabPane>
             )
           })}
         </Tabs>
