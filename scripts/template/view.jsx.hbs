@@ -9,7 +9,9 @@ import React from "react";
 import { render } from "react-dom";
 import {{componentName}} from "@components/{{componentName}}";
 import PageWrapper from "@src/components/PageWrapper";
+import withLocale from "@src/components/withLocale";
 
+@withLocale
 class Preview{{componentName}} extends React.Component {
 
   constructor(props) {

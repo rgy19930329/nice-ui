@@ -23,6 +23,7 @@ export default class SearchWrapper extends React.Component {
     searchText: PropTypes.string,
     resetText: PropTypes.string,
     defaultRowCount: PropTypes.number, // 默认行数，超过默认隐藏
+    resetImmediately: PropTypes.bool, // 重置是否立即生效（条件重置之后是否立即查询）,自定义了onReset时该属性失效
   }
 
   static defaultProps = {
@@ -34,6 +35,7 @@ export default class SearchWrapper extends React.Component {
     searchText: "查询",
     resetText: "重置",
     defaultRowCount: 2,
+    resetImmediately: false,
   }
 
   static contextTypes = {
@@ -61,12 +63,15 @@ export default class SearchWrapper extends React.Component {
   }
 
   onReset = () => {
-    const { onReset } = this.props;
+    const { onReset, resetImmediately } = this.props;
     const form = this.getForm();
     if (onReset) {
       onReset();
     } else {
       form.resetFields();
+      if (resetImmediately) {
+        this.onSearch();
+      }
     }
   }
 

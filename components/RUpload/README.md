@@ -53,11 +53,11 @@ import { RUpload } from "nice-ui";
   ]
 })(
   <RUpload
-    transformFrom={(file) => {
+    transformFrom={(resp) => {
       return {
-        id: file.fileId,
-        name: file.fileName,
-        url: `/yapi/download?id=${file.fileId}`,
+        id: resp.fileId,
+        name: resp.fileName,
+        url: `/yapi/download?id=${resp.fileId}`,
       }
     }}
   />

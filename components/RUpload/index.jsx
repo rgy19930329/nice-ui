@@ -39,7 +39,7 @@ export default class RUpload extends React.Component {
       beforeUpload: (file) => true,
     },
     tips: message, // 默认为antd 的 message（自定义时 至少需要提供 tips.success, tips.error）
-    transformFrom: (file) => ({ id: file.fileId, name: file.fileName }),
+    transformFrom: (resp) => ({ id: resp.fileId, name: resp.fileName }),
     transformTo: (file) => ({ fileId: file.id, fileName: file.name }),
   }
 
@@ -129,7 +129,7 @@ export default class RUpload extends React.Component {
         } else {
           console.log(info.file);
           let { fileList } = this.state;
-          fileList.push(transformFrom(info.file.response.data));
+          fileList.push(transformFrom(info.file.response));
           this.setState({ loading: false, fileList });
           onChange && onChange(this.transformTo(fileList));
         }
