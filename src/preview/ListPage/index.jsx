@@ -16,6 +16,8 @@ import EnumSelect from "@components/EnumSelect";
 
 const { RangePicker } = DatePicker;
 
+const { get, post } = fetch;
+
 @withLocale
 class PreviewListPage extends React.Component {
 
@@ -122,7 +124,7 @@ class PreviewListPage extends React.Component {
   ]
 
   createPromise = (params) => {
-    return fetch("/yapi/list-page", params).then(result => {
+    return get("/yapi/list-page", params).then(result => {
       if (result.success) {
         const { totalCount, currentPageResult } = result.data;
         return {
@@ -140,12 +142,8 @@ class PreviewListPage extends React.Component {
       title: "提示",
       content: "是否删除该项？",
       onOk: async () => {
-        let result = await fetch({
-          url: "/yapi/list-page-delete",
-          method: "post",
-          data: {
-            bid,
-          }
+        let result = await post("/yapi/list-page-delete", {
+          bid,
         });
         if (result.success) {
           message.success("操作成功");

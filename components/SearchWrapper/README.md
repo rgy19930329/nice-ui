@@ -16,6 +16,7 @@ static propTypes = {
   searchText: PropTypes.string,
   resetText: PropTypes.string,
   defaultRowCount: PropTypes.number, // 默认行数，超过默认隐藏
+  resetImmediately: PropTypes.bool, // 重置是否立即生效（条件重置之后是否立即查询）,自定义了onReset时该属性失效
 }
 
 static defaultProps = {
@@ -27,6 +28,7 @@ static defaultProps = {
   searchText: "查询",
   resetText: "重置",
   defaultRowCount: 2,
+  resetImmediately: false,
 }
 
 static contextTypes = {

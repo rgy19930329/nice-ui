@@ -10,7 +10,7 @@ let defaultOpts = {
   timeout: 6000,
 }
 
-export default (opts, data) => {
+const fetch = (opts, data) => {
   if (typeof opts === "string") { // 这种情况只能用于get请求
     let combinedOpts = Object.assign({}, defaultOpts, { url: opts });
     combinedOpts["params"] = data;
@@ -24,3 +24,20 @@ export default (opts, data) => {
     return axios(combinedOpts).then(res => res.data);
   }
 }
+
+const get = (url, data) => {
+  return fetch(url, data);
+}
+
+const post = (url, data) => {
+  return fetch({
+    url,
+    method: "post",
+    data,
+  });
+}
+
+fetch.get = get;
+fetch.post = post;
+
+export default fetch;
