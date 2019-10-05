@@ -5,13 +5,13 @@
  */
 
 import "./index.less";
-import React from "react";
+import React, { Fragment } from "react";
 import { render } from "react-dom";
 import ListPage from "@components/ListPage";
 import PageWrapper from "@src/components/PageWrapper";
 import withLocale from "@src/components/withLocale";
 import { fetch } from "@utils";
-import { message, Input, InputNumber, DatePicker, Modal } from "antd";
+import { message, Input, InputNumber, DatePicker, Modal, Button, } from "antd";
 import EnumSelect from "@components/EnumSelect";
 
 const { RangePicker } = DatePicker;
@@ -23,6 +23,10 @@ class PreviewListPage extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      selectedRowKeys: [],
+    }
   }
 
   componentDidMount() {
@@ -153,6 +157,27 @@ class PreviewListPage extends React.Component {
     });
   }
 
+  onAdd = () => {
+    message.info("新增数据");
+  }
+
+  onBatchDelete = () => {
+    const { selectedRowKeys } = this.state;
+    Modal.confirm({
+      title: "提示",
+      content: "是否批量删除选中项？",
+      onOk: async () => {
+        let result = await post("/yapi/list-page-delete", {
+          bidList: selectedRowKeys,
+        });
+        if (result.success) {
+          message.success("操作成功");
+          this.listRef.dataLoad();
+        }
+      }
+    });
+  }
+
   render() {
     return (
       <PageWrapper
@@ -169,6 +194,19 @@ class PreviewListPage extends React.Component {
             defaultRowCount: 1
           }}
           setRef={listRef => this.listRef = listRef}
+          extendButtons={(
+            <Fragment>
+              <Button icon="plus-circle" onClick={this.onAdd}>新增</Button>
+              <Button icon="delete" onClick={this.onBatchDelete}>批量删除</Button>
+            </Fragment>
+          )}
+          tableProps={{
+            rowSelection: {
+              onChange: (selectedRowKeys, selectedRows) => {
+                this.setState({ selectedRowKeys });
+              }
+            }
+          }}
         />
       </PageWrapper>
     )

@@ -14,12 +14,12 @@ static propTypes = {
   createPromise: PropTypes.func, // 创建获取列表数据的promise（它返回的数据结构：{ totalCount, currentPageResult }）
   searchOptions: PropTypes.object, // SearchWrapper 组件的相关属性
   tableProps: PropTypes.object, // Table 组件的相关属性
+  extendButtons: PropTypes.node, // 附加操作区按钮定制
 }
 
 static defaultProps = {
   rowKey: "id",
   columns: [],
-  createSearchs: [],
   createPromise: () => new Promise(resolve => resolve({
     totalCount: 0,
     currentPageResult: [],
@@ -173,6 +173,19 @@ render() {
         defaultRowCount: 1
       }}
       setRef={listRef => this.listRef = listRef}
+      extendButtons={(
+        <Fragment>
+          <Button icon="plus-circle" onClick={this.onAdd}>新增</Button>
+          <Button icon="delete" onClick={this.onBatchDelete}>批量删除</Button>
+        </Fragment>
+      )}
+      tableProps={{
+        rowSelection: {
+          onChange: (selectedRowKeys, selectedRows) => {
+            this.setState({ selectedRowKeys });
+          }
+        }
+      }}
     />
   )
 }

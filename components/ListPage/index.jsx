@@ -23,12 +23,12 @@ export default class ListPage extends React.Component {
     createPromise: PropTypes.func, // 创建获取列表数据的promise（它返回的数据结构：{ totalCount, currentPageResult }）
     searchOptions: PropTypes.object, // SearchWrapper 组件的相关属性
     tableProps: PropTypes.object, // Table 组件的相关属性
+    extendButtons: PropTypes.node, // 附加操作区按钮定制
   }
 
   static defaultProps = {
     rowKey: "id",
     columns: [],
-    createSearchs: [],
     createPromise: () => new Promise(resolve => resolve({
       totalCount: 0,
       currentPageResult: [],
@@ -142,7 +142,7 @@ export default class ListPage extends React.Component {
   }
 
   render() {
-    const { className, rowKey, tableProps } = this.props;
+    const { className, rowKey, tableProps, createSearchs, extendButtons } = this.props;
 
     let props = {
       bordered: true,
@@ -168,9 +168,16 @@ export default class ListPage extends React.Component {
           [className]: !!className
         })}
       >
-        <div style={{marginBottom: 20}}>
-          {this.renderSearchBar()}
-        </div>
+        {createSearchs && (
+          <div className="list-search-bar">
+            {this.renderSearchBar()}
+          </div>
+        )}
+        {extendButtons && (
+          <div className="list-extend-buttons">
+            {extendButtons}
+          </div>
+        )}
         <Table {...props} />
       </div>
     )
