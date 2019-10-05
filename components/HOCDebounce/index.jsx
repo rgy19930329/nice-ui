@@ -10,7 +10,7 @@ import debounce from "lodash/debounce";
 import noop from "lodash/noop";
 import { getValueFromEvent } from "rc-form/lib/utils";
 
-export default WrappedComponent => class HOCDebounce extends React.Component {
+export default WrappedComponent => class extends React.Component {
 
   static propTypes = {
     onChange: PropTypes.func,

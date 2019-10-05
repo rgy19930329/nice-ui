@@ -6,7 +6,7 @@
 
 import React from "react";
 
-export default importComponent => class HOCAsync extends React.Component {
+export default importComponent => class extends React.Component {
 
   constructor(props) {
     super(props);
