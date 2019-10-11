@@ -102,6 +102,7 @@ export default class RUpload extends React.Component {
 
   render() {
     const {
+      style,
       className,
       maxNumber,
       readOnly,
@@ -143,6 +144,7 @@ export default class RUpload extends React.Component {
 
     return (
       <div
+        style={style}
         className={classnames({
           ["comp-r-upload-wrapper"]: true,
           [className]: !!className

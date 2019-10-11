@@ -34,6 +34,11 @@ class PreviewMultiItems extends React.Component {
         { code: "1001", name: "AAAA" },
         { code: "1002", name: "BBBB" },
         { code: "1003", name: "CCCC" },
+      ],
+      test5: [
+        "4444",
+        "5555",
+        "6666",
       ]
     });
   }
@@ -86,6 +91,12 @@ class PreviewMultiItems extends React.Component {
         <Section title="测试4">
           {getFieldDecorator("test4")(
             <UserSelect />
+          )}
+        </Section>
+
+        <Section title="测试5">
+          {getFieldDecorator("test5")(
+            <MultiItems readOnly />
           )}
         </Section>
 

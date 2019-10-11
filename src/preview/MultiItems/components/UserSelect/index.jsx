@@ -27,6 +27,7 @@ export default class UserSelect extends React.Component {
           onTrigger={() => {
             this.connectRef.open();
           }}
+          style={{width: 300}}
         />
         <ConnectedModal
           setRef={connectRef => this.connectRef = connectRef}
