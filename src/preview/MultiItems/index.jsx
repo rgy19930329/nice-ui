@@ -96,7 +96,9 @@ class PreviewMultiItems extends React.Component {
 
         <Section title="测试5">
           {getFieldDecorator("test5")(
-            <MultiItems readOnly />
+            <MultiItems readOnly onItemClick={(item) => {
+              window.open(`https://www.baidu.com/?id=${item}`, "_blank");
+            }} />
           )}
         </Section>
 

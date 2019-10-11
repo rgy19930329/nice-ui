@@ -28,6 +28,9 @@ export default class UserSelect extends React.Component {
             this.connectRef.open();
           }}
           style={{width: 300}}
+          onItemClick={({ origin }) => {
+            window.open(`https://www.baidu.com/?id=${origin.bid}`, "_blank");
+          }}
         />
         <ConnectedModal
           setRef={connectRef => this.connectRef = connectRef}
@@ -36,6 +39,7 @@ export default class UserSelect extends React.Component {
               return {
                 code: item.bid,
                 name: item.name,
+                origin: item,
               }
             });
             onChange && onChange(value);

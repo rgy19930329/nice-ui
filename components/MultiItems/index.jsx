@@ -28,6 +28,7 @@ export default class MultiItems extends React.Component {
     labelKey: PropTypes.string,
     closable: PropTypes.bool,
     readOnly: PropTypes.bool,
+    placeholder: PropTypes.string,
   }
 
   static defaultProps = {
@@ -35,6 +36,7 @@ export default class MultiItems extends React.Component {
     labelKey: "name",
     closable: true,
     readOnly: false,
+    placeholder: "",
   }
 
   render() {
@@ -49,6 +51,7 @@ export default class MultiItems extends React.Component {
       onTrigger,
       placeholder,
       readOnly,
+      onItemClick,
     } = this.props;
     
     return (
@@ -61,7 +64,7 @@ export default class MultiItems extends React.Component {
         })}
         onClick={() => {
           if (!readOnly) {
-            onTrigger();
+            onTrigger && onTrigger();
           }
         }}
       >
@@ -80,7 +83,15 @@ export default class MultiItems extends React.Component {
               }}
               key={isSample ? item : item[codeKey]}
             >
-              {isSample ? item : item[labelKey]}
+              <a
+                className="item-label"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onItemClick && onItemClick(item);
+                }}
+              >
+                {isSample ? item : item[labelKey]}
+              </a>
             </Tag>
           )
         })}
