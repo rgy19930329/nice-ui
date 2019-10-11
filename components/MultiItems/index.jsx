@@ -24,11 +24,13 @@ const CloseIcon = (props) => (
 export default class MultiItems extends React.Component {
 
   static propTypes = {
-    codeKey: PropTypes.string,
-    labelKey: PropTypes.string,
-    closable: PropTypes.bool,
-    readOnly: PropTypes.bool,
+    codeKey: PropTypes.string, // code-key 映射值（默认为code）
+    labelKey: PropTypes.string, // label-key 映射值（默认为name，用于展示）
+    closable: PropTypes.bool, // 每一项是否带有关闭按钮
+    readOnly: PropTypes.bool, // 只读模式，设置了该属性，closable 属性无效
     placeholder: PropTypes.string,
+    onTrigger: PropTypes.func, // 点击输入框触发的事件
+    onItemClick: PropTypes.func, // 点击每一项触发的事件
   }
 
   static defaultProps = {
