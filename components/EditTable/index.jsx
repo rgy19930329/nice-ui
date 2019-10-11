@@ -21,8 +21,6 @@ export default class EditTable extends React.Component {
     dataSource: PropTypes.array, // 数据源
     hasSN: PropTypes.bool, // 是否需要支持序号
     onChange: PropTypes.func, // 列表变更回调
-    id: PropTypes.string, // edit table id
-    context: PropTypes.object.isRequired, // 父组件执行环境，必填
   }
 
   static defaultProps = {
@@ -37,11 +35,8 @@ export default class EditTable extends React.Component {
     this.state = {
       dataSource: props.dataSource || [],
     }
-  }
 
-  componentDidMount() {
-    let { context, id } = this.props;
-    context[id] = this;
+    props.setRef && props.setRef(this);
   }
 
   componentWillReceiveProps (nextProps) {

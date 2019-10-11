@@ -107,26 +107,24 @@ class PreviewEditTable extends React.Component {
         className="page-edit-table-wrapper"
       >
         <EditTable
-          id="et1"
-          context={this}
           hasSN={true}
           columns={this.createColumns()}
           dataSource={this.state.dataSource}
+          setRef={et1Ref => this.et1Ref = et1Ref}
         />
         <EditTable
-          id="et2"
-          context={this}
           hasSN={true}
           columns={this.createColumns()}
           dataSource={this.state.dataSource}
+          setRef={et2Ref => this.et2Ref = et2Ref}
         />
         <div className="handler">
           <Button
             type="primary"
             onClick={async () => {
               Promise.all([
-                this["et1"].doSubmit(),
-                this["et2"].doSubmit(),
+                this.et1Ref.doSubmit(),
+                this.et2Ref.doSubmit(),
               ]).then(results => {
                 console.log(results);
                 console.log("校验通过，允许提交");
