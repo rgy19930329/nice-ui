@@ -11,14 +11,12 @@ static propTypes = {
   dataSource: PropTypes.array, // 数据源
   hasSN: PropTypes.bool, // 是否需要支持序号
   onChange: PropTypes.func, // 列表变更回调
-  id: PropTypes.string, // edit table id
-  context: PropTypes.object.isRequired, // 父组件执行环境，必填（通常为this）
+  setRef: PropTypes.func, // setRef
 }
 
 static defaultProps = {
   dataSource: [],
   hasSN: false,
-  id: "et",
 }
 ```
 
@@ -46,8 +44,8 @@ import { EditTable } from "nice-ui";
     type="primary"
     onClick={async () => {
       Promise.all([
-        this["et1"].doSubmit(),
-        this["et2"].doSubmit(),
+        this.et1Ref.doSubmit(),
+        this.et2Ref.doSubmit(),
       ]).then(results => {
         console.log(results);
         console.log("校验通过，允许提交");
