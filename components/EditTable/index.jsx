@@ -26,7 +26,6 @@ export default class EditTable extends React.Component {
   static defaultProps = {
     dataSource: [],
     hasSN: false,
-    id: "et",
   }
 
   constructor(props) {
@@ -49,17 +48,17 @@ export default class EditTable extends React.Component {
    * 执行提交
    */
   doSubmit = () => {
-    const { id, form, onSubmit } = this.props;
+    const { form, onSubmit } = this.props;
     const { dataSource } = this.state;
     return new Promise((resolve, reject) => {
       form.validateFieldsAndScroll({ force: true }, (errors, values) => {
         if (!!errors) {
-          console.log(`可编辑表格 id=${id} 校验失败`, errors);
+          console.log(`可编辑表格校验失败`, errors);
           reject(errors);
           return;
         }
         onSubmit && onSubmit(dataSource);
-        resolve({ id, dataSource });
+        resolve({ dataSource });
       });
     });
   }

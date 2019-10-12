@@ -28,19 +28,17 @@ static defaultProps = {
 import { EditTable } from "nice-ui";
 
 <EditTable
-  id="et1"
-  context={this}
   hasSN={true}
   columns={this.createColumns()}
   dataSource={this.state.dataSource}
+  setRef={et1Ref => this.et1Ref = et1Ref}
 />
 
 <EditTable
-  id="et2"
-  context={this}
   hasSN={true}
   columns={this.createColumns()}
   dataSource={this.state.dataSource}
+  setRef={et2Ref => this.et2Ref = et2Ref}
 />
 
 <div className="handler">
