@@ -102,7 +102,7 @@ class PreviewFormTable extends React.Component {
             </RTRow>
             <RTRow>
               <RItem label="个人简介">
-                {getFieldDecorator("ramark", {
+                {getFieldDecorator("remark", {
                   rules: [
                     { required: true, message: "个人简介不能为空" },
                     { max: 200, message: "不能超过200个字符" }
@@ -124,8 +124,13 @@ class PreviewFormTable extends React.Component {
             <Button
               type="primary"
               onClick={() => {
-                const values = this.props.form.getFieldsValue();
-                alert(JSON.stringify(values));
+                this.props.form.validateFieldsAndScroll((errors, values) => {
+                  if (!!errors) {
+                    console.log("Error in Form!!");
+                    return;
+                  }
+                  alert(JSON.stringify(values));
+                });
               }}
               style={{ marginTop: 20 }}
             >
