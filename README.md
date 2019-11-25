@@ -1,6 +1,6 @@
 # nice-ui
 
-基于 react、antd 封装的升级版ui库
+基于 react、antd 封装的升级版 ui 库
 
 ## Project setup
 ```
