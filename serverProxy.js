@@ -14,5 +14,9 @@ module.exports = {
   "/yapi": {
     target: "http://yapi.demo.qunar.com/mock/1196",
     changeOrigin: true,
+  },
+  "/API/BASEINFOSERVICE": {
+    target: "http://192.168.111.195:14008",
+    changeOrigin: true,
   }
 }

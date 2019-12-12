@@ -16,6 +16,8 @@
     "axios": "^0.18.0",
     "highlight.js": "^9.15.10",
     "marked": "^0.7.0",
+    "mobx": "^4.8.0",
+    "mobx-react": "^5.2.8",
     "prop-types": "^15.6.2",
     "rc-queue-anim": "^1.6.11",
     "react": "^16.6.3",
