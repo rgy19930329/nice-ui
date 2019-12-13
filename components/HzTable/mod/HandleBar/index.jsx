@@ -42,7 +42,7 @@ export default class HandleBar extends PureComponent {
       antdProps: {
         placeholder: "检索内容",
         style: {
-          width: 200
+          width: 240
         }
       }
     }
@@ -103,7 +103,7 @@ export default class HandleBar extends PureComponent {
             })}
           </span>
         )
-        : `暂不支持[ ${elementType} ]组件类型扩展`;
+        : `[暂不支持${elementType}组件类型扩展]`;
     });
   }
 

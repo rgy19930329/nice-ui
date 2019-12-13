@@ -8,21 +8,34 @@ import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
-import { Table, Empty } from "antd";
+import { Table, Empty, Form, Input, InputNumber, Modal } from "antd";
 
+import EnumSelect from "@components/EnumSelect";
 import DefaultHandleBar from "./mod/HandleBar";
 import DefaultSearchBar from "./mod/SearchBar";
+import Ellipsis from "./mod/Ellipsis";
+import { fixEmptyCell, condition } from "./utils";
+import { EMPTY_CELL, OPERATE_SPAN } from "./constant";
 
+export {
+  DefaultHandleBar as HandleBar,
+  DefaultSearchBar as SearchBar,
+  Ellipsis,
+  fixEmptyCell,
+  EMPTY_CELL,
+}
+
+@Form.create()
 export default class HzTable extends React.Component {
 
   static propTypes = {
     rowKey: PropTypes.string, // Table 组件的rowKey属性
     columns: PropTypes.array, // 列模式（数据结构：[{ title, dataIndex }, ...]）
     createPromise: PropTypes.func, // 创建获取列表数据的promise（它返回的数据结构：{ totalCount, currentPageResult }）
-    hasSerialNo: PropTypes.bool, // 是否有序号
     antdProps: PropTypes.object, // antd Table 组件的相关属性
     pagination: PropTypes.object, // antd Pagination 组件相关属性
-    hasRowSelection: PropTypes.bool, // 表格是否有可选择项checkbox
+    hasSerialNo: PropTypes.bool, // 是否有序号
+    defaultOperate: PropTypes.object, // 是否有默认行为的操作列（带 编辑、保存、删除 基本功能）
   }
 
   static defaultProps = {
@@ -32,9 +45,10 @@ export default class HzTable extends React.Component {
       totalCount: 0,
       currentPageResult: [],
     })),
-    hasSerialNo: false,
     antdProps: {},
     pagination: {},
+    hasSerialNo: false,
+    defaultOperate: null,
   }
 
   constructor(props) {
@@ -58,7 +72,12 @@ export default class HzTable extends React.Component {
       showTotal: (total, range) => `共${total}条`,
     }, props.pagination);
 
+    // 列表查询参数
     this.query = {};
+    // 唯一id
+    this.uniqueId = `id-${Date.now()}`;
+    // 是否含有操作列
+    this.hasOperateColumn = props.columns.filter(item => condition(item)).length > 0;
   }
 
   componentDidMount() {
@@ -113,25 +132,65 @@ export default class HzTable extends React.Component {
     Object.assign(this.query, query);
   }
 
+  /**
+   * 组装表格列模式
+   */
   fixColumns = () => {
+    const {
+      form,
+      form: {
+        getFieldDecorator,
+      }
+    } = this.props;
+
     let columns = this.props.columns.map((item) => {
       item.key = item.dataIndex;
+      if (!item.render) {
+        item.render = (text) => {
+          return fixEmptyCell(text);
+        }
+      }
       if (this.state.editRow >= 0) {
         if (item.createEditComp) {
           item.render = (text, record, index) => {
             if (index === this.state.editRow) {
-              return item.createEditComp(text, record, index);
+              const renderMap = {
+                "function": () => {
+                  return (
+                    <Form.Item>
+                      {item.createEditComp({ text, record, index }, form)}
+                    </Form.Item>
+                  )
+                },
+                "object": () => {
+                  let { component, antdProps, options } = item.createEditComp;
+                  component = this.renderEditCell(component, antdProps);
+                  options = Object.assign({
+                    initialValue: text,
+                  }, options);
+
+                  return (
+                    <Form.Item>
+                      {getFieldDecorator(item.dataIndex, options)(component)}
+                    </Form.Item>
+                  )
+                },
+              };
+
+              const type = typeof item.createEditComp;
+              return renderMap[type] && renderMap[type]();
             }
+
             if (item.createNormalComp) {
               return item.createNormalComp(record);
             }
-            return text;
+            return fixEmptyCell(text);
           }
         }
       } else {
         if (item.createNormalComp) {
           item.render = (text, record, index) => {
-            return item.createNormalComp(record);
+            return fixEmptyCell(item.createNormalComp(record));
           }
         }
       }
@@ -148,7 +207,101 @@ export default class HzTable extends React.Component {
       });
     }
 
+    // 加操作列（如果已有，则合并；否则，创建）
+    if (this.props.defaultOperate) {
+      // 已有、合并
+      if (this.hasOperateColumn) {
+        columns = columns.map(item => {
+          if (condition(item)) {
+            item.render = (text, record, index) => {
+              return (
+                <React.Fragment>
+                  {this.renderOperateButtons(text, record, index)}
+                  {item.extendRender && item.extendRender(text, record, index)}
+                </React.Fragment>
+              )
+            }
+          }
+          return item;
+        });
+      } 
+      // 没有、创建
+      else {
+        columns.push({
+          title: "操作",
+          dataIndex: this.uniqueId,
+          render: (text, record, index) => {
+            return this.renderOperateButtons(text, record, index);
+          }
+        });
+      }
+    }
+
     this.setState({ columns });
+  }
+
+  /**
+   * 渲染操作列按钮
+   */
+  renderOperateButtons = (text, record, index) => {
+    const { updateFunc, deleteFunc } = this.props.defaultOperate;
+    const commonProps = {
+      style: {
+        marginRight: OPERATE_SPAN,
+      }
+    }
+
+    // 编辑状态 
+    if (this.state.editRow === index) {
+      return (
+        <React.Fragment>
+          <a onClick={() => this.onSave(record, updateFunc)} {...commonProps}>保存</a>
+          <a onClick={() => this.onCancel(index)} {...commonProps}>取消</a>
+        </React.Fragment>
+      )
+    }
+    // 非编辑状态
+    else {
+      return (
+        <React.Fragment>
+          {updateFunc && (
+            <a onClick={() => this.onEdit(index)} {...commonProps}>编辑</a>
+          )}
+          {deleteFunc && (
+            <a onClick={() => this.onDelete(record, deleteFunc)} {...commonProps}>删除</a>
+          )}
+        </React.Fragment>
+      )
+    }
+  }
+
+  /**
+   * 根据类型渲染可编辑表格
+   */
+  renderEditCell = (component, antdProps) => {
+    let defaultProps = {
+      size: "small",
+    };
+
+    let composeProps = Object.assign({}, defaultProps, antdProps);
+
+    if (!component || typeof component === "string") {
+      let InputView = null;
+      switch (component) {
+        case "NumberInput":
+          InputView = <InputNumber {...composeProps} />;
+          break;
+        case "EnumSelect":
+          InputView = <EnumSelect {...composeProps} />;
+          break;
+        default:
+          InputView = <Input {...composeProps} />;
+          break;
+      }
+      return InputView;
+    } else {
+      return component;
+    }
   }
 
   makeEditRow = (editRow) => {
@@ -163,13 +316,50 @@ export default class HzTable extends React.Component {
     });
   }
 
+  onEdit = (index) => {
+    this.makeEditRow(index);
+  }
+
+  onCancel = (index) => {
+    this.makeNormalRow(index);
+  }
+
+  onDelete = (record, deleteFunc) => {
+    Modal.confirm({
+      title: "提示",
+      content: "是否删除该项？",
+      onOk: async () => {
+        let result = await deleteFunc(record);
+        if (result && result.success) {
+          this.dataLoad();
+        }
+      }
+    });
+  }
+
+  onSave = (record, updateFunc) => {
+    this.props.form.validateFieldsAndScroll(async (error, values) => {
+      console.log("Received values of form: ", values);
+      if (!!error) {
+        console.log("Error in Form!!", error);
+        return;
+      }
+      let params = Object.assign({}, record, values);
+      let result = await updateFunc(params);
+      if (result && result.success) {
+        this.onCancel();
+        this.dataLoad();
+      }
+    });
+  }
+
   render() {
-    const { 
-      className, 
-      rowKey, 
-      antdProps, 
-      HandleBar, 
-      SearchBar, 
+    const {
+      className,
+      rowKey,
+      antdProps,
+      HandleBar,
+      SearchBar,
       handleBarOptions,
       searchBarOptions,
     } = this.props;

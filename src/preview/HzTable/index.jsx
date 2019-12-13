@@ -8,10 +8,7 @@ import "./index.less";
 import React from "react";
 import { render } from "react-dom";
 import { message, Input } from "antd";
-import HzTable from "@components/HzTable";
-import Ellipsis from "@components/HzTable/mod/Ellipsis";
-import HandleBar from "@components/HzTable/mod/HandleBar";
-import SearchBar from "@components/HzTable/mod/SearchBar";
+import HzTable, { Ellipsis, OPERATE_SPAN } from "@components/HzTable";
 import EnumSelect from "@components/EnumSelect";
 import PageWrapper from "@src/components/PageWrapper";
 import withLocale from "@src/components/withLocale";
@@ -45,11 +42,43 @@ class PreviewHzTable extends React.Component {
       title: "名称",
       dataIndex: "facilityName",
       width: "20%",
-      createEditComp: (text) => {
-        return (
-          <Input defaultValue={text} />
-        )
-      }
+      // createEditComp: ({ text, record, index }, { getFieldDecorator }) => {
+      //   return (
+      //     getFieldDecorator("facilityName", {
+      //       rules: [
+      //         {
+      //           required: true,
+      //           message: "请输入设备名称",
+      //         },
+      //       ],
+      //       initialValue: text,
+      //     })(<Input />)
+      //   )
+      // },
+      createEditComp: {
+        component: "Input",
+        options: {
+          rules: [
+            {
+              required: true,
+              message: "请输入设备名称",
+            },
+          ]
+        }
+      },
+      // createEditComp: {
+      //   component: (
+      //     <Input.TextArea />
+      //   ),
+      //   options: {
+      //     rules: [
+      //       {
+      //         required: true,
+      //         message: "请输入设备名称",
+      //       },
+      //     ]
+      //   }
+      // },
     },
     {
       title: "设施照片",
@@ -57,7 +86,7 @@ class PreviewHzTable extends React.Component {
       render: (text) => {
         let image = text.replace(/\$\$$/, "");
         return (
-          <img style={{width: 50, height: 50}} src={image} />
+          <img style={{ width: 50, height: 50 }} src={image} />
         )
       }
     },
@@ -65,13 +94,19 @@ class PreviewHzTable extends React.Component {
       title: "类别",
       dataIndex: "facilityCode",
       width: "15%",
-      createEditComp: (text) => {
-        return (
-          <EnumSelect
-            defaultValue={text}
-            list={facilityType}
-          />
-        )
+      createEditComp: {
+        component: "EnumSelect",
+        antdProps: {
+          list: facilityType,
+        },
+        options: {
+          rules: [
+            {
+              required: true,
+              message: "请选择类别",
+            },
+          ]
+        }
       },
       createNormalComp: (record) => record.facilityCodeName,
     },
@@ -86,13 +121,12 @@ class PreviewHzTable extends React.Component {
     },
     {
       title: "操作",
-      dataIndex: "bid",
-      render: (text, record, index) => {
+      dataIndex: "id",
+      isOperateColumn: true,
+      extendRender: (text, record, index) => {
         return (
           <React.Fragment>
-            <a onClick={() => this.onEdit(index)} style={{marginRight: 10}}>编辑</a>
-            <a onClick={() => this.onCancel(index)} style={{marginRight: 10}}>取消</a>
-            <a onClick={() => this.onDelete(record)}>删除</a>
+            <a style={{ marginRight: OPERATE_SPAN }}>测试</a>
           </React.Fragment>
         )
       }
@@ -141,29 +175,6 @@ class PreviewHzTable extends React.Component {
     });
   }
 
-  onDelete = async ({ facilityId }) => {
-    Modal.confirm({
-      title: "提示",
-      content: "是否删除该项？",
-      onOk: async () => {
-        message.success("操作成功");
-        this.state.listRef.dataLoad();
-      }
-    });
-  }
-
-  onEdit = (index) => {
-    this.state.listRef.makeEditRow(index);
-  }
-
-  onCancel = (index) => {
-    this.state.listRef.makeNormalRow(index);
-  }
-
-  onAdd = () => {
-    message.info("新增数据");
-  }
-
   render() {
     return (
       <PageWrapper
@@ -180,6 +191,18 @@ class PreviewHzTable extends React.Component {
             this.setState({ listRef });
           }}
           hasSerialNo
+          defaultOperate={{
+            updateFunc: async (record) => {
+              console.log("保存成功", record);
+              message.success(`保存成功：${JSON.stringify(record)}`);
+              return { success: true };
+            },
+            deleteFunc: async (record) => {
+              console.log("删除成功", record);
+              message.success(`删除成功：${record.facilityName}`);
+              return { success: true };
+            }
+          }}
           antdProps={{
             rowSelection: {
               onChange: (selectedRowKeys, selectedRows) => {
@@ -196,6 +219,9 @@ class PreviewHzTable extends React.Component {
               searchKey: "customSearch",
               antdProps: {
                 placeholder: "自定义 placeholder",
+                style: {
+                  width: 280,
+                }
               }
             },
             handleOptions: {
@@ -258,7 +284,7 @@ class PreviewHzTable extends React.Component {
                 render: (getFieldDecorator, form) => {
                   return (
                     getFieldDecorator("facilityName")(
-                      <Input style={{ width: 200 }}/>
+                      <Input style={{ width: 200 }} />
                     )
                   )
                 }

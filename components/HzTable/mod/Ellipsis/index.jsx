@@ -5,30 +5,13 @@
  */
 
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import classnames from "classnames";
 import { Tooltip } from "antd";
 
 import "./index.less";
+import { fixEmptyCell } from "../../utils";
 
 export default class Ellipsis extends PureComponent {
-
-  static propTypes = {
-
-  }
-
-  static defaultProps = {
-
-  }
-
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-
-  }
-
   render() {
     const { className, style, children } = this.props;
 
@@ -41,7 +24,7 @@ export default class Ellipsis extends PureComponent {
           })}
           style={style}
         >
-          {children}
+          {fixEmptyCell(children)}
         </span>
       </Tooltip>
     )

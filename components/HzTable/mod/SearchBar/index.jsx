@@ -31,10 +31,10 @@ export default class SearchBar extends PureComponent {
 
   onSubmit = (e) => {
     e.preventDefault();
-    this.props.form.validateFieldsAndScroll((err, values) => {
+    this.props.form.validateFieldsAndScroll((error, values) => {
       console.log("Received values of form: ", values);
-      if (!!err) {
-        console.log("Error in Form!!", err);
+      if (!!error) {
+        console.log("Error in Form!!", error);
         return;
       }
       this.props.listRef.dataLoad(values);
