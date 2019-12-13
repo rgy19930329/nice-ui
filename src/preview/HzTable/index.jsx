@@ -42,6 +42,11 @@ class PreviewHzTable extends React.Component {
       title: "名称",
       dataIndex: "facilityName",
       width: "20%",
+      render: (text, record, index) => {
+        return (
+          <a>{text}</a>
+        )
+      },
       // createEditComp: ({ text, record, index }, { getFieldDecorator }) => {
       //   return (
       //     getFieldDecorator("facilityName", {
@@ -126,7 +131,7 @@ class PreviewHzTable extends React.Component {
       extendRender: (text, record, index) => {
         return (
           <React.Fragment>
-            <a style={{ marginRight: OPERATE_SPAN }}>测试</a>
+            <a style={{ marginRight: OPERATE_SPAN }} onClick={() => message.warning(`测试 ${index + 1}`)}>测试</a>
           </React.Fragment>
         )
       }

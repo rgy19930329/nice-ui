@@ -152,6 +152,9 @@ export default class HzTable extends React.Component {
       }
       if (this.state.editRow >= 0) {
         if (item.createEditComp) {
+          let originRender = item.render;
+          delete item.render;
+
           item.render = (text, record, index) => {
             if (index === this.state.editRow) {
               const renderMap = {
@@ -176,7 +179,6 @@ export default class HzTable extends React.Component {
                   )
                 },
               };
-
               const type = typeof item.createEditComp;
               return renderMap[type] && renderMap[type]();
             }
@@ -184,6 +186,11 @@ export default class HzTable extends React.Component {
             if (item.createNormalComp) {
               return item.createNormalComp(record);
             }
+
+            if (originRender) {
+              return originRender(text, record, index);
+            }
+
             return fixEmptyCell(text);
           }
         }
