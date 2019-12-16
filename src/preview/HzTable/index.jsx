@@ -8,7 +8,13 @@ import "./index.less";
 import React from "react";
 import { render } from "react-dom";
 import { message, Input } from "antd";
-import HzTable, { Ellipsis, OPERATE_SPAN } from "@components/HzTable";
+import HzTable, { 
+  Ellipsis, 
+  ValidateWrapper, 
+  OPERATE_SPAN,
+  VALIDATE_TIPS_TYPE_NORMAL,
+  VALIDATE_TIPS_TYPE_POPOVER,
+} from "@components/HzTable";
 import EnumSelect from "@components/EnumSelect";
 import PageWrapper from "@src/components/PageWrapper";
 import withLocale from "@src/components/withLocale";
@@ -216,6 +222,7 @@ class PreviewHzTable extends React.Component {
               }
             }
           }}
+          ValidateWrapper={(props) => <ValidateWrapper {...props} tipsType={VALIDATE_TIPS_TYPE_NORMAL} />}
           // HandleBar={CustomHandleBar}
           // SearchBar={CustomSearchBar}
           handleBarOptions={{

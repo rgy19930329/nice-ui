@@ -14,15 +14,25 @@ import EnumSelect from "@components/EnumSelect";
 import DefaultHandleBar from "./mod/HandleBar";
 import DefaultSearchBar from "./mod/SearchBar";
 import Ellipsis from "./mod/Ellipsis";
+import ValidateWrapper from "./mod/ValidateWrapper";
 import { fixEmptyCell, condition } from "./utils";
-import { EMPTY_CELL, OPERATE_SPAN } from "./constant";
+import { 
+  EMPTY_CELL, 
+  OPERATE_SPAN,
+  VALIDATE_TIPS_TYPE_NORMAL,
+  VALIDATE_TIPS_TYPE_POPOVER,
+} from "./constant";
 
 export {
   DefaultHandleBar as HandleBar,
   DefaultSearchBar as SearchBar,
   Ellipsis,
+  ValidateWrapper,
   fixEmptyCell,
   EMPTY_CELL,
+  OPERATE_SPAN,
+  VALIDATE_TIPS_TYPE_NORMAL,
+  VALIDATE_TIPS_TYPE_POPOVER,
 }
 
 @Form.create()
@@ -36,6 +46,11 @@ export default class HzTable extends React.Component {
     pagination: PropTypes.object, // antd Pagination 组件相关属性
     hasSerialNo: PropTypes.bool, // 是否有序号
     defaultOperate: PropTypes.object, // 是否有默认行为的操作列（带 编辑、保存、删除 基本功能）
+    HandleBar: PropTypes.func, // 自定义操作栏（React 对象，详情见 README.md）
+    SearchBar: PropTypes.func, // 自定义筛选栏（React 对象，详情见 README.md）
+    handleBarOptions: PropTypes.object, // 定义操作栏元素（普通对象，详情见 README.md）与 HandleBar 属性，二者配置一个即可
+    searchBarOptions: PropTypes.object, // 定义筛选栏元素（普通对象，详情见 README.md）与 SearchBar 属性，二者配置一个即可
+    ValidateWrapper: PropTypes.func, // 自定义表单提示组件（React 对象，详情见 README.md）
   }
 
   static defaultProps = {
@@ -49,6 +64,16 @@ export default class HzTable extends React.Component {
     pagination: {},
     hasSerialNo: false,
     defaultOperate: null,
+  }
+
+  static childContextTypes = {
+    form: PropTypes.object,
+  }
+
+  getChildContext() {
+    return {
+      form: this.props.form,
+    }
   }
 
   constructor(props) {
@@ -140,8 +165,11 @@ export default class HzTable extends React.Component {
       form,
       form: {
         getFieldDecorator,
-      }
+      },
+      ValidateWrapper,
     } = this.props;
+
+    const FormTips = ValidateWrapper ? ValidateWrapper : Form.Item;
 
     let columns = this.props.columns.map((item) => {
       item.key = item.dataIndex;
@@ -160,9 +188,9 @@ export default class HzTable extends React.Component {
               const renderMap = {
                 "function": () => {
                   return (
-                    <Form.Item>
+                    <FormTips>
                       {item.createEditComp({ text, record, index }, form)}
-                    </Form.Item>
+                    </FormTips>
                   )
                 },
                 "object": () => {
@@ -173,9 +201,9 @@ export default class HzTable extends React.Component {
                   }, options);
 
                   return (
-                    <Form.Item>
+                    <FormTips>
                       {getFieldDecorator(item.dataIndex, options)(component)}
-                    </Form.Item>
+                    </FormTips>
                   )
                 },
               };

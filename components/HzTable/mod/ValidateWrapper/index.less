@@ -1,0 +1,32 @@
+@color-error: #f5222d;
+
+.field-wrapper {
+  .field-error {
+    [data-__field="[object Object]"] {
+      border: 1px solid @color-error;
+    }
+    input {
+      border: 1px solid @color-error;
+
+      &:hover {
+        border: 1px solid @color-error;
+      }
+    }
+  }
+
+  .field-message {
+    color: @color-error;
+  }
+}
+
+.popover-error {
+  .ant-popover-inner-content {
+    color: @color-error;
+  }
+}
+
+.field-error {
+  [data-__field="[object Object]"] {
+    border: 1px solid @color-error;
+  }
+}
