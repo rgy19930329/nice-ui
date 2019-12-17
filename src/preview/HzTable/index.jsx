@@ -50,7 +50,7 @@ class PreviewHzTable extends React.Component {
       width: "20%",
       render: (text, record, index) => {
         return (
-          <a>{text}</a>
+          <a onClick={() => message.info(text)}>{text}</a>
         )
       },
       // createEditComp: ({ text, record, index }, { getFieldDecorator }) => {
