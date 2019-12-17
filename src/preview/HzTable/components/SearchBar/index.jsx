@@ -12,23 +12,7 @@ import EnumSelect from "@components/EnumSelect";
 import "./index.less";
 
 export default class SearchBar extends PureComponent {
-
-  static propTypes = {
-
-  }
-
-  static defaultProps = {
-
-  }
-
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-
-  }
-
+  
   onChange = (value) => {
     const { listRef } = this.props;
     listRef && listRef.dataLoad({

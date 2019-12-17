@@ -8,13 +8,7 @@ import "./index.less";
 import React from "react";
 import { render } from "react-dom";
 import { message, Input } from "antd";
-import HzTable, {
-  Ellipsis,
-  ValidateWrapper,
-  OPERATE_SPAN,
-  VALIDATE_TIPS_TYPE_NORMAL,
-  VALIDATE_TIPS_TYPE_POPOVER,
-} from "@components/HzTable";
+import HzTable from "@components/HzTable";
 import EnumSelect from "@components/EnumSelect";
 import PageWrapper from "@src/components/PageWrapper";
 import withLocale from "@src/components/withLocale";
@@ -24,6 +18,8 @@ import { facilityType } from "./enum";
 import result from "./data";
 import CustomHandleBar from "./components/HandleBar";
 import CustomSearchBar from "./components/SearchBar";
+
+const { Ellipsis, OPERATE_SPAN } = HzTable;
 
 @withLocale
 class PreviewHzTable extends React.Component {
@@ -50,7 +46,9 @@ class PreviewHzTable extends React.Component {
       width: "20%",
       render: (text, record, index) => {
         return (
-          <a onClick={() => message.info(text)}>{text}</a>
+          <Ellipsis>
+            <a onClick={() => message.info(text)}>{text}</a>
+          </Ellipsis>
         )
       },
       // createEditComp: ({ text, record, index }, { getFieldDecorator }) => {
@@ -195,7 +193,7 @@ class PreviewHzTable extends React.Component {
         <div
           style={{
             width: 1250,
-            // height: 800,
+            height: 800,
             padding: 16,
             background: "#eee" 
           }}
@@ -292,6 +290,7 @@ class PreviewHzTable extends React.Component {
                             { code: "5", name: "人脸门禁" },
                             { code: "6", name: "消防感知" },
                           ]}
+                          hasAll
                         />
                       )
                     )

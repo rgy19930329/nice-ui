@@ -11,9 +11,7 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 import { Table, Empty, Form, Input, InputNumber, Modal } from "antd";
 
-console.log(require('@hz-design/base/public/default-empty.svg'))
-
-import EnumSelect from "@components/EnumSelect";
+import EnumSelect from "./mod/EnumSelect";
 import DefaultHandleBar from "./mod/HandleBar";
 import DefaultSearchBar from "./mod/SearchBar";
 import Ellipsis from "./mod/Ellipsis";
@@ -26,20 +24,17 @@ import {
   VALIDATE_TIPS_TYPE_POPOVER,
 } from "./constant";
 
-export {
-  DefaultHandleBar as HandleBar,
-  DefaultSearchBar as SearchBar,
-  Ellipsis,
-  ValidateWrapper,
-  fixEmptyCell,
-  EMPTY_CELL,
-  OPERATE_SPAN,
-  VALIDATE_TIPS_TYPE_NORMAL,
-  VALIDATE_TIPS_TYPE_POPOVER,
-}
-
 @Form.create()
 export default class HzTable extends React.Component {
+
+  static HandleBar = DefaultHandleBar;
+  static SearchBar = DefaultSearchBar;
+  static Ellipsis = Ellipsis;
+  static ValidateWrapper = ValidateWrapper;
+  static EMPTY_CELL = EMPTY_CELL;
+  static OPERATE_SPAN = OPERATE_SPAN;
+  static VALIDATE_TIPS_TYPE_NORMAL = VALIDATE_TIPS_TYPE_NORMAL;
+  static VALIDATE_TIPS_TYPE_POPOVER = VALIDATE_TIPS_TYPE_POPOVER;
 
   static propTypes = {
     rowKey: PropTypes.string, // Table 组件的rowKey属性
@@ -439,7 +434,7 @@ export default class HzTable extends React.Component {
       return (
         <React.Fragment>
           <div className="hz-layout-vertical" style={{ height: "100%" }}>
-            <div className="hz-layout-vertical-header no-md">
+            <div className="hz-layout-vertical-header no-md" style={{ overflow: "hidden" }}>
               {HandleBar && <HandleBar listRef={this} />}
               {handleBarOptions && <DefaultHandleBar options={handleBarOptions} listRef={this} />}
               {SearchBar && <SearchBar listRef={this} />}

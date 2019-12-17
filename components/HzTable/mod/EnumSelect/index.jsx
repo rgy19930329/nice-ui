@@ -22,6 +22,7 @@ export default class EnumSelect extends React.Component {
     createPromise: PropTypes.func, // 传入一个生成promise的函数
     promiseCondition: PropTypes.string, // promise重复触发条件标识
     hasAll: PropTypes.bool, // 是否支持选择"全部"
+    hasAllText: PropTypes.string, // hasAll为true时，默认文案，默认为"不限"
     showSearch: PropTypes.bool, // 是否支持搜索
     searchPromise: PropTypes.func, // 传入一个生成search promise的函数
     searchDelay: PropTypes.number, // 搜索时的等待输入时间（毫秒） 
@@ -38,7 +39,8 @@ export default class EnumSelect extends React.Component {
     searchDelay: 500,
     style: {
       width: "100%",
-    }
+    },
+    hasAllText: "不限",
   }
 
   state = {
@@ -103,7 +105,7 @@ export default class EnumSelect extends React.Component {
   }
 
   render() {
-    const { className, codeKey, labelKey, hasAll } = this.props;
+    const { className, codeKey, labelKey, hasAll, hasAllText } = this.props;
     const list = this.state.list || this.props.list || [];
     const options = list.map((item, index) => {
       if (typeof item !== "object") {
@@ -128,7 +130,7 @@ export default class EnumSelect extends React.Component {
     return (
       hasAll ?
         <Select {...this.props} className={cls}>
-          <Option value="">全部</Option>
+          <Option value={undefined}>{hasAllText}</Option>
           {options}
         </Select>
         :
