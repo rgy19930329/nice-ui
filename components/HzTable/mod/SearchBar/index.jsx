@@ -21,14 +21,6 @@ export default class SearchBar extends PureComponent {
 
   }
 
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-
-  }
-
   onSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((error, values) => {
@@ -54,7 +46,7 @@ export default class SearchBar extends PureComponent {
 
     return conditions.map((item, index) => {
       return (
-        <Form.Item label={item.label} key={index}>
+        <Form.Item colon={false} label={item.label} key={index}>
           {item.render(getFieldDecorator, form)}
         </Form.Item>
       )
@@ -63,7 +55,7 @@ export default class SearchBar extends PureComponent {
 
   render() {
     return (
-      <div className="comp-search-bar-wrapper">
+      <div className="comp-search-bar-wrapper hz-table-filters">
         <div className="search-bar-buttons">
           <Button type="primary" onClick={this.onSubmit}>查询</Button>
         </div>

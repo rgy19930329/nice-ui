@@ -4,6 +4,7 @@
  * @date 2019-12-11 13:45:15
  */
 
+import "@hz-design/base";
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
@@ -16,8 +17,8 @@ import DefaultSearchBar from "./mod/SearchBar";
 import Ellipsis from "./mod/Ellipsis";
 import ValidateWrapper from "./mod/ValidateWrapper";
 import { fixEmptyCell, condition } from "./utils";
-import { 
-  EMPTY_CELL, 
+import {
+  EMPTY_CELL,
   OPERATE_SPAN,
   VALIDATE_TIPS_TYPE_NORMAL,
   VALIDATE_TIPS_TYPE_POPOVER,
@@ -51,6 +52,7 @@ export default class HzTable extends React.Component {
     handleBarOptions: PropTypes.object, // 定义操作栏元素（普通对象，详情见 README.md）与 HandleBar 属性，二者配置一个即可
     searchBarOptions: PropTypes.object, // 定义筛选栏元素（普通对象，详情见 README.md）与 SearchBar 属性，二者配置一个即可
     ValidateWrapper: PropTypes.func, // 自定义表单项提示组件（React 对象，详情见 README.md）
+    hasDefaultLayout: PropTypes.bool, // 是否拥有表格默认布局
   }
 
   static defaultProps = {
@@ -64,6 +66,7 @@ export default class HzTable extends React.Component {
     pagination: {},
     hasSerialNo: false,
     defaultOperate: null,
+    hasDefaultLayout: true,
   }
 
   static childContextTypes = {
@@ -94,7 +97,15 @@ export default class HzTable extends React.Component {
       pageSize: 10,
       showSizeChanger: true,
       showQuickJumper: true,
-      showTotal: (total, range) => `共${total}条`,
+      showTotal: (total, range) => {
+        return total > 0 ? (
+          <React.Fragment>
+            共<span>{total}</span>
+            条记录
+          </React.Fragment>
+        ) : null;
+      },
+      pageSizeOptions: ["10", "20", "40", "60"],
     }, props.pagination);
 
     // 列表查询参数
@@ -166,10 +177,13 @@ export default class HzTable extends React.Component {
       form: {
         getFieldDecorator,
       },
-      ValidateWrapper,
+      ValidateWrapper: CustomValidateWrapper
     } = this.props;
 
-    const FormTips = ValidateWrapper ? ValidateWrapper : Form.Item;
+    // const FormTips = CustomValidateWrapper ? CustomValidateWrapper : Form.Item;
+    const FormTips = CustomValidateWrapper
+      ? CustomValidateWrapper
+      : (props) => <ValidateWrapper {...props} tipsType={VALIDATE_TIPS_TYPE_NORMAL} />;
 
     let columns = this.props.columns.map((item) => {
       item.key = item.dataIndex;
@@ -259,7 +273,7 @@ export default class HzTable extends React.Component {
           }
           return item;
         });
-      } 
+      }
       // 没有、创建
       else {
         columns.push({
@@ -397,10 +411,10 @@ export default class HzTable extends React.Component {
       SearchBar,
       handleBarOptions,
       searchBarOptions,
+      hasDefaultLayout,
     } = this.props;
 
     let props = {
-      bordered: true,
       ...antdProps,
       rowKey,
       columns: this.state.columns,
@@ -416,6 +430,32 @@ export default class HzTable extends React.Component {
       }
     }
 
+    if (hasDefaultLayout) {
+      return (
+        <React.Fragment>
+          <div className="hz-layout-vertical">
+            <div className="hz-layout-vertical-header no-md">
+              {HandleBar && <HandleBar listRef={this} />}
+              {handleBarOptions && <DefaultHandleBar options={handleBarOptions} listRef={this} />}
+              {SearchBar && <SearchBar listRef={this} />}
+              {searchBarOptions && <DefaultSearchBar options={searchBarOptions} listRef={this} />}
+            </div>
+            <div className="hz-layout-vertical-body">
+              <div
+                className={classnames({
+                  ["comp-hz-table-wrapper"]: true,
+                  ["hz-table-fixed"]: true,
+                  [className]: !!className,
+                })}
+              >
+                <Table {...props} />
+              </div>
+            </div>
+          </div>
+        </React.Fragment>
+      )
+    }
+
     return (
       <React.Fragment>
         {HandleBar && <HandleBar listRef={this} />}
@@ -425,7 +465,8 @@ export default class HzTable extends React.Component {
         <div
           className={classnames({
             ["comp-hz-table-wrapper"]: true,
-            [className]: !!className
+            ["hz-table-fixed"]: true,
+            [className]: !!className,
           })}
         >
           <Table {...props} />

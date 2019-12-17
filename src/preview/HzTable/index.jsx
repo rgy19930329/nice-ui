@@ -8,9 +8,9 @@ import "./index.less";
 import React from "react";
 import { render } from "react-dom";
 import { message, Input } from "antd";
-import HzTable, { 
-  Ellipsis, 
-  ValidateWrapper, 
+import HzTable, {
+  Ellipsis,
+  ValidateWrapper,
   OPERATE_SPAN,
   VALIDATE_TIPS_TYPE_NORMAL,
   VALIDATE_TIPS_TYPE_POPOVER,
@@ -192,118 +192,118 @@ class PreviewHzTable extends React.Component {
         comp="HzTable"
         className="page-hz-table-wrapper"
       >
-        {/* <CustomHandleBar listRef={this.state.listRef} />
-        <CustomSearchBar listRef={this.state.listRef} /> */}
-        <HzTable
-          rowKey="facilityId"
-          columns={this.columns}
-          createPromise={this.createPromise}
-          setRef={listRef => {
-            this.setState({ listRef });
-          }}
-          hasSerialNo
-          defaultOperate={{
-            updateFunc: async (record) => {
-              console.log("保存成功", record);
-              message.success(`保存成功：${JSON.stringify(record)}`);
-              return { success: true };
-            },
-            deleteFunc: async (record) => {
-              console.log("删除成功", record);
-              message.success(`删除成功：${record.facilityName}`);
-              return { success: true };
-            }
-          }}
-          antdProps={{
-            rowSelection: {
-              onChange: (selectedRowKeys, selectedRows) => {
-                console.log("selectedRowKeys", selectedRowKeys, "selectedRows: ", selectedRows);
-                this.setState({ selectedRowKeys, selectedRows });
+        <div style={{ padding: 16, width: 1250, background: "#eee" }}>
+          {/* <CustomHandleBar listRef={this.state.listRef} />
+          <CustomSearchBar listRef={this.state.listRef} /> */}
+          <HzTable
+            rowKey="facilityId"
+            columns={this.columns}
+            createPromise={this.createPromise}
+            setRef={listRef => {
+              this.setState({ listRef });
+            }}
+            hasSerialNo
+            hasDefaultLayout
+            defaultOperate={{
+              updateFunc: async (record) => {
+                console.log("保存成功", record);
+                message.success(`保存成功：${JSON.stringify(record)}`);
+                return { success: true };
+              },
+              deleteFunc: async (record) => {
+                console.log("删除成功", record);
+                message.success(`删除成功：${record.facilityName}`);
+                return { success: true };
               }
-            }
-          }}
-          ValidateWrapper={(props) => <ValidateWrapper {...props} tipsType={VALIDATE_TIPS_TYPE_NORMAL} />}
-          // HandleBar={CustomHandleBar}
-          // SearchBar={CustomSearchBar}
-          handleBarOptions={{
-            searchOptions: {
-              show: true,
-              searchKey: "customSearch",
-              antdProps: {
-                placeholder: "自定义 placeholder",
-                style: {
-                  width: 280,
+            }}
+            antdProps={{
+              rowSelection: {
+                onChange: (selectedRowKeys, selectedRows) => {
+                  console.log("selectedRowKeys", selectedRowKeys, "selectedRows: ", selectedRows);
+                  this.setState({ selectedRowKeys, selectedRows });
                 }
               }
-            },
-            handleOptions: {
-              gutter: 10,
-              elements: [
-                {
-                  antdProps: {
-                    icon: "plus",
-                    children: "新增",
-                    onClick: () => {
-                      message.success("新增成功");
-                      this.state.listRef.dataLoad();
-                    }
-                  }
-                },
-                {
-                  antdProps: {
-                    icon: "minus",
-                    children: "删除",
-                    disabled: this.state.selectedRowKeys.length === 0,
-                    onClick: () => {
-                      message.success(`${this.state.selectedRowKeys}删除成功`);
-                      this.state.listRef.dataLoad();
-                    }
-                  },
-                },
-                {
-                  elementType: "custom",
-                  render: () => {
-                    return <a>导入模板下载</a>
-                  }
-                },
-              ]
-            }
-          }}
-          searchBarOptions={{
-            conditions: [
-              {
-                label: "设施类别",
-                render: (getFieldDecorator, form) => {
-                  return (
-                    getFieldDecorator("facilityCode")(
-                      <EnumSelect
-                        style={{ width: 200 }}
-                        list={[
-                          { code: "1", name: "高清监控" },
-                          { code: "2", name: "人脸卡口" },
-                          { code: "3", name: "车辆卡口" },
-                          { code: "4", name: "WIFI探针" },
-                          { code: "5", name: "人脸门禁" },
-                          { code: "6", name: "消防感知" },
-                        ]}
-                      />
-                    )
-                  )
+            }}
+            // ValidateWrapper={(props) => <ValidateWrapper {...props} tipsType={VALIDATE_TIPS_TYPE_NORMAL} />}
+            // HandleBar={CustomHandleBar}
+            // SearchBar={CustomSearchBar}
+            handleBarOptions={{
+              searchOptions: {
+                show: true,
+                searchKey: "customSearch",
+                antdProps: {
+                  placeholder: "自定义 placeholder",
                 }
               },
-              {
-                label: "设施名称",
-                render: (getFieldDecorator, form) => {
-                  return (
-                    getFieldDecorator("facilityName")(
-                      <Input style={{ width: 200 }} />
-                    )
-                  )
-                }
+              handleOptions: {
+                gutter: 16,
+                elements: [
+                  {
+                    antdProps: {
+                      icon: "plus",
+                      children: "新增",
+                      onClick: () => {
+                        message.success("新增成功");
+                        this.state.listRef.dataLoad();
+                      }
+                    }
+                  },
+                  {
+                    antdProps: {
+                      icon: "minus",
+                      children: "删除",
+                      disabled: this.state.selectedRowKeys.length === 0,
+                      onClick: () => {
+                        message.success(`${this.state.selectedRowKeys}删除成功`);
+                        this.state.listRef.dataLoad();
+                      }
+                    },
+                  },
+                  {
+                    elementType: "custom",
+                    render: () => {
+                      return <a>导入模板下载</a>
+                    }
+                  },
+                ]
               }
-            ]
-          }}
-        />
+            }}
+            searchBarOptions={{
+              conditions: [
+                {
+                  label: "设施类别",
+                  render: (getFieldDecorator, form) => {
+                    return (
+                      getFieldDecorator("facilityCode")(
+                        <EnumSelect
+                          style={{ width: 200 }}
+                          list={[
+                            { code: "1", name: "高清监控" },
+                            { code: "2", name: "人脸卡口" },
+                            { code: "3", name: "车辆卡口" },
+                            { code: "4", name: "WIFI探针" },
+                            { code: "5", name: "人脸门禁" },
+                            { code: "6", name: "消防感知" },
+                          ]}
+                        />
+                      )
+                    )
+                  }
+                },
+                {
+                  label: "设施名称",
+                  render: (getFieldDecorator, form) => {
+                    return (
+                      getFieldDecorator("facilityName")(
+                        <Input style={{ width: 200 }} />
+                      )
+                    )
+                  }
+                }
+              ]
+            }}
+          />
+        </div>
       </PageWrapper>
     )
   }

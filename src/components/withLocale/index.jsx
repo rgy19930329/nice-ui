@@ -1,12 +1,14 @@
 /**
- * @desc 组件 - WithLocale
+ * @desc 组件 - withLocale
  * @author rgy
  * @date 2019-10-04 11:39:12
  */
 
 import React from "react";
 import { ConfigProvider } from "antd";
-import zhCN from "antd/es/locale/zh_CN";
+import zhCN from "antd/es/locale-provider/zh_CN";
+
+console.log(zhCN)
 
 export default WrappedComponent => class extends React.Component {
   render() {

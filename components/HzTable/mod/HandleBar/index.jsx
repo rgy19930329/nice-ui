@@ -8,10 +8,6 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { Button, Input } from "antd";
 
-import "./index.less";
-
-const { Search } = Input;
-
 export default class HandleBar extends PureComponent {
 
   static propTypes = {
@@ -32,7 +28,7 @@ export default class HandleBar extends PureComponent {
     } = props;
 
     this.defaultHandleOptions = {
-      gutter: 10,
+      gutter: 16,
       elements: [],
     }
 
@@ -48,10 +44,6 @@ export default class HandleBar extends PureComponent {
     }
 
     this.composeSearchOptions = Object.assign({}, this.defaultSearchOptions, searchOptions);
-  }
-
-  componentDidMount() {
-
   }
 
   onSearch = (value) => {
@@ -74,10 +66,10 @@ export default class HandleBar extends PureComponent {
     const elementMap = {
       "button": (props) => {
         return (
-          <Button 
-            type="primary" 
-            ghost 
-            {...props.antdProps} 
+          <Button
+            type="primary"
+            ghost
+            {...props.antdProps}
           />
         )
       },
@@ -89,14 +81,14 @@ export default class HandleBar extends PureComponent {
     const { gutter, elements } = Object.assign({}, this.defaultHandleOptions, handleOptions);
 
     return elements.map((element, index) => {
-      const { 
-        elementType = "button", 
-        antdProps = {}, 
+      const {
+        elementType = "button",
+        antdProps = {},
         render = () => null,
       } = element;
-      return elementMap[elementType] 
+      return elementMap[elementType]
         ? (
-          <span style={{marginRight: gutter}} key={index}>
+          <span style={{ marginRight: gutter }} key={index}>
             {elementMap[elementType]({
               antdProps,
               render,
@@ -114,10 +106,10 @@ export default class HandleBar extends PureComponent {
       }
     } = this.props;
     const { show, antdProps } = Object.assign({}, this.defaultSearchOptions, searchOptions);
-    
+
     return (
       show && (
-        <Search
+        <Input.Search
           {...antdProps}
           onSearch={this.onSearch}
           onChange={this.onChange}
@@ -134,12 +126,12 @@ export default class HandleBar extends PureComponent {
     }
 
     return (
-      <div className="comp-handle-bar-wrapper">
-        <div className="handle-bar-search">
-          {this.renderSearch()}
-        </div>
-        <div className="handle-bar-elements">
+      <div className="hz-layout-vertical-md-divider hz-table-actions">
+        <div className="actions-btns">
           {this.renderElements()}
+        </div>
+        <div className="actions-search">
+          {this.renderSearch()}
         </div>
       </div>
     )
