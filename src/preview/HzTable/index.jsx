@@ -192,7 +192,14 @@ class PreviewHzTable extends React.Component {
         comp="HzTable"
         className="page-hz-table-wrapper"
       >
-        <div style={{ padding: 16, width: 1250, background: "#eee" }}>
+        <div
+          style={{
+            width: 1250,
+            height: 800,
+            padding: 16,
+            background: "#eee" 
+          }}
+        >
           {/* <CustomHandleBar listRef={this.state.listRef} />
           <CustomSearchBar listRef={this.state.listRef} /> */}
           <HzTable

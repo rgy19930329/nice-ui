@@ -415,6 +415,9 @@ export default class HzTable extends React.Component {
     } = this.props;
 
     let props = {
+      scroll: {
+        y: "calc(100% - 48px)"
+      },
       ...antdProps,
       rowKey,
       columns: this.state.columns,
@@ -433,7 +436,7 @@ export default class HzTable extends React.Component {
     if (hasDefaultLayout) {
       return (
         <React.Fragment>
-          <div className="hz-layout-vertical">
+          <div className="hz-layout-vertical" style={{ height: "100%" }}>
             <div className="hz-layout-vertical-header no-md">
               {HandleBar && <HandleBar listRef={this} />}
               {handleBarOptions && <DefaultHandleBar options={handleBarOptions} listRef={this} />}
@@ -445,6 +448,7 @@ export default class HzTable extends React.Component {
                 className={classnames({
                   ["comp-hz-table-wrapper"]: true,
                   ["hz-table-fixed"]: true,
+                  ["hz-layout-main"]: true,
                   [className]: !!className,
                 })}
               >
