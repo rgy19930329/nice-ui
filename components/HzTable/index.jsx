@@ -11,6 +11,8 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 import { Table, Empty, Form, Input, InputNumber, Modal } from "antd";
 
+console.log(require('@hz-design/base/public/default-empty.svg'))
+
 import EnumSelect from "@components/EnumSelect";
 import DefaultHandleBar from "./mod/HandleBar";
 import DefaultSearchBar from "./mod/SearchBar";
@@ -424,7 +426,7 @@ export default class HzTable extends React.Component {
       dataSource: this.state.dataSource,
       loading: !this.state.loaded,
       pagination: this.pagination,
-      locale: { emptyText: <Empty /> },
+      locale: { emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="暂无数据" /> },
       onChange: (pagination, filters, sorter) => {
         const { current, pageSize } = pagination;
         this.pagination.current = current;

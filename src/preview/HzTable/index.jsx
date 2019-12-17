@@ -195,7 +195,7 @@ class PreviewHzTable extends React.Component {
         <div
           style={{
             width: 1250,
-            height: 800,
+            // height: 800,
             padding: 16,
             background: "#eee" 
           }}
