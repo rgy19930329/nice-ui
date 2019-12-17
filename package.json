@@ -12,6 +12,7 @@
   "author": "rgy",
   "license": "ISC",
   "dependencies": {
+    "@hz-design/base": "^0.2.5",
     "antd": "^3.12.4",
     "axios": "^0.18.0",
     "highlight.js": "^9.15.10",

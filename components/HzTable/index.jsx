@@ -50,7 +50,7 @@ export default class HzTable extends React.Component {
     SearchBar: PropTypes.func, // 自定义筛选栏（React 对象，详情见 README.md）
     handleBarOptions: PropTypes.object, // 定义操作栏元素（普通对象，详情见 README.md）与 HandleBar 属性，二者配置一个即可
     searchBarOptions: PropTypes.object, // 定义筛选栏元素（普通对象，详情见 README.md）与 SearchBar 属性，二者配置一个即可
-    ValidateWrapper: PropTypes.func, // 自定义表单提示组件（React 对象，详情见 README.md）
+    ValidateWrapper: PropTypes.func, // 自定义表单项提示组件（React 对象，详情见 README.md）
   }
 
   static defaultProps = {
