@@ -130,7 +130,7 @@ export default class EnumSelect extends React.Component {
     return (
       hasAll ?
         <Select {...this.props} className={cls}>
-          <Option value={undefined}>{hasAllText}</Option>
+          <Option value="">{hasAllText}</Option>
           {options}
         </Select>
         :

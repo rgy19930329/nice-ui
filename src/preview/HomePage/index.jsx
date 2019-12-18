@@ -13,11 +13,11 @@ import RotateToggle from "@components/RotateToggle";
 import { CSSTransition } from "react-transition-group";
 
 const req = require.context("@preview", true, /\.jsx$/);
-let navs = req.keys();
-navs = navs.filter(item => {
-  return item.match(/\.\/[^/]+\/[^/]+\.jsx$/);
-}).map(item => item.replace(/^\.\//, "").replace(/\/[^/]+\.jsx$/, ""));
-navs = navs.filter(item => item !== "HomePage");
+const navs = req.keys()
+              .filter(item => item.match(/\.\/[^/]+\/[^/]+\.jsx$/))
+              .map(item => item.replace(/^\.\//, "")
+              .replace(/\/[^/]+\.jsx$/, ""))
+              .filter(item => item !== "HomePage");
 
 /**
  * 数据补位
