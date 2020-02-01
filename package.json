@@ -65,5 +65,11 @@
     "webpack-dev-server": "^2.10.1",
     "webpack-hot-middleware": "^2.24.3",
     "webpack-parallel-uglify-plugin": "^1.0.2"
-  }
+  },
+  "files": [
+    "index.js",
+    "utils",
+    "components",
+    "README.md"
+  ]
 }

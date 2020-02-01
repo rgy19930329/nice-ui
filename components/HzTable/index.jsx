@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 import { Table, Empty, Form, Input, InputNumber, Modal } from "antd";
 
-import EnumSelect from "@components/EnumSelect";
+import EnumSelect from "../EnumSelect";
 import DefaultHandleBar from "./mod/HandleBar";
 import DefaultSearchBar from "./mod/SearchBar";
 import Ellipsis from "./mod/Ellipsis";

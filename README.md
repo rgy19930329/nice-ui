@@ -3,35 +3,39 @@
 基于 react、antd 封装的升级版 ui 库
 
 ## Project setup
-```
-npm install --verbose
+
+```shell
+$ npm install --verbose
 ```
 
 ## New & Remove
-```
-npm run new
 
-npm run remove
+```shell
+$ npm run new
+
+$ npm run remove
 ```
 
 ## Development
-```
-npm run dev
 
-http://127.0.0.1:7777/
+```
+$ npm run dev
+
+# 打开 http://127.0.0.1:7777/
 ```
 
 ## Build
-```
-npm run build
+
+```shell
+$ npm run build
 ```
 
 ## Install
 
-```
-npm install nice-ui@https://github.com/rgy19930329/nice-ui.git#master --save
+```shell
+$ npm install nice-ui@https://github.com/rgy19930329/nice-ui.git#master --save
 
-修改 webpack 配置：
+# 修改 webpack 配置：
 
 module: {
   loaders: [
@@ -48,7 +52,7 @@ module: {
 
 ## Import
 
-```
+```js
 import { Label, fetch } from "nice-ui";
 ```
 
@@ -81,4 +85,4 @@ import { Label, fetch } from "nice-ui";
 | [RCheckbox](./components/RCheckbox/README.md)  | 表单组件 - 映射 Checkbox 的值 | rgy | 2019-09-17 16:43:41 |
 | [ListPage](./components/ListPage/README.md)  | 场景组件 - 带查询条件的列表页 | rgy | 2019-10-04 09:40:04 |
 | [MultiItems](./components/MultiItems/README.md)  | 表单组件 - 为自定义的选择组件提供输入框展示模式 | rgy | 2019-10-09 09:09:52 |
-| [HzTable](./components/HzTable/README.md)  | 华智表格组件 | RGY | 2019-12-11 13:45:15 |
+| [HzTable](./components/HzTable/README.md)  | 场景组件 - 表格组件 | RGY | 2019-12-11 13:45:15 |
