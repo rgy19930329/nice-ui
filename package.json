@@ -1,5 +1,5 @@
 {
-  "name": "nice-ui",
+  "name": "@nice/nice-ui",
   "version": "1.0.0",
   "description": "react ui components base on antd",
   "main": "index.js",
