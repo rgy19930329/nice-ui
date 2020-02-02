@@ -70,6 +70,7 @@
     "index.js",
     "utils",
     "components",
-    "README.md"
+    "README.md",
+    "VERSION.md"
   ]
 }
