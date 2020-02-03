@@ -7,7 +7,7 @@
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classNames from "classnames";
 import { Form, Row, Button, Icon } from "antd";
 import isArray from "lodash/isArray";
 import RotateToggle from "../RotateToggle";
@@ -112,7 +112,7 @@ export default class SearchWrapper extends React.Component {
     } = this.props;
     return (
       <div
-        className={classnames({
+        className={classNames({
           ["comp-search-wrapper"]: true,
           [className]: !!className
         })}

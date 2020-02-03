@@ -19,7 +19,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import { RTabs } from "nice-ui";
+import { RTabs } from "ky-nice-ui";
 
 <RTabs
   defaultActiveKey="1"

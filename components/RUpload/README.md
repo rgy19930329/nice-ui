@@ -42,7 +42,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import { RUpload } from "nice-ui";
+import { RUpload } from "ky-nice-ui";
 
 {getFieldDecorator("test", {
   initialValue: [

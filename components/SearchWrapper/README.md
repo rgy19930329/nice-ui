@@ -40,7 +40,7 @@ static contextTypes = {
 
 ```javascript
 import { Form, Row, Col, Input } from "antd";
-import { SearchWrapper } from "nice-ui";
+import { SearchWrapper } from "ky-nice-ui";
 
 onSearch = async (query) => {
   console.log(query);

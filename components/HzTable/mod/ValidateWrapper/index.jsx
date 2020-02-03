@@ -7,7 +7,7 @@
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classNames from "classnames";
 import { Popover } from "antd";
 
 import { VALIDATE_TIPS_TYPE_NORMAL, VALIDATE_TIPS_TYPE_POPOVER } from "../../constant";
@@ -72,11 +72,11 @@ export default class ValidateWrapper extends React.Component {
 
     if (tipsType === VALIDATE_TIPS_TYPE_NORMAL) {
       return (
-        <div className={classnames({
+        <div className={classNames({
           ["field-wrapper"]: true,
           className: !!className,
         })}>
-          <span className={classnames({
+          <span className={classNames({
             "field-error": isError,
           })}>
             {this.props.children}
@@ -91,13 +91,13 @@ export default class ValidateWrapper extends React.Component {
         <Popover
           content={message && message[0]}
           visible={isError}
-          overlayClassName={classnames({
+          overlayClassName={classNames({
             [className]: !!className,
             "popover-error": isError,
           })}
         >
           <span
-            className={classnames({
+            className={classNames({
               "field-error": isError
             })}
           >

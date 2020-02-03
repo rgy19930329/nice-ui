@@ -7,7 +7,7 @@
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classNames from "classnames";
 import { Tabs } from "antd";
 
 const TabPane = Tabs.TabPane;
@@ -26,7 +26,7 @@ export default class RTabs extends React.Component {
     const { panes, className } = this.props;
     return (
       <div
-        className={classnames({
+        className={classNames({
           ["comp-tabs-wrapper"]: true,
           [className]: !!className
         })}

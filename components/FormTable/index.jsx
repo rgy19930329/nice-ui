@@ -7,7 +7,7 @@
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classNames from "classnames";
 import RTRow from "./RTRow";
 import RItem from "./RItem";
 import isArray from "lodash/isArray";
@@ -62,7 +62,7 @@ class FormTable extends React.Component {
     const { className, children } = this.props;
     return (
       <table
-        className={classnames({
+        className={classNames({
           ["comp-form-table-wrapper"]: true,
           [className]: !!className
         })}

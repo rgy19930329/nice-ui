@@ -8,7 +8,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Radio } from "antd";
 import HOCLoading from "../../HOCLoading";
-import classnames from "classnames";
+import classNames from "classnames";
 
 @HOCLoading()
 export default class EnumRadio extends React.Component {
@@ -71,7 +71,7 @@ export default class EnumRadio extends React.Component {
     });
 
     const { className } = this.props;
-    const cls = classnames({
+    const cls = classNames({
       ["comp-enum-choice-wrapper"]: true,
       ["comp-enum-radio-wrapper"]: true,
       [className]: className

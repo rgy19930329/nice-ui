@@ -7,7 +7,7 @@
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classNames from "classnames";
 
 export default class PureField extends React.Component {
 
@@ -23,7 +23,7 @@ export default class PureField extends React.Component {
     const { className, value, transform } = this.props;
     return (
       <div
-        className={classnames({
+        className={classNames({
           ["comp-pure-field-wrapper"]: true,
           [className]: !!className
         })}

@@ -5,7 +5,7 @@
  */
 
 import React, { PureComponent } from "react";
-import classnames from "classnames";
+import classNames from "classnames";
 import { Tooltip } from "antd";
 
 import "./index.less";
@@ -18,7 +18,7 @@ export default class Ellipsis extends PureComponent {
     return (
       <Tooltip title={children}>
         <span
-          className={classnames({
+          className={classNames({
             ["comp-ellipsis-wrapper"]: true,
             [className]: className
           })}

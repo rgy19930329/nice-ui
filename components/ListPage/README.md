@@ -31,7 +31,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import { ListPage } from "nice-ui";
+import { ListPage } from "ky-nice-ui";
 
 createSearchs = () => {
   return [

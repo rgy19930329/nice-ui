@@ -19,7 +19,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import { PureField } from "nice-ui";
+import { PureField } from "ky-nice-ui";
 
 {getFieldDecorator("name")(
   <PureField transform={(value) => `【${value}】`} />

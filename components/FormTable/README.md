@@ -20,7 +20,7 @@ static defaultProps = {
 
 ```javascript
 import { Form, Input, Button } from "antd";
-import { FormTable, EnumSelect, EnumChoice } from "nice-ui";
+import { FormTable, EnumSelect, EnumChoice } from "ky-nice-ui";
 
 const RTRow = FormTable.RTRow;
 const RItem = FormTable.RItem;

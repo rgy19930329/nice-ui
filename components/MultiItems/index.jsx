@@ -7,7 +7,7 @@
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classNames from "classnames";
 import { Tag, Icon } from "antd";
 
 const CloseSvg = () => (
@@ -59,7 +59,7 @@ export default class MultiItems extends React.Component {
     return (
       <div
         style={style}
-        className={classnames({
+        className={classNames({
           ["comp-multi-items-wrapper"]: true,
           [className]: !!className,
           ["comp-read-only"]: readOnly

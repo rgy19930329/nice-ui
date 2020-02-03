@@ -56,7 +56,7 @@ export default (state = initialState, action) => {
 demo
 
 ```javascript
-import { RConnect } from "nice-ui";
+import { RConnect } from "ky-nice-ui";
 import { updateListAction } from "../../stores/list/action";
 
 @RConnect(

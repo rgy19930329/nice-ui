@@ -7,7 +7,7 @@
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classNames from "classnames";
 import { Table, Empty, Form, Input, InputNumber, Modal } from "antd";
 
 import EnumSelect from "../EnumSelect";
@@ -423,7 +423,7 @@ export default class HzTable extends React.Component {
         {SearchBar && <SearchBar listRef={this} />}
         {searchBarOptions && <DefaultSearchBar options={searchBarOptions} listRef={this} />}
         <div
-          className={classnames({
+          className={classNames({
             ["comp-hz-table-wrapper"]: true,
             [className]: !!className
           })}

@@ -4,7 +4,6 @@
  * @date 2019-08-08 15:25:34
  */
 
-import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
@@ -190,7 +189,7 @@ export default class EnumSelect extends React.Component {
     });
     this.fixSearchProps();
     const cls = classNames({
-      ["enum-select-wrapper"]: true,
+      ["comp-enum-select-wrapper"]: true,
       [className]: !!className,
     });
     const props = {

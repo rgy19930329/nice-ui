@@ -7,7 +7,7 @@
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classNames from "classnames";
 import { Popover } from "antd";
 
 export default class ValidateWrapper extends React.Component {
@@ -69,13 +69,13 @@ export default class ValidateWrapper extends React.Component {
       <Popover
         content={message && message[0]}
         visible={isError}
-        overlayClassName={classnames({
+        overlayClassName={classNames({
           [className]: !!className,
           "popover-error": isError,
         })}
       >
         <span
-          className={classnames({
+          className={classNames({
             "field-error": isError
           })}
         >

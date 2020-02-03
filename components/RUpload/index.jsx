@@ -7,7 +7,7 @@
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classNames from "classnames";
 import { Upload, Button, Icon, message } from "antd";
 
 export default class RUpload extends React.Component {
@@ -145,7 +145,7 @@ export default class RUpload extends React.Component {
     return (
       <div
         style={style}
-        className={classnames({
+        className={classNames({
           ["comp-r-upload-wrapper"]: true,
           [className]: !!className
         })}

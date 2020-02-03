@@ -7,7 +7,7 @@
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classNames from "classnames";
 
 export default class Wrapper extends React.Component {
   
@@ -24,7 +24,7 @@ export default class Wrapper extends React.Component {
     const isError = status === "error";
     return (
       <div className="field-wrapper">
-        <span className={classnames({
+        <span className={classNames({
           "field-error": isError,
         })}>
           {this.props.children}

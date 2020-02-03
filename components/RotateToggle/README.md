@@ -22,7 +22,7 @@ static defaultProps = {
 
 ```javascript
 import { Icon } from "antd";
-import { RotateToggle } from "nice-ui";
+import { RotateToggle } from "ky-nice-ui";
 
 <a onClick={() => this.setState({ isOpen: !isOpen })}>
   <RotateToggle isOpen={isOpen}>

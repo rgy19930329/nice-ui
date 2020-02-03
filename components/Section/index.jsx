@@ -7,7 +7,7 @@
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classNames from "classnames";
 
 export default class Section extends React.Component {
 
@@ -26,7 +26,7 @@ export default class Section extends React.Component {
     const { title, titleSlot, children, hasBorder, className } = this.props;
     return (
       <div
-        className={classnames({
+        className={classNames({
           ["comp-section-wrapper"]: true,
           ["comp-section-wapper-border"]: hasBorder,
           [className]: !!className,

@@ -7,7 +7,7 @@
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classNames from "classnames";
 
 export default class Label extends React.Component {
 
@@ -35,7 +35,7 @@ export default class Label extends React.Component {
 
   render() {
     const { title, value, isLongText } = this.props;
-    const className = classnames("z-label", { "long-text": isLongText });
+    const className = classNames("z-label", { "long-text": isLongText });
     return (
       <div className={className}>
         <label className="z-label-title">{title && `${title}：`}</label>

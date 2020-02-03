@@ -7,7 +7,7 @@
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classNames from "classnames";
 import { Table, Empty, Form, Row, Col, Input } from "antd";
 import SearchWrapper from "../SearchWrapper";
 import withFormInChild from "../withFormInChild";
@@ -163,7 +163,7 @@ export default class ListPage extends React.Component {
 
     return (
       <div
-        className={classnames({
+        className={classNames({
           ["comp-list-page-wrapper"]: true,
           [className]: !!className
         })}

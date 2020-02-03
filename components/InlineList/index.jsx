@@ -7,7 +7,7 @@
 import "./index.less";
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classNames from "classnames";
 
 export default class InlineList extends React.Component {
 
@@ -34,7 +34,7 @@ export default class InlineList extends React.Component {
     const len = list.length;
     return (
       <div
-        className={classnames({
+        className={classNames({
           ["comp-inline-list-wrapper"]: true,
           [className]: !!className
         })}

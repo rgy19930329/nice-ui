@@ -24,7 +24,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import { ValidateWrapper } from "nice-ui";
+import { ValidateWrapper } from "ky-nice-ui";
 
 const { getFieldDecorator } = this.props.form;
 const validateStatus = this.getValidateStatus("name");

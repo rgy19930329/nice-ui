@@ -7,7 +7,7 @@
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classNames from "classnames";
 
 export default class CellLimit extends React.Component {
 
@@ -31,7 +31,7 @@ export default class CellLimit extends React.Component {
 
   render() {
     const { children, width, className } = this.props;
-    const cls = classnames({
+    const cls = classNames({
       ["comp-cell-limit-wrapper"]: true,
       [className]: className
     });

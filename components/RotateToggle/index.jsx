@@ -7,7 +7,7 @@
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classNames from "classnames";
 
 export default class RotateToggle extends React.Component {
 
@@ -26,7 +26,7 @@ export default class RotateToggle extends React.Component {
     let deg = isOpen ? rotate[1] : rotate[0];
     return (
       <div
-        className={classnames({
+        className={classNames({
           ["comp-rotate-toggle-wrapper"]: true,
           [className]: !!className
         })}

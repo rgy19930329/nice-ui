@@ -9,7 +9,7 @@ import "./assets/github-highlight.css";
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classNames from "classnames";
 import hljs from "highlight.js";
 import marked from "marked";
 
@@ -43,7 +43,7 @@ export default class MarkDown extends React.Component {
     const { className, children = "" } = this.props;
     return (
       <div
-        className={classnames({
+        className={classNames({
           ["comp-mark-down-wrapper"]: true,
           ["markdown-body"]: true,
           [className]: !!className

@@ -7,7 +7,7 @@
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+import classNames from "classnames";
 import { Form, Table, Icon, Input } from "antd";
 import { getValueFromEvent } from "rc-form/lib/utils";
 import Wrapper from "./wrapper";
@@ -256,7 +256,7 @@ export default class EditTable extends React.Component {
     const { className } = this.props;
     return (
       <div
-        className={classnames({
+        className={classNames({
           ["comp-edit-table-wrapper"]: true,
           [className]: !!className
         })}

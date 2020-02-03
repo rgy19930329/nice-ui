@@ -26,7 +26,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import { EnumChoice } from "nice-ui";
+import { EnumChoice } from "ky-nice-ui";
 
 <EnumChoice.Radio
   list={[
