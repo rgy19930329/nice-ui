@@ -7,25 +7,34 @@
 import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
-import { Select, Spin, Icon, } from "antd";
+import classNames from "classnames";
+import { Select } from "antd";
 import debounce from "lodash.debounce";
 
 const Option = Select.Option;
 
+let cache = {}; // 缓存数据
+
 export default class EnumSelect extends React.Component {
 
   static propTypes = {
+    className: PropTypes.string,
+    style: PropTypes.object,
+    value: PropTypes.any,
     list: PropTypes.array, // 数据源列表
     codeKey: PropTypes.string, // code 键名
     labelKey: PropTypes.string, // label 键名
     createPromise: PropTypes.func, // 传入一个生成promise的函数
     promiseCondition: PropTypes.string, // promise重复触发条件标识
     hasAll: PropTypes.bool, // 是否支持选择"全部"
+    hasAllText: PropTypes.string, // hasAll为true时，默认文案，默认为"不限"
     showSearch: PropTypes.bool, // 是否支持搜索
     searchPromise: PropTypes.func, // 传入一个生成search promise的函数
-    searchDelay: PropTypes.number, // 搜索时的等待输入时间（毫秒） 
-  }
+    searchDelay: PropTypes.number, // 搜索时的等待输入时间（毫秒）
+    readOnly: PropTypes.bool, // 是否只读
+    cacheKey: PropTypes.string, // 下拉数据缓存 键名
+    render: PropTypes.func, // 复杂项渲染
+  };
 
   static defaultProps = {
     list: [],
@@ -38,8 +47,9 @@ export default class EnumSelect extends React.Component {
     searchDelay: 500,
     style: {
       width: "100%",
-    }
-  }
+    },
+    hasAllText: "全部",
+  };
 
   state = {
     searching: false,
@@ -51,90 +61,150 @@ export default class EnumSelect extends React.Component {
   }
 
   componentDidMount() {
-    const { createPromise } = this.props;
-    createPromise && this.load(createPromise());
+    const { createPromise, cacheKey } = this.props;
+    if (cacheKey) {
+      if (!cache[cacheKey]) {
+        cache[cacheKey] = true;
+        if (createPromise) {
+          this.load(createPromise());
+        }
+      }
+      const timer = setInterval(() => {
+        if (Object.prototype.toString.call(cache[cacheKey]) === "[object Array]") {
+          this.setState({ list: cache[cacheKey] });
+          clearInterval(timer);
+        }
+      }, 100);
+    } else {
+      if (createPromise) {
+        this.load(createPromise());
+      }
+    }
   }
 
   componentWillReceiveProps(nextProps) {
+    const { promiseCondition } = this.props;
     const { createPromise } = nextProps;
-    if(this.props.promiseCondition !== nextProps.promiseCondition) {
-      createPromise && this.load(createPromise());
+    if (promiseCondition !== nextProps.promiseCondition) {
+      if (createPromise) {
+        this.load(createPromise());
+      }
     }
   }
 
-  load = async (enumPromise) => {
+  componentWillUnmount() {
+    this.setState = () => { };
+  }
+
+  load = async enumPromise => {
+    const { cacheKey } = this.props;
     const list = await enumPromise;
     if (Object.prototype.toString.call(list) === "[object Array]" && list.length > 0) {
       this.setState({ list });
+      if (cacheKey) {
+        cache[cacheKey] = list;
+      }
     } else {
       this.setState({ list: [] });
     }
-  }
+  };
 
   /**
    * 组装搜索props
    */
   fixSearchProps = () => {
+    const { searching } = this.state;
+    const { showSearch } = this.props;
     this.searchProps = {};
-    if (this.props.showSearch) {
+    if (showSearch) {
       this.searchProps = {
         filterOption: false,
-        notFoundContent: this.state.searching
-          ? <Spin indicator={<Icon type="loading" style={{ fontSize: 20 }} spin />} /> 
-          : null,
         onSearch: this.doSearch,
-      }
+        loading: searching,
+      };
     }
-  }
+  };
 
   /**
    * 执行搜索
    */
-  doSearch = async (value) => {
+  doSearch = async value => {
     if (!value) {
       return;
     }
-    this.setState({ searching: true })
-    const list = await this.props.searchPromise(value);
-    this.setState({
-      list,
-      searching: false,
-    });
-  }
+    const { searchPromise } = this.props;
+    if (searchPromise) {
+      this.setState({ searching: true });
+      const list = await searchPromise(value);
+      this.setState({
+        list,
+        searching: false,
+      });
+    }
+  };
 
   render() {
-    const { className, codeKey, labelKey, hasAll } = this.props;
-    const list = this.state.list || this.props.list || [];
+    const { list: slist } = this.state;
+    const { list: plist } = this.props;
+    const { className, codeKey, labelKey, hasAll, hasAllText, readOnly, value, render } = this.props;
+    const list = slist || plist || [];
+
+    if (readOnly) {
+      const t = list.filter(item => item[codeKey] === value);
+      if (render) {
+        return render(t[0]);
+      }
+      if (t.length > 0) {
+        return t[0][labelKey];
+      }
+      return "";
+    }
+
     const options = list.map((item, index) => {
       if (typeof item !== "object") {
+        if (render) {
+          return (
+            <Option value={item} key={`option-${index}`}>
+              {render(item)}
+            </Option>
+          );
+        }
         return (
           <Option value={item} key={`option-${index}`}>
             {item}
           </Option>
-        )
-      } else {
+        );
+      }
+      if (render) {
         return (
           <Option value={item[codeKey]} key={`option-${item[codeKey]}`}>
-            {item[labelKey]}
+            {render(item)}
           </Option>
-        )
+        );
       }
+      return (
+        <Option value={item[codeKey]} key={`option-${item[codeKey]}`}>
+          {item[labelKey]}
+        </Option>
+      );
     });
     this.fixSearchProps();
-    const cls = classnames({
-      ["comp-enum-select-wrapper"]: true,
-      [className]: !!className
+    const cls = classNames({
+      ["enum-select-wrapper"]: true,
+      [className]: !!className,
     });
-    return (
-      hasAll ?
-        <Select {...this.props} className={cls}>
-          <Option value="">全部</Option>
-          {options}
-        </Select>
-        :
-        <Select {...this.props} {...this.searchProps} className={cls}>
-          {options}
-        </Select>
-    )
+    const props = {
+      ...this.props,
+      ...this.searchProps,
+      className: cls,
+    };
+    return hasAll ? (
+      <Select {...props}>
+        <Option value="">{hasAllText}</Option>
+        {options}
+      </Select>
+    ) : (
+      <Select {...props}>{options}</Select>
+    );
   }
 }
