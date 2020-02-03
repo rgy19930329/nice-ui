@@ -15,9 +15,3 @@ req.keys().forEach((mod) => {
     exports[camelCase(match[1])] = v;
   }
 });
-
-const utils = require('./utils');
-
-for (let key in utils) {
-  exports[key] = utils[key];
-}

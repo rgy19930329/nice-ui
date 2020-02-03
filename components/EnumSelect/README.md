@@ -14,9 +14,13 @@ static propTypes = {
   createPromise: PropTypes.func, // 传入一个生成promise的函数
   promiseCondition: PropTypes.string, // promise重复触发条件标识
   hasAll: PropTypes.bool, // 是否支持选择"全部"
+  hasAllText: PropTypes.string, // hasAll为true时，默认文案，默认为"不限"
   showSearch: PropTypes.bool, // 是否支持搜索
   searchPromise: PropTypes.func, // 传入一个生成search promise的函数
-  searchDelay: PropTypes.number, // 搜索时的等待输入时间（毫秒） 
+  searchDelay: PropTypes.number, // 搜索时的等待输入时间（毫秒）
+  readOnly: PropTypes.bool, // 是否只读
+  cacheKey: PropTypes.string, // 下拉数据缓存 键名
+  render: PropTypes.func, // 复杂项渲染
 }
 
 static defaultProps = {
@@ -30,7 +34,8 @@ static defaultProps = {
   searchDelay: 500,
   style: {
     width: "100%",
-  }
+  },
+  hasAllText: "全部",
 }
 ```
 
