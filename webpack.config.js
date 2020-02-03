@@ -7,8 +7,8 @@ const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 const webpackConfig = {
   entry: path.resolve(__dirname, 'index.js'),
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'nice-ui.min.js',
+    path: path.resolve(__dirname, 'cjs'),
+    filename: 'nice-ui.js',
   },
   module: {
     loaders: [{
@@ -64,27 +64,27 @@ const webpackConfig = {
     // 清理上一次生成的文件
     new CleanWebpackPlugin(),
     // 压缩 JS 代码
-    new ParallelUglifyPlugin({
-      sourceMap: true,
-      uglifyJS: {
-        output: {
-          // 紧凑输出
-          beautify: false,
-          // 删除注释
-          comments: false,
-        },
-        compress: {
-          // 删除所有的 console 语句
-          drop_console: true,
-          // 内嵌定义了但是只用到一次的变量
-          collapse_vars: true,
-          // 提取出现多次但是没有定义变量取引用的静态值
-          reduce_vars: true,
-        },
-        // 支持IE8
-        // ie8: true,
-      }
-    }),
+    // new ParallelUglifyPlugin({
+    //   sourceMap: true,
+    //   uglifyJS: {
+    //     output: {
+    //       // 紧凑输出
+    //       beautify: false,
+    //       // 删除注释
+    //       comments: false,
+    //     },
+    //     compress: {
+    //       // 删除所有的 console 语句
+    //       drop_console: true,
+    //       // 内嵌定义了但是只用到一次的变量
+    //       collapse_vars: true,
+    //       // 提取出现多次但是没有定义变量取引用的静态值
+    //       reduce_vars: true,
+    //     },
+    //     // 支持IE8
+    //     // ie8: true,
+    //   }
+    // }),
   ]
 }
 
