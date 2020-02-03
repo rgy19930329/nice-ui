@@ -1,66 +1,12 @@
-# nice-ui
+# 更新日志
 
-基于 react、antd 封装的升级版 ui 库
+## v1.0.0
 
-## Project setup
+`更新日期：2020/2/2`
 
-```shell
-$ npm install --verbose
-```
+首次发布，发布组件如下
 
-## New & Remove
-
-```shell
-$ npm run new
-
-$ npm run remove
-```
-
-## Development
-
-```
-$ npm run dev
-
-# 打开 http://127.0.0.1:7777/
-```
-
-## Build
-
-```shell
-$ npm run build
-```
-
-## Install && Usage
-
-```shell
-$ npm install ky-nice-ui@https://github.com/rgy19930329/nice-ui.git#master --save
-
-或者
-
-$ npm install ky-nice-ui --verbose
-
-# 修改 webpack 配置：
-
-module: {
-  loaders: [
-    {
-      test: /\.(js|jsx)$/,
-      include: [
-        ...
-        path.resolve(__dirname, 'node_modules/ky-nice-ui'),
-      ],
-    }
-  ]
-}
-```
-
-## Import
-
-```js
-import { Label } from "ky-nice-ui";
-```
-
-## Components
+### Components
 
 | Component | Desc  | Author | Date |
 | ---- | ---- | :----: | ------ |
