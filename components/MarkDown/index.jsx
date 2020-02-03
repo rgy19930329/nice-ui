@@ -6,7 +6,6 @@
 
 import "./assets/github-markdown.css";
 import "./assets/github-highlight.css";
-import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";

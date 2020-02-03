@@ -4,7 +4,6 @@
  * @date 2019-08-12 10:08:10
  */
 
-import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
 import { Icon, Modal, Upload, message } from "antd";

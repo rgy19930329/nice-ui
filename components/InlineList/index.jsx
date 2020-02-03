@@ -4,7 +4,6 @@
  * @date 2019-09-05 15:41:56
  */
 
-import "./index.less";
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";

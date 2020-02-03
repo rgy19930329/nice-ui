@@ -1,5 +1,5 @@
 /**
- * Label 组件
+ * @desc Label 组件
  * @author ranguangyu
  * @date 2019-5-1
  */
