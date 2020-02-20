@@ -16,8 +16,8 @@ const webpackConfig = {
   output: {
     path: path.resolve(__dirname, 'cjs'),
     filename: '[name]/index.js',
-    library: ['xxx-components', '[name]'], 
-    libraryExport: 'es',
+    // library: ['xxx-components', '[name]'],
+    // libraryExport: 'es',
   },
   externals : {
     react: 'react'
