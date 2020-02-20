@@ -11,16 +11,17 @@ const entry = cModuleNames.reduce((prev, name) => {
   return prev;
 }, {});
 
+console.log(entry);
+
 const webpackConfig = {
   entry,
   output: {
-    path: path.resolve(__dirname, 'cjs'),
+    path: path.resolve(__dirname, 'es'),
     filename: '[name]/index.js',
-    // library: ['xxx-components', '[name]'],
-    // libraryExport: 'es',
   },
   externals : {
-    react: 'react'
+    react: 'react',
+    antd: 'antd',
   },
   module: {
     loaders: [
