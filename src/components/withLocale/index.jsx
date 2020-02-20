@@ -6,12 +6,12 @@
 
 import React from "react";
 import { ConfigProvider } from "antd";
-import zhCN from "antd/es/locale/zh_CN";
+// import zhCN from "antd/es/locale/zh_CN";
 
 export default WrappedComponent => class extends React.Component {
   render() {
     return (
-      <ConfigProvider locale={zhCN}>
+      <ConfigProvider>
         <WrappedComponent {...this.props}/>
       </ConfigProvider>
     )

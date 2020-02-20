@@ -7,7 +7,7 @@ const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 
 const cModuleNames = fs.readdirSync(path.resolve('components'));
 const entry = cModuleNames.reduce((prev, name) => {
-  prev[name] = `${path.resolve('components')}/${name}/index.jsx`;
+  prev[name] = path.resolve('components', name, 'index.jsx');
   return prev;
 }, {});
 

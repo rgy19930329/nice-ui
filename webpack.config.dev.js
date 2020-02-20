@@ -51,10 +51,11 @@ const webpackConfig = {
     alias: {
       'nice-ui': path.resolve(__dirname, 'index'),
       '@root': __dirname,
-      '@components': path.resolve(__dirname, 'components'),
+      // '@components': path.resolve(__dirname, 'components'),
       '@utils': path.resolve(__dirname, 'utils'),
       '@preview': path.resolve(__dirname, 'src/preview'),
       '@src': path.resolve(__dirname, 'src'),
+      '@components': path.resolve(__dirname, 'es'),
     }
   },
   devtool: 'cheap-module-source-map',
