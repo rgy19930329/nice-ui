@@ -1,0 +1,17 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "A project named website",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server"
+  },
+  "author": "rgy",
+  "license": "ISC",
+  "dependencies": {
+    "ky-nice-utils": "^1.0.0"
+  },
+  "devDependencies": {
+    "ky-nice-scripts": "^1.0.0"
+  }
+}
