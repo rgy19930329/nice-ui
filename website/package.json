@@ -4,11 +4,19 @@
   "description": "A project named website",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server"
+    "start": "cross-env NODE_ENV=development webpack-dev-server"
   },
   "author": "rgy",
   "license": "ISC",
   "dependencies": {
+    "antd": "~3.26.0",
+    "axios": "^0.18.0",
+    "mobx": "^4.8.0",
+    "mobx-react": "^5.2.8",
+    "prop-types": "^15.6.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^4.3.1",
     "ky-nice-utils": "^1.0.0"
   },
   "devDependencies": {

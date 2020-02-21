@@ -5,7 +5,7 @@
  */
 
 import React from "react";
-import { Section } from "ky-nice-ui";
+// import { Section } from "ky-nice-ui";
 import { fetch } from "ky-nice-utils";
 
 export default class List extends React.Component {
@@ -33,7 +33,7 @@ export default class List extends React.Component {
     return (
       <div className="page-list-wrapper">
         <h1>List</h1>
-        <Section title="推荐列表">
+        {/* <Section title="推荐列表">
           {list.map((item, index) => {
             return (
               <div key={index}>
@@ -41,7 +41,15 @@ export default class List extends React.Component {
               </div>
             )
           })}
-        </Section>
+        </Section> */}
+
+        {list.map((item, index) => {
+          return (
+            <div key={index}>
+              <a href={`#/list/detail/${item[1]}`}>{item[0]}</a>
+            </div>
+          )
+        })}
       </div>
     )
   }
