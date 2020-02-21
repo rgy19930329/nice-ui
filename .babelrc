@@ -1,18 +1,5 @@
 {
   "presets": [
-    "env",
-    "es2015",
-    "stage-0",
-    "react"
-  ],
-  "plugins": [
-    [
-      "import", {
-        "libraryName": "antd",
-        "style": true
-      }
-    ],
-    "transform-runtime",
-    "transform-decorators-legacy"
+    "@babel/preset-env"
   ]
 }
