@@ -6,7 +6,7 @@
 
 import "./index.less";
 import React from "react";
-// import { Section } from "ky-nice-ui";
+import { Section } from "ky-nice-ui";
 
 export default class Home extends React.Component {
 	render() {
@@ -14,9 +14,9 @@ export default class Home extends React.Component {
 			<div className="page-home">
 				<h1>Welcome to Home</h1>
 
-				{/* <Section title="测试一">
+				<Section title="测试一">
 					test
-				</Section> */}
+				</Section>
 			</div>
 		)
 	}

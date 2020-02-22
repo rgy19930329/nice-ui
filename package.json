@@ -6,12 +6,9 @@
   "scripts": {
     "new": "node ./scripts/index.js",
     "remove": "node ./scripts/delete.js",
-    "watch:es": "rollup --config rollup.config.js --environment MODULE:es --watch",
-    "watch:cjs": "rollup --config rollup.config.js --environment MODULE:cjs --watch",
-    "watch": "npm run watch:es",
-    "website": "cd website && npm run dev",
     "build": "rollup --config rollup.config.js",
-    "build:prod": "rollup --config rollup.config.js --environment NODE_ENV:production"
+    "watch": "rollup --config rollup.config.js --watch",
+    "website": "cd website && npm start"
   },
   "author": "rgy",
   "license": "ISC",
@@ -19,6 +16,7 @@
     "antd": "~3.26.0",
     "axios": "^0.18.0",
     "highlight.js": "^9.15.10",
+    "lodash.debounce": "^4.0.8",
     "marked": "^0.7.0",
     "mobx": "^4.8.0",
     "mobx-react": "^5.2.8",
@@ -35,15 +33,21 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
-    "@babel/plugin-external-helpers": "^7.8.3",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "babel-plugin-import": "^1.13.0",
+    "less": "^3.11.1",
     "rollup": "^1.31.0",
     "rollup-plugin-alias": "^2.2.0",
     "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-clear": "^2.0.7",
     "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^5.2.0"
+    "rollup-plugin-postcss": "^2.0.6"
   },
   "files": [
     "src",
