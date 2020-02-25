@@ -1,0 +1,48 @@
+.comp-multi-items-wrapper {
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  transition: all .3s;
+  min-height: 32px;
+  padding: 3px 5px;
+  cursor: text;
+  position: relative;
+
+  &:hover, &:active, &:focus {
+    border-color: #40a9ff;
+  }
+
+  &.comp-read-only {
+    border-color: transparent;
+  }
+
+  .placeholder {
+    position: absolute;
+    top: 4px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #bbb;
+  }
+
+  .icon-close {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    margin-top: -10px;
+    color: rgba(0, 0, 0, .25);
+
+    &:hover {
+      color: rgba(0, 0, 0, .45);
+    }
+  }
+
+  .item-label {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}

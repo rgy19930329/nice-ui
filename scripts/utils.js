@@ -6,7 +6,7 @@ const fs = require("fs");
  * @return {String}
  */
 const camel2line = (name) => {
-  return name.replace(/([A-Z])/g, "-$1").toLowerCase();
+  return name.replace(/([A-Z])/g, "-$1").replace(/^-/, "").toLowerCase();
 }
 
 /**
@@ -51,7 +51,29 @@ const delDir = (path) => {
   }
 }
 
+/**
+ * 遍历文件夹
+ * @param {*} path 
+ * @param {*} callback 
+ */
+const traceDir = (path, { dirCallback, fileCallback }) => {
+  let files = [];
+  if (fs.existsSync(path)) {
+    files = fs.readdirSync(path);
+    files.forEach((file, index) => {
+      let curPath = path + "/" + file;
+      if (fs.statSync(curPath).isDirectory()) {
+        dirCallback(curPath);
+        traceDir(curPath, { dirCallback, fileCallback });
+      } else {
+        fileCallback(curPath);
+      }
+    });
+  }
+}
+
 exports.camel2line = camel2line;
 exports.line2camel = line2camel;
 exports.firstLetterUpper = firstLetterUpper;
 exports.delDir = delDir;
+exports.traceDir = traceDir;

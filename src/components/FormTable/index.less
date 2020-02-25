@@ -1,0 +1,26 @@
+.comp-form-table-wrapper {
+  width: 100%;
+  border-collapse: collapse;
+
+  td {
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+
+    &.label {
+      background: #dedede;
+      font-weight: bold;
+    }
+
+    .star {
+      display: inline-block;
+      width: 10px;
+
+      &.is-required {
+        color: #f5222d;
+        font-weight: normal;
+      }
+    }
+  }
+}
