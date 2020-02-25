@@ -11,15 +11,16 @@
   "dependencies": {
     "antd": "~3.26.0",
     "axios": "^0.18.0",
+    "ky-nice-utils": "^1.0.0",
     "mobx": "^4.8.0",
     "mobx-react": "^5.2.8",
     "prop-types": "^15.6.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-router-dom": "^4.3.1",
-    "ky-nice-utils": "^1.0.0"
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
+    "babel-polyfill": "^6.26.0",
     "ky-nice-scripts": "^1.0.0"
   }
 }

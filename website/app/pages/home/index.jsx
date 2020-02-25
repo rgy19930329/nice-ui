@@ -6,7 +6,8 @@
 
 import "./index.less";
 import React from "react";
-import { Section } from "ky-nice-ui";
+import { Section, EnumSelect } from "ky-nice-ui";
+import { Input } from "antd";
 
 export default class Home extends React.Component {
 	render() {
@@ -15,7 +16,19 @@ export default class Home extends React.Component {
 				<h1>Welcome to Home</h1>
 
 				<Section title="测试一">
-					test
+					<EnumSelect
+						style={{width: 200}}
+						placeholder="请选择"
+						list={[
+							"2020",
+							"2019",
+							"2018"
+						]}
+					/>
+				</Section>
+
+				<Section title="测试二">
+					<Input style={{width: 200}} />
 				</Section>
 			</div>
 		)
