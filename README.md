@@ -6,6 +6,8 @@
 
 ```shell
 $ npm install --verbose
+
+$ cd website && npm install --verbose
 ```
 
 ## New & Remove
@@ -19,9 +21,11 @@ $ npm run remove
 ## Development
 
 ```
-$ npm run dev
+$ npm run watch
 
-# 打开 http://127.0.0.1:7777/
+$ npm run website
+
+# 打开 http://127.0.0.1:9999/
 ```
 
 ## Build
@@ -30,7 +34,7 @@ $ npm run dev
 $ npm run build
 ```
 
-## Install && Usage
+## Install
 
 ```shell
 $ npm install ky-nice-ui@https://github.com/rgy19930329/nice-ui.git#master --save
@@ -38,8 +42,12 @@ $ npm install ky-nice-ui@https://github.com/rgy19930329/nice-ui.git#master --sav
 或者
 
 $ npm install ky-nice-ui --verbose
+```
 
-# 修改 webpack 配置：
+# Usage
+
+```js
+// 方案一： 修改 webpack 配置：
 
 module: {
   loaders: [
@@ -47,11 +55,40 @@ module: {
       test: /\.(js|jsx)$/,
       include: [
         ...
-        path.resolve(__dirname, 'node_modules/ky-nice-ui'),
+        path.resolve(__dirname, 'node_modules/ky-nice-ui/src'),
       ],
     }
   ]
 }
+
+// 方案二：配置babel plugins
+
+// 第一步
+
+"plugins": [
+  [
+    "import", {
+      "libraryName": "ky-nice-ui",
+      "libraryDirectory": "es",
+    }
+  ]
+]
+
+// 第二步 入口文件中添加：
+
+import "antd/dist/antd.css";
+
+// 第三步 入口文件中添加：
+
+import "babel-polyfill";
+
+// 或者 在 webpack 配置的 entry 字段最前面添加
+
+entry: [
+  "babel-polyfill",
+  //...
+]
+
 ```
 
 ## Import
@@ -84,7 +121,6 @@ import { Label } from "ky-nice-ui";
 | [RotateToggle](./components/RotateToggle/README.md)  | 控制组件 - 旋转开关 | rgy | 2019-09-03 18:27:17 |
 | [MarkDown](./components/MarkDown/README.md)  | 数据展示 - 解析markdown文本并展示 | rgy | 2019-09-04 13:59:17 |
 | [InlineList](./components/InlineList/README.md)  | 数据展示 - 行内列表数据展示 | rgy | 2019-09-05 15:41:56 |
-| [RConnect](./components/RConnect/README.md)  | 高阶组件 - 帮助使用react-redux时简化使用方式 | rgy | 2019-09-09 09:32:56 |
 | [RUpload](./components/RUpload/README.md)  | 表单组件 - 文件上传 | rgy | 2019-09-10 14:53:45 |
 | [RCheckbox](./components/RCheckbox/README.md)  | 表单组件 - 映射 Checkbox 的值 | rgy | 2019-09-17 16:43:41 |
 | [ListPage](./components/ListPage/README.md)  | 场景组件 - 带查询条件的列表页 | rgy | 2019-10-04 09:40:04 |
