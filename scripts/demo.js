@@ -42,7 +42,7 @@ console.log(chalk.black.bgGreen('            欢迎使用nice-ui组件创建工�
 inquirer.prompt([{
     type: 'input',
     name: 'componentName',
-    message: '请输入组件类名（大驼峰，如EnumSelect）：',
+    message: '请输入组件类名（大驼峰，如EnumSelect，with高阶组件除外）：',
     validate: function (input) {
       const done = this.async();
 
@@ -62,19 +62,6 @@ inquirer.prompt([{
           done('组件类名首字母需大写，请重新输入');
           return;
         }
-      }
-      done(null, true);
-    }
-  },
-  {
-    type: 'input',
-    name: 'componentDesc',
-    message: '请输入组件功能描述：',
-    validate: function (input) {
-      const done = this.async();
-      if (!input) {
-        done('组件功能描述不能为空');
-        return;
       }
       done(null, true);
     }
@@ -121,31 +108,7 @@ const handleCreate = comp => {
     ...comp,
     componentClassName: componentFolderName,
   };
-
-  /* 创建组件 */
-  delDir(path.resolve(workplaceRoot, 'src/components', componentName));
-  fs.mkdirSync(path.resolve(workplaceRoot, 'src/components', componentName));
-
-  traceDir(
-    path.resolve(__dirname, COMP_TEMPLATE_FOLDER),
-    {
-      dirCallback: dpath => {
-        const dirName = dpath.slice(dpath.indexOf(COMP_TEMPLATE_FOLDER) + 14);
-        fs.mkdirSync(path.resolve(workplaceRoot, 'src/components', componentName, dirName));
-      },
-      fileCallback: fpath => {
-        const fileName = fpath.slice(fpath.indexOf(COMP_TEMPLATE_FOLDER) + 14);
-        const source = fs.readFileSync(fpath, 'utf-8');
-        const template = Handlebars.compile(source);
   
-        fs.writeFileSync(
-          path.resolve(path.resolve(workplaceRoot, 'src/components', componentName, fileName)),
-          template(options)
-        );
-      }
-    }
-  );
-
   /* 创建示例 */
   const pagesRoot = path.resolve(workplaceRoot, 'website/app/pages', componentName);
   delDir(pagesRoot);

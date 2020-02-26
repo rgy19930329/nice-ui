@@ -8,7 +8,7 @@ import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { Form, Row, Button, Icon } from "antd";
+import { Form, Row, Col, Button, Icon, Input } from "antd";
 import isArray from "lodash/isArray";
 import RotateToggle from "../RotateToggle/index.jsx";
 
@@ -24,6 +24,7 @@ export default class SearchWrapper extends React.Component {
     resetText: PropTypes.string,
     defaultRowCount: PropTypes.number, // 默认行数，超过默认隐藏
     resetImmediately: PropTypes.bool, // 重置是否立即生效（条件重置之后是否立即查询）,自定义了onReset时该属性失效
+    searchs: PropTypes.array, // 二维数组，定义筛选表单
   }
 
   static defaultProps = {
@@ -76,7 +77,16 @@ export default class SearchWrapper extends React.Component {
   }
 
   hasToggle = () => {
-    const { children, defaultRowCount } = this.props;
+    const { children, defaultRowCount, searchs } = this.props;
+
+    if (searchs) {
+      let rowCount = searchs.length;
+      if (rowCount > defaultRowCount) {
+        return true;
+      }
+      return false;
+    }
+
     let rowCount = React.Children.count(children);
     if (rowCount > defaultRowCount) {
       return true;
@@ -84,9 +94,54 @@ export default class SearchWrapper extends React.Component {
     return false;
   }
 
+  computeSpan = (list) => {
+    let max = Math.max(...list.map(row => row.length));
+    if (max == -Infinity) {
+      return 8;
+    }
+    return 24 / max;
+  }
+
   getChildren = () => {
     const { isOpen } = this.state;
-    const { children, defaultRowCount } = this.props;
+    const { children, defaultRowCount, searchs } = this.props;
+
+    if (searchs) {
+      const span = this.computeSpan(searchs);
+      const form = this.getForm();
+
+      let list = [...searchs];
+
+      if (this.hasToggle() && !isOpen) {
+        let rowCount = searchs.length;
+        if (rowCount >= defaultRowCount) {
+          list = searchs.slice(0, defaultRowCount);
+        } else {
+          console.error(`参数错误，defaultRowCount不能小于Row行数${rowCount}`);
+        }
+      }
+
+      return list.map((row, rIdx) => {
+        return (
+          <Row key={rIdx}>
+            {row.map((col, cIdx) => {
+              return (
+                <Col span={span} key={cIdx}>
+                  <Form.Item label={col.label}>
+                    {form.getFieldDecorator(col.fname)(
+                      ["Input"].includes(col.field.type.name)
+                        ? <Input {...col.field.props} onPressEnter={this.swRef && this.swRef.onSearch} />
+                        : col.field
+                    )}
+                  </Form.Item>
+                </Col>
+              )
+            })}
+          </Row>
+        )
+      })
+    }
+
     if (this.hasToggle() && !isOpen) {
       let rowCount = React.Children.count(children);
       if (rowCount >= defaultRowCount) {
@@ -102,14 +157,15 @@ export default class SearchWrapper extends React.Component {
   }
 
   render() {
-    const { isOpen } = this.state; 
+    const { isOpen } = this.state;
     const {
-      className, 
-      formItemLayout, 
-      hasHandleBar, 
-      searchText, 
+      className,
+      formItemLayout,
+      hasHandleBar,
+      searchText,
       resetText,
     } = this.props;
+
     return (
       <div
         className={classNames({

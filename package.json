@@ -6,6 +6,7 @@
   "scripts": {
     "new": "node ./scripts/index.js",
     "remove": "node ./scripts/remove.js",
+    "demo": "node ./scripts/demo.js",
     "build": "rollup --config rollup.config.js",
     "watch": "rollup --config rollup.config.js --watch",
     "website": "cd website && npm start"

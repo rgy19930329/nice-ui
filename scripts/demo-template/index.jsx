@@ -5,7 +5,6 @@
  */
 
 import React, { PureComponent } from "react";
-
 import { {{componentName}}, Section } from "{{libraryName}}";
 
 export default class {{componentName}}Preview extends PureComponent {
@@ -19,7 +18,6 @@ export default class {{componentName}}Preview extends PureComponent {
           <{{componentName}} />
         </Section>
       </React.Fragment>
-      
     )
   }
 }

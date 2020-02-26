@@ -19,7 +19,7 @@ export default class Home extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<h1>nice-ui组件库</h1>
+				<h1>ky-nice-ui 组件库</h1>
 
 				<Section>
 					{list.map(item => {

@@ -23,18 +23,6 @@ import {
   VALIDATE_TIPS_TYPE_POPOVER,
 } from "./constant";
 
-export {
-  DefaultHandleBar as HandleBar,
-  DefaultSearchBar as SearchBar,
-  Ellipsis,
-  ValidateWrapper,
-  fixEmptyCell,
-  EMPTY_CELL,
-  OPERATE_SPAN,
-  VALIDATE_TIPS_TYPE_NORMAL,
-  VALIDATE_TIPS_TYPE_POPOVER,
-}
-
 @Form.create()
 export default class HzTable extends React.Component {
 
@@ -387,6 +375,24 @@ export default class HzTable extends React.Component {
       }
     });
   }
+
+  static HandleBar = DefaultHandleBar;
+
+  static SearchBar = DefaultSearchBar;
+
+  static Ellipsis = Ellipsis;
+
+  static ValidateWrapper = ValidateWrapper;
+
+  static fixEmptyCell = fixEmptyCell;
+
+  static EMPTY_CELL = EMPTY_CELL;
+
+  static OPERATE_SPAN = OPERATE_SPAN;
+
+  static VALIDATE_TIPS_TYPE_NORMAL = VALIDATE_TIPS_TYPE_NORMAL;
+
+  static VALIDATE_TIPS_TYPE_POPOVER = VALIDATE_TIPS_TYPE_POPOVER;
 
   render() {
     const {
