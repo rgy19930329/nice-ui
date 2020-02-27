@@ -9,7 +9,8 @@
     "demo": "node ./scripts/demo.js",
     "build": "rollup --config rollup.config.js",
     "watch": "rollup --config rollup.config.js --watch",
-    "website": "cd website && npm start"
+    "website": "cd website && npm start",
+    "prepublish": "npm run build"
   },
   "author": "rgy",
   "license": "ISC",
@@ -55,6 +56,7 @@
     "inquirer": "^7.0.4"
   },
   "files": [
+    "es",
     "src",
     "README.md",
     "VERSION.md"

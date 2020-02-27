@@ -18,7 +18,7 @@ const cModuleMap = cModuleNames.reduce((prev, name) => {
 
 // console.log(cModuleMap)
 
-export default {
+export default [{
   input: {
     index: 'src/index.js',
     ...cModuleMap
@@ -28,7 +28,7 @@ export default {
     format: 'es',
     sourceMap: true,
     entryFileNames: '[name]/index.js',
-    chunkFileNames: 'common.js'
+    chunkFileNames: 'common-[name].js'
   },
   plugins: [
     resolve(),
@@ -58,4 +58,4 @@ export default {
     })
   ],
   external: ['react', 'antd', 'lodash']
-}
+}]
