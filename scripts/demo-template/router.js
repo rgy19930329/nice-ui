@@ -6,4 +6,4 @@ export default [
     name: "{{componentName}}",
     component: HocAsync(() => import("./index")),
   },
-]
+];

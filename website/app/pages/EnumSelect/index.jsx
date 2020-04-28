@@ -27,19 +27,21 @@ export default class EnumSelectPreview extends React.Component {
             list={[
               { code: "01", name: "开发" },
               { code: "02", name: "产品" },
-              { code: "03", name: "测试" }
+              { code: "03", name: "测试" },
             ]}
           />
 
           <EnumSelect
             placeholder="请选择"
             style={{ width: 200 }}
-            createPromise={() => fetch({
-              url: "/example/fruits",
-            }).then(res => res.data.list)}
+            createPromise={() =>
+              fetch({
+                url: "/example/fruits",
+              }).then((res) => res.data.list)
+            }
           />
         </Section>
       </React.Fragment>
-    )
+    );
   }
 }

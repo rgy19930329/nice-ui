@@ -6,39 +6,39 @@
 
 import React from "react";
 
-export default importComponent => class extends React.Component {
+export default (importComponent) =>
+  class extends React.Component {
+    constructor(props) {
+      super(props);
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      component: null
-    };
-  }
-
-  async componentDidMount() {
-    if (this.hasLoadedComponent()) {
-      return;
+      this.state = {
+        component: null,
+      };
     }
-    const { default: component } = await importComponent();
-    this.setState({
-      component: component
-    });
-  }
 
-  hasLoadedComponent() {
-    return this.state.component !== null;
-  }
-
-  componentWillUnmount() {
-    this.setState = (state, callback) => {
-      return;
+    async componentDidMount() {
+      if (this.hasLoadedComponent()) {
+        return;
+      }
+      const { default: component } = await importComponent();
+      this.setState({
+        component: component,
+      });
     }
-  }
 
-  render() {
-    const C = this.state.component;
+    hasLoadedComponent() {
+      return this.state.component !== null;
+    }
 
-    return C ? <C {...this.props} /> : null;
-  }
-}
+    componentWillUnmount() {
+      this.setState = (state, callback) => {
+        return;
+      };
+    }
+
+    render() {
+      const C = this.state.component;
+
+      return C ? <C {...this.props} /> : null;
+    }
+  };

@@ -8,7 +8,6 @@ import React, { PureComponent } from "react";
 import { MarkDown, Section } from "ky-nice-ui";
 
 export default class MarkDownPreview extends PureComponent {
-
   render() {
     return (
       <React.Fragment>
@@ -20,6 +19,6 @@ export default class MarkDownPreview extends PureComponent {
           </MarkDown>
         </Section>
       </React.Fragment>
-    )
+    );
   }
 }

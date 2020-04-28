@@ -10,6 +10,6 @@
 import Ellipsis from "@/components/Ellipsis";
 
 <Ellipsis
-  // props
-/>
+// props
+/>;
 ```

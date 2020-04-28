@@ -10,18 +10,17 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 
 export default class Label extends React.Component {
-
   static propTypes = {
     title: PropTypes.node,
     value: PropTypes.node,
     isLongText: PropTypes.bool,
-  }
-  
+  };
+
   static defaultProps = {
     title: "字段说明",
     value: "值",
     isLongText: false,
-  }
+  };
 
   /**
    * 获取节点文本
@@ -39,8 +38,10 @@ export default class Label extends React.Component {
     return (
       <div className={className}>
         <label className="z-label-title">{title && `${title}：`}</label>
-        <span className="z-label-value" title={this.dfsGetText(value)}>{value}</span>
+        <span className="z-label-value" title={this.dfsGetText(value)}>
+          {value}
+        </span>
       </div>
-    )
+    );
   }
 }

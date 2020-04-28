@@ -5,13 +5,13 @@ import { Provider } from "mobx-react";
 import store from "@stores";
 
 export default class App extends React.Component {
-	render() {
-		return (
-			<Provider {...store}>
-				<HashRouter>
-					<RootRouter />
-				</HashRouter>
-			</Provider>
-		)
-	}
+  render() {
+    return (
+      <Provider {...store}>
+        <HashRouter>
+          <RootRouter />
+        </HashRouter>
+      </Provider>
+    );
+  }
 }

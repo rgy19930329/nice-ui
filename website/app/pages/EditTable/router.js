@@ -5,5 +5,5 @@ export default [
     path: "/EditTable",
     name: "EditTable",
     component: HocAsync(() => import("./index")),
-  }
-]
+  },
+];

@@ -9,19 +9,18 @@ import { Icon } from "antd";
 import { RotateToggle, Section } from "ky-nice-ui";
 
 export default class RotateTogglePreview extends PureComponent {
-
   constructor(props) {
     super(props);
 
     this.state = {
       isOpen: false,
       isOpen2: false,
-    }
+    };
   }
 
   render() {
     const { isOpen, isOpen2 } = this.state;
-    
+
     return (
       <React.Fragment>
         <h1>RotateToggle</h1>
@@ -37,16 +36,16 @@ export default class RotateTogglePreview extends PureComponent {
         </Section>
 
         <Section title="测试二：目录开关 90deg">
-          <a onClick={() => this.setState({ isOpen2: !isOpen2 })} style={{ fontSize: 24 }}>
-            <RotateToggle
-              isOpen={isOpen2}
-              rotate={[0, 90]}
-            >
+          <a
+            onClick={() => this.setState({ isOpen2: !isOpen2 })}
+            style={{ fontSize: 24 }}
+          >
+            <RotateToggle isOpen={isOpen2} rotate={[0, 90]}>
               <Icon type="caret-right" />
             </RotateToggle>
           </a>
         </Section>
       </React.Fragment>
-    )
+    );
   }
 }

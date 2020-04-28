@@ -10,6 +10,6 @@
 import HandleBar from "@/components/HandleBar";
 
 <HandleBar
-  // props
-/>
+// props
+/>;
 ```

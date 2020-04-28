@@ -6,4 +6,4 @@ export default [
     name: "RTabs",
     component: HocAsync(() => import("./index")),
   },
-]
+];

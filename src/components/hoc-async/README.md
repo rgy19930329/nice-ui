@@ -6,7 +6,6 @@
 
 ## 参数说明
 
-
 ## 组件使用
 
 ```javascript
@@ -15,5 +14,5 @@ import { Route } from "react-router-dom";
 
 const AsyncPage = HocAsync(() => import("@pages/async-page"));
 
-<Route path="/async-page" component={AsyncPage} />
+<Route path="/async-page" component={AsyncPage} />;
 ```

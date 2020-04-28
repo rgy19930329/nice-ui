@@ -1,7 +1,6 @@
-
 /**
  * 将url参数解析成对象
- * @param {*} url 
+ * @param {*} url
  * @return {Object}
  */
 const parseUrl = (url) => {
@@ -11,14 +10,12 @@ const parseUrl = (url) => {
   }
   let paramList = url.split("&");
   let params = {};
-  paramList.forEach(item => {
+  paramList.forEach((item) => {
     let key = item.split("=")[0];
     let value = item.split("=")[1];
     params[key] = decodeURIComponent(value);
   });
   return params;
-}
+};
 
-export {
-  parseUrl,
-}
+export { parseUrl };

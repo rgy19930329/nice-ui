@@ -8,7 +8,6 @@ import React, { PureComponent } from "react";
 import { RichText, Section } from "ky-nice-ui";
 
 export default class RichTextPreview extends PureComponent {
-
   render() {
     return (
       <React.Fragment>
@@ -18,6 +17,6 @@ export default class RichTextPreview extends PureComponent {
           <RichText />
         </Section>
       </React.Fragment>
-    )
+    );
   }
 }

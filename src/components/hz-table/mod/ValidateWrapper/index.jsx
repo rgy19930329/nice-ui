@@ -10,34 +10,33 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Popover } from "antd";
 
-import { VALIDATE_TIPS_TYPE_NORMAL, VALIDATE_TIPS_TYPE_POPOVER } from "../../constant";
+import {
+  VALIDATE_TIPS_TYPE_NORMAL,
+  VALIDATE_TIPS_TYPE_POPOVER,
+} from "../../constant";
 
 export default class ValidateWrapper extends React.Component {
-
   static contextTypes = {
     form: PropTypes.object,
-  }
+  };
 
   static propTypes = {
     validateStatus: PropTypes.object,
     form: PropTypes.object,
     tipsType: PropTypes.number, // 组件提示类型
-  }
+  };
 
   static defaultProps = {
     validateStatus: {},
     tipsType: VALIDATE_TIPS_TYPE_NORMAL,
-  }
+  };
 
   /**
    * 获取字段校验结果
    */
   getValidateStatus = (field) => {
-    const {
-      isFieldValidating,
-      getFieldError,
-      getFieldValue,
-    } = this.props.form || this.context.form;
+    const { isFieldValidating, getFieldError, getFieldValue } =
+      this.props.form || this.context.form;
     if (!field) {
       return {};
     }
@@ -55,10 +54,10 @@ export default class ValidateWrapper extends React.Component {
     if (getFieldValue(field)) {
       return {
         status: "success",
-      }
+      };
     }
     return {};
-  }
+  };
 
   render() {
     const { className, validateStatus, tipsType, children } = this.props;
@@ -72,18 +71,22 @@ export default class ValidateWrapper extends React.Component {
 
     if (tipsType === VALIDATE_TIPS_TYPE_NORMAL) {
       return (
-        <div className={classNames({
-          ["field-wrapper"]: true,
-          className: !!className,
-        })}>
-          <span className={classNames({
-            "field-error": isError,
-          })}>
+        <div
+          className={classNames({
+            ["field-wrapper"]: true,
+            className: !!className,
+          })}
+        >
+          <span
+            className={classNames({
+              "field-error": isError,
+            })}
+          >
             {this.props.children}
           </span>
           <div className="field-message">{message && message[0]}</div>
         </div>
-      )
+      );
     }
 
     if (tipsType === VALIDATE_TIPS_TYPE_POPOVER) {
@@ -98,13 +101,13 @@ export default class ValidateWrapper extends React.Component {
         >
           <span
             className={classNames({
-              "field-error": isError
+              "field-error": isError,
             })}
           >
             {children}
           </span>
         </Popover>
-      )
+      );
     }
   }
 }

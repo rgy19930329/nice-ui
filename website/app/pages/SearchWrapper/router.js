@@ -6,4 +6,4 @@ export default [
     name: "SearchWrapper",
     component: HocAsync(() => import("./index")),
   },
-]
+];

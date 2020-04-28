@@ -7,6 +7,4 @@ const facilityType = [
   { code: "6", name: "消防感知" },
 ];
 
-export {
-  facilityType,
-}
+export { facilityType };

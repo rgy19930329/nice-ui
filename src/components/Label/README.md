@@ -25,5 +25,5 @@ static defaultProps = {
 ```javascript
 import { Label } from "ky-nice-ui";
 
-<Label title="发布者" value="张三" />
+<Label title="发布者" value="张三" />;
 ```

@@ -12,14 +12,13 @@ import { Tabs } from "antd";
 const TabPane = Tabs.TabPane;
 
 export default class RTabs extends React.Component {
-
   static propTypes = {
     panes: PropTypes.array,
-  }
+  };
 
   static defaultProps = {
     panes: [],
-  }
+  };
 
   render() {
     const { panes, className } = this.props;
@@ -27,21 +26,21 @@ export default class RTabs extends React.Component {
       <div
         className={classNames({
           ["comp-tabs-wrapper"]: true,
-          [className]: !!className
+          [className]: !!className,
         })}
       >
-        <Tabs
-          type="line"
-          {...this.props}
-        >
-          {panes && panes.map((item, index) => {
-            const { tab, content, key = index, forceRender = false } = item;
-            return (
-              <TabPane tab={tab} key={key} forceRender={forceRender}>{content}</TabPane>
-            )
-          })}
+        <Tabs type="line" {...this.props}>
+          {panes &&
+            panes.map((item, index) => {
+              const { tab, content, key = index, forceRender = false } = item;
+              return (
+                <TabPane tab={tab} key={key} forceRender={forceRender}>
+                  {content}
+                </TabPane>
+              );
+            })}
         </Tabs>
       </div>
-    )
+    );
   }
 }

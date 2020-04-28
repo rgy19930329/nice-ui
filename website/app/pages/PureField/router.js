@@ -6,4 +6,4 @@ export default [
     name: "PureField",
     component: HocAsync(() => import("./index")),
   },
-]
+];

@@ -13,7 +13,6 @@ import isArray from "lodash/isArray";
 import RotateToggle from "../rotate-toggle/index.jsx";
 
 export default class SearchWrapper extends React.Component {
-
   static propTypes = {
     form: PropTypes.object,
     formItemLayout: PropTypes.object,
@@ -25,7 +24,7 @@ export default class SearchWrapper extends React.Component {
     defaultRowCount: PropTypes.number, // 默认行数，超过默认隐藏
     resetImmediately: PropTypes.bool, // 重置是否立即生效（条件重置之后是否立即查询）,自定义了onReset时该属性失效
     searchs: PropTypes.array, // 二维数组，定义筛选表单
-  }
+  };
 
   static defaultProps = {
     formItemLayout: {
@@ -37,31 +36,31 @@ export default class SearchWrapper extends React.Component {
     resetText: "重置",
     defaultRowCount: 2,
     resetImmediately: false,
-  }
+  };
 
   static contextTypes = {
     form: PropTypes.object,
-  }
+  };
 
   constructor(props) {
     super(props);
 
     this.state = {
       isOpen: false,
-    }
+    };
     props.setRef && props.setRef(this);
   }
 
   getForm = () => {
     return this.props.form || this.context.form;
-  }
+  };
 
   onSearch = () => {
     const { onSearch } = this.props;
     const form = this.getForm();
     const query = form.getFieldsValue();
     onSearch && onSearch(query);
-  }
+  };
 
   onReset = () => {
     const { onReset, resetImmediately } = this.props;
@@ -74,7 +73,7 @@ export default class SearchWrapper extends React.Component {
         this.onSearch();
       }
     }
-  }
+  };
 
   hasToggle = () => {
     const { children, defaultRowCount, searchs } = this.props;
@@ -92,15 +91,15 @@ export default class SearchWrapper extends React.Component {
       return true;
     }
     return false;
-  }
+  };
 
   computeSpan = (list) => {
-    let max = Math.max(...list.map(row => row.length));
+    let max = Math.max(...list.map((row) => row.length));
     if (max == -Infinity) {
       return 8;
     }
     return 24 / max;
-  }
+  };
 
   getChildren = () => {
     const { isOpen } = this.state;
@@ -129,17 +128,22 @@ export default class SearchWrapper extends React.Component {
                 <Col span={span} key={cIdx}>
                   <Form.Item label={col.label}>
                     {form.getFieldDecorator(col.fname)(
-                      ["Input"].includes(col.field.type.name)
-                        ? <Input {...col.field.props} onPressEnter={this.swRef && this.swRef.onSearch} />
-                        : col.field
+                      ["Input"].includes(col.field.type.name) ? (
+                        <Input
+                          {...col.field.props}
+                          onPressEnter={this.swRef && this.swRef.onSearch}
+                        />
+                      ) : (
+                        col.field
+                      )
                     )}
                   </Form.Item>
                 </Col>
-              )
+              );
             })}
           </Row>
-        )
-      })
+        );
+      });
     }
 
     if (this.hasToggle() && !isOpen) {
@@ -154,7 +158,7 @@ export default class SearchWrapper extends React.Component {
       }
     }
     return children;
-  }
+  };
 
   render() {
     const { isOpen } = this.state;
@@ -170,7 +174,7 @@ export default class SearchWrapper extends React.Component {
       <div
         className={classNames({
           ["comp-search-wrapper"]: true,
-          [className]: !!className
+          [className]: !!className,
         })}
       >
         <Form {...formItemLayout}>
@@ -185,10 +189,7 @@ export default class SearchWrapper extends React.Component {
               >
                 {searchText}
               </Button>
-              <Button
-                icon="undo"
-                onClick={this.onReset}
-              >
+              <Button icon="undo" onClick={this.onReset}>
                 {resetText}
               </Button>
             </Row>
@@ -204,6 +205,6 @@ export default class SearchWrapper extends React.Component {
           </div>
         )}
       </div>
-    )
+    );
   }
 }

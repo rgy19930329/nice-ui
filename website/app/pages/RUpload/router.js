@@ -6,4 +6,4 @@ export default [
     name: "RUpload",
     component: HocAsync(() => import("./index")),
   },
-]
+];

@@ -13,7 +13,6 @@ import "react-quill/dist/quill.snow.css";
 
 const uuid = uniqueid("toolbar-");
 
-
 /**
  * 注册字号
  */
@@ -23,7 +22,7 @@ Quill.register(Size, true);
 
 /**
  * 自定义工具栏
- * @param {*} props 
+ * @param {*} props
  */
 const CustomToolbar = (props) => {
   // const colors = [
@@ -73,22 +72,24 @@ const CustomToolbar = (props) => {
         <svg viewBox="0 0 18 18">
           <rect className="ql-stroke" height="10" width="12" x="3" y="4"></rect>
           <circle className="ql-fill" cx="6" cy="7" r="1"></circle>
-          <polyline className="ql-even ql-fill" points="5 12 5 11 7 9 8 10 11 7 13 9 13 12 5 12"></polyline>
+          <polyline
+            className="ql-even ql-fill"
+            points="5 12 5 11 7 9 8 10 11 7 13 9 13 12 5 12"
+          ></polyline>
         </svg>
       </button>
       <button className="ql-clean"></button>
     </div>
-  )
-}
+  );
+};
 
 export default class RichText extends React.Component {
-
   static propTypes = {
     value: PropTypes.string,
     height: PropTypes.number,
     readOnly: PropTypes.bool,
     imageUploadProps: PropTypes.object,
-  }
+  };
 
   static defaultProps = {
     value: "",
@@ -96,7 +97,7 @@ export default class RichText extends React.Component {
     height: 300,
     readOnly: false,
     imageUploadProps: {},
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -132,7 +133,7 @@ export default class RichText extends React.Component {
                   return;
                 }
                 this.quill.focus(); // 重要
-                fileList.forEach(file => {
+                fileList.forEach((file) => {
                   const cursorPosition = this.quill.getSelection().index;
                   let url = file.url;
                   this.quill.insertEmbed(cursorPosition, "image", url);
@@ -144,11 +145,11 @@ export default class RichText extends React.Component {
               onCancel: (close) => {
                 self.setState({ fileList: [] });
                 close();
-              }
+              },
             });
-          }
-        }
-      }
+          },
+        },
+      },
     };
   }
 
@@ -180,13 +181,13 @@ export default class RichText extends React.Component {
         }
         if (file.status === "done") {
           onEnd && onEnd(file);
-          let newFileList = fileList.map(file => {
+          let newFileList = fileList.map((file) => {
             const { response } = file;
             return dataTransform ? dataTransform(response) : response;
           });
           this.setState({ fileList: newFileList });
         }
-      }
+      },
     };
     props = Object.assign({}, props, imageUploadProps);
     return (
@@ -196,7 +197,7 @@ export default class RichText extends React.Component {
           <div className="ant-upload-text">点击上传</div>
         </Upload>
       </div>
-    )
+    );
   };
 
   /**
@@ -207,7 +208,7 @@ export default class RichText extends React.Component {
       return {};
     }
     let { rules = [], validate = [] } = meta;
-    let requiredRule = rules.filter(item => item.required);
+    let requiredRule = rules.filter((item) => item.required);
     if (requiredRule.length > 0) {
       rules.push({
         validator: (rule, value, callback) => {
@@ -216,9 +217,9 @@ export default class RichText extends React.Component {
             return;
           }
           callback();
-        }
+        },
       });
-      validate = validate.map(item => {
+      validate = validate.map((item) => {
         item.rules = rules;
         return item;
       });
@@ -226,7 +227,7 @@ export default class RichText extends React.Component {
     return {
       rules,
       validate,
-    }
+    };
   };
 
   render() {
@@ -239,7 +240,7 @@ export default class RichText extends React.Component {
           dangerouslySetInnerHTML={{ __html: value }}
           style={style}
         ></div>
-      )
+      );
     }
     let newProps = Object.assign({}, this.props, {
       ["data-__meta"]: this.fixDataMeta(this.props["data-__meta"]),
@@ -262,6 +263,6 @@ export default class RichText extends React.Component {
           <img style={{ width: "100%" }} src={previewImage} />
         </Modal>
       </div>
-    )
+    );
   }
 }

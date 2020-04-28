@@ -7,24 +7,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default WrappedComponent => class extends React.Component {
+export default (WrappedComponent) =>
+  class extends React.Component {
+    static childContextTypes = {
+      form: PropTypes.object,
+    };
 
-  static childContextTypes = {
-    form: PropTypes.object,
-  }
-
-  getChildContext() {
-    if (!this.props.form) {
-      console.error("this.props.form为undefined，请先创建form");
+    getChildContext() {
+      if (!this.props.form) {
+        console.error("this.props.form为undefined，请先创建form");
+      }
+      return {
+        form: this.props.form,
+      };
     }
-    return {
-      form: this.props.form,
-    }
-  }
 
-  render() {
-    return (
-      <WrappedComponent {...this.props} />
-    )
-  }
-}
+    render() {
+      return <WrappedComponent {...this.props} />;
+    }
+  };

@@ -14,33 +14,31 @@ import Wrapper from "./wrapper.jsx";
 
 const EDITTABLE_PREFIX = "EDITTABLE";
 
-@Form.create()
-export default class EditTable extends React.Component {
-
+class EditTable extends React.Component {
   static propTypes = {
     dataSource: PropTypes.array, // 数据源
     hasSN: PropTypes.bool, // 是否需要支持序号
     onChange: PropTypes.func, // 列表变更回调
-  }
+  };
 
   static defaultProps = {
     dataSource: [],
     hasSN: false,
-  }
+  };
 
   constructor(props) {
     super(props);
 
     this.state = {
       dataSource: props.dataSource || [],
-    }
+    };
 
     props.setRef && props.setRef(this);
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     this.setState({
-      dataSource: nextProps.dataSource
+      dataSource: nextProps.dataSource,
     });
   }
 
@@ -61,17 +59,13 @@ export default class EditTable extends React.Component {
         resolve({ dataSource });
       });
     });
-  }
+  };
 
   /**
    * 获取字段校验结果
    */
   getValidateStatus = (field) => {
-    const {
-      isFieldValidating,
-      getFieldError,
-      getFieldValue,
-    } = this.props.form;
+    const { isFieldValidating, getFieldError, getFieldValue } = this.props.form;
     if (!field) {
       return {};
     }
@@ -89,17 +83,21 @@ export default class EditTable extends React.Component {
     if (getFieldValue(field)) {
       return {
         status: "success",
-      }
+      };
     }
     return {};
-  }
+  };
 
   /**
    * 创建列模式
    */
   getColumns = () => {
-    let { form: { getFieldProps }, columns, id } = this.props;
-    columns = columns.map(cell => {
+    let {
+      form: { getFieldProps },
+      columns,
+      id,
+    } = this.props;
+    columns = columns.map((cell) => {
       if (!cell.render) {
         return {
           ...cell,
@@ -113,38 +111,48 @@ export default class EditTable extends React.Component {
                     let value = getValueFromEvent(...args);
                     this.update(fieldKey, value);
                     return value;
-                  }
+                  },
                 })}
               />
-            )
-          }
-        }
+            );
+          },
+        };
       } else {
         return {
           ...cell,
           render: (text, record, index) => {
             const fieldKey = `${EDITTABLE_PREFIX}_${id}_${index}_${cell.dataIndex}`;
             const validateStatus = this.getValidateStatus(fieldKey);
-            let getProps = (opts) => getFieldProps(fieldKey, Object.assign({
-              initialValue: text,
-            }, opts, {
-              getValueFromEvent: (...args) => {
-                let value = (opts.getValueFromEvent || getValueFromEvent)(...args);
-                this.update(fieldKey, value);
-                return value;
-              }
-            }));
+            let getProps = (opts) =>
+              getFieldProps(
+                fieldKey,
+                Object.assign(
+                  {
+                    initialValue: text,
+                  },
+                  opts,
+                  {
+                    getValueFromEvent: (...args) => {
+                      let value = (opts.getValueFromEvent || getValueFromEvent)(
+                        ...args
+                      );
+                      this.update(fieldKey, value);
+                      return value;
+                    },
+                  }
+                )
+              );
             return (
               <Wrapper validateStatus={validateStatus}>
                 {cell.render(text, record, index, getProps)}
               </Wrapper>
-            )
-          }
-        }
+            );
+          },
+        };
       }
     });
     return columns;
-  }
+  };
 
   /**
    * 更新数据
@@ -158,22 +166,23 @@ export default class EditTable extends React.Component {
       if (currentFieldKey === fieldKey) {
         dataSource[index][key] = value;
         this.setState({ dataSource });
-        onChange && onChange(dataSource, {
-          index,
-          record: dataSource[index],
-          type: "edit",
-        });
+        onChange &&
+          onChange(dataSource, {
+            index,
+            record: dataSource[index],
+            type: "edit",
+          });
         break;
       }
     }
-  }
+  };
 
   /**
    * 支持序号
    */
   createSN = () => {
     let { columns } = this.props;
-    let snFilterList = columns.filter(item => item.dataIndex === "sn");
+    let snFilterList = columns.filter((item) => item.dataIndex === "sn");
     if (snFilterList.length > 0) {
       return;
     }
@@ -183,19 +192,19 @@ export default class EditTable extends React.Component {
       key: "sn",
       width: 65,
       render: (text, record, index) => {
-        return (
-          <div>{index + 1}</div>
-        )
-      }
+        return <div>{index + 1}</div>;
+      },
     });
-  }
+  };
 
   /**
    * 支持操作区
    */
   createOperate = () => {
     let { columns } = this.props;
-    let operateFilterList = columns.filter(item => item.dataIndex === "operate");
+    let operateFilterList = columns.filter(
+      (item) => item.dataIndex === "operate"
+    );
     if (operateFilterList.length > 0) {
       return;
     }
@@ -209,10 +218,10 @@ export default class EditTable extends React.Component {
           <div style={{ textAlign: "center" }}>
             <a onClick={() => this.delRow(index)}>删除</a>
           </div>
-        )
-      }
+        );
+      },
     });
-  }
+  };
 
   /**
    * 删除行
@@ -223,12 +232,13 @@ export default class EditTable extends React.Component {
     const record = dataSource[index];
     dataSource.splice(index, 1);
     this.setState({ dataSource });
-    onChange && onChange(dataSource, {
-      index,
-      record,
-      type: "delete",
-    });
-  }
+    onChange &&
+      onChange(dataSource, {
+        index,
+        record,
+        type: "delete",
+      });
+  };
 
   /**
    * 新增行
@@ -237,18 +247,19 @@ export default class EditTable extends React.Component {
     const { columns, onChange } = this.props;
     let { dataSource } = this.state;
     let row = {};
-    columns.forEach(col => {
+    columns.forEach((col) => {
       if (!(col.dataIndex === "sn" || col.dataIndex === "operate")) {
         row[col.dataIndex] = "";
       }
     });
     dataSource.push(row);
     this.setState({ dataSource });
-    onChange && onChange(dataSource, {
-      type: "add",
-    });
-  }
-  
+    onChange &&
+      onChange(dataSource, {
+        type: "add",
+      });
+  };
+
   render() {
     this.createOperate();
     this.props.hasSN && this.createSN();
@@ -258,7 +269,7 @@ export default class EditTable extends React.Component {
       <div
         className={classNames({
           ["comp-edit-table-wrapper"]: true,
-          [className]: !!className
+          [className]: !!className,
         })}
       >
         <Table
@@ -267,7 +278,13 @@ export default class EditTable extends React.Component {
           rowKey={(record, index) => `${index}`}
           pagination={false}
           bordered={true}
-          locale={{emptyText: <div><Icon type="frown" /> 暂无数据</div>}}
+          locale={{
+            emptyText: (
+              <div>
+                <Icon type="frown" /> 暂无数据
+              </div>
+            ),
+          }}
         />
         <div style={{ textAlign: "right" }}>
           <a
@@ -278,6 +295,8 @@ export default class EditTable extends React.Component {
           </a>
         </div>
       </div>
-    )
+    );
   }
 }
+
+export default Form.create()(EditTable);

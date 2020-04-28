@@ -6,4 +6,4 @@ export default [
     name: "Label",
     component: HocAsync(() => import("./index")),
   },
-]
+];

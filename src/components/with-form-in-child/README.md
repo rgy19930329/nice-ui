@@ -2,7 +2,7 @@
 
 ## 功能描述
 
-> 高阶组件 - 在context中传递form
+> 高阶组件 - 在 context 中传递 form
 
 ## 参数说明
 
@@ -22,9 +22,7 @@ import { withFormInChild } from "ky-nice-ui";
 
 @Form.create()
 @withFormInChild
-class Preview extends React.Component {
-  
-}
+class Preview extends React.Component {}
 ```
 
 后代组件：
@@ -35,6 +33,6 @@ import PropTypes from "prop-types";
 export default class ValidateWrapper extends React.Component {
   static contextTypes = {
     form: PropTypes.object,
-  }
+  };
 }
 ```

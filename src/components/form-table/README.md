@@ -8,11 +8,11 @@
 
 ```javascript
 static propTypes = {
-  
+
 }
 
 static defaultProps = {
-  
+
 }
 ```
 
@@ -32,15 +32,11 @@ const RItem = FormTable.RItem;
         initialValue: "ranguangyu",
         rules: [
           { required: true, message: "员工姓名不能为空" },
-          { max: 5, message: "不能超过5个字符" }
-        ]
-      })(
-        <Input />
-      )}
+          { max: 5, message: "不能超过5个字符" },
+        ],
+      })(<Input />)}
     </RItem>
-    <RItem label="联系方式">
-      139-xxxx-xxxx
-    </RItem>
+    <RItem label="联系方式">139-xxxx-xxxx</RItem>
   </RTRow>
   <RTRow>
     <RItem label="性别">
@@ -58,7 +54,14 @@ const RItem = FormTable.RItem;
     <RItem label="部门">
       {getFieldDecorator("dept")(
         <EnumSelect
-          list={["前端研发", "后端研发", "测试", "运维", "产品经理", "市场营销"]}
+          list={[
+            "前端研发",
+            "后端研发",
+            "测试",
+            "运维",
+            "产品经理",
+            "市场营销",
+          ]}
         />
       )}
     </RItem>
@@ -68,12 +71,10 @@ const RItem = FormTable.RItem;
       {getFieldDecorator("ramark", {
         rules: [
           { required: true, message: "个人简介不能为空" },
-          { max: 200, message: "不能超过200个字符" }
-        ]
-      })(
-        <Input.TextArea />
-      )}
+          { max: 200, message: "不能超过200个字符" },
+        ],
+      })(<Input.TextArea />)}
     </RItem>
   </RTRow>
-</FormTable>
+</FormTable>;
 ```

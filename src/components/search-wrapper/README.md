@@ -46,11 +46,11 @@ onSearch = async (query) => {
   console.log(query);
   let result = await fetch("/yapi/test", query);
   console.log(result);
-}
+};
 
 <SearchWrapper
   onSearch={this.onSearch}
-  setRef={(swRef) => this.swRef = swRef}
+  setRef={(swRef) => (this.swRef = swRef)}
 >
   <Row>
     <Col span={8}>
@@ -62,17 +62,11 @@ onSearch = async (query) => {
     </Col>
     <Col span={8}>
       <Form.Item label="age">
-        {getFieldDecorator("age")(
-          <InputNumber style={{width: "100%"}} />
-        )}
+        {getFieldDecorator("age")(<InputNumber style={{ width: "100%" }} />)}
       </Form.Item>
     </Col>
     <Col span={8}>
-      <Form.Item label="dept">
-        {getFieldDecorator("dept")(
-          <Input />
-        )}
-      </Form.Item>
+      <Form.Item label="dept">{getFieldDecorator("dept")(<Input />)}</Form.Item>
     </Col>
   </Row>
   <Row>
@@ -82,7 +76,7 @@ onSearch = async (query) => {
           <EnumSelect
             list={[
               { code: "01", name: "男" },
-              { code: "02", name: "女" }
+              { code: "02", name: "女" },
             ]}
           />
         )}
@@ -90,34 +84,24 @@ onSearch = async (query) => {
     </Col>
     <Col span={8}>
       <Form.Item label="phone">
-        {getFieldDecorator("phone")(
-          <Input />
-        )}
+        {getFieldDecorator("phone")(<Input />)}
       </Form.Item>
     </Col>
     <Col span={8}>
       <Form.Item label="address">
-        {getFieldDecorator("address")(
-          <Input />
-        )}
+        {getFieldDecorator("address")(<Input />)}
       </Form.Item>
     </Col>
   </Row>
   <Row>
     <Col span={8}>
-      <Form.Item label="id">
-        {getFieldDecorator("id")(
-          <Input />
-        )}
-      </Form.Item>
+      <Form.Item label="id">{getFieldDecorator("id")(<Input />)}</Form.Item>
     </Col>
     <Col span={8}>
       <Form.Item label="email">
-        {getFieldDecorator("email")(
-          <Input />
-        )}
+        {getFieldDecorator("email")(<Input />)}
       </Form.Item>
     </Col>
   </Row>
-</SearchWrapper>
+</SearchWrapper>;
 ```

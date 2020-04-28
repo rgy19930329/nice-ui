@@ -7,14 +7,15 @@
 import React from "react";
 import { parseUrl } from "./utils";
 
-export default WrappedComponent => class extends React.Component {
-  render() {
-    const { location: { search } } = this.props;
-    const newProps = {
-      query: parseUrl(search),
+export default (WrappedComponent) =>
+  class extends React.Component {
+    render() {
+      const {
+        location: { search },
+      } = this.props;
+      const newProps = {
+        query: parseUrl(search),
+      };
+      return <WrappedComponent {...this.props} {...newProps} />;
     }
-    return (
-      <WrappedComponent {...this.props} {...newProps} />
-    )
-  }
-}
+  };

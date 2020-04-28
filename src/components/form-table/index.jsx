@@ -13,33 +13,34 @@ import RItem from "./RItem/index.jsx";
 import isArray from "lodash/isArray";
 
 class FormTable extends React.Component {
-
   static propTypes = {
     form: PropTypes.object,
     labelWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  }
+  };
 
   static defaultProps = {
     labelWidth: "20%",
-  }
+  };
 
   static childContextTypes = {
     max: PropTypes.number,
     labelWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     valueWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     form: PropTypes.object,
-  }
+  };
 
   getChildContext() {
     const { children, labelWidth, form } = this.props;
     let max = 1;
     if (isArray(children)) {
-      let list = children.map(item => {
+      let list = children.map((item) => {
         return isArray(item.props.children) ? item.props.children.length : 1;
       });
       max = Math.max.apply(null, list);
     } else {
-      max = isArray(children.props.children) ? children.props.children.length : 1;
+      max = isArray(children.props.children)
+        ? children.props.children.length
+        : 1;
     }
 
     let valueWidth = labelWidth;
@@ -55,7 +56,7 @@ class FormTable extends React.Component {
       labelWidth,
       valueWidth,
       form,
-    }
+    };
   }
 
   render() {
@@ -64,14 +65,12 @@ class FormTable extends React.Component {
       <table
         className={classNames({
           ["comp-form-table-wrapper"]: true,
-          [className]: !!className
+          [className]: !!className,
         })}
       >
-        <tbody>
-          {children}
-        </tbody>
+        <tbody>{children}</tbody>
       </table>
-    )
+    );
   }
 }
 

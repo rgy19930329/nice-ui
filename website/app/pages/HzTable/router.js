@@ -6,4 +6,4 @@ export default [
     name: "HzTable",
     component: HocAsync(() => import("./index")),
   },
-]
+];

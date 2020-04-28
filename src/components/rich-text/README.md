@@ -6,17 +6,17 @@ tips: 请先安装 "react-quill": "^1.3.3"
 
 ## 功能描述
 
-富文本编辑器quill
+富文本编辑器 quill
 
 ## 参数说明
 
 ```javascript
 static propTypes = {
-  
+
 }
 
 static defaultProps = {
-  
+
 }
 ```
 
@@ -28,10 +28,8 @@ import { RichText } from "ky-nice-ui";
 <Form.Item>
   <RichText
     {...this.props.form.getFieldProps("text", {
-      rules: [
-        { required: true, message: "富文本内容不能为空" }
-      ]
+      rules: [{ required: true, message: "富文本内容不能为空" }],
     })}
   />
-</Form.Item>
+</Form.Item>;
 ```

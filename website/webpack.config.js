@@ -5,8 +5,11 @@ const webpackConfig = createWebpackConfig(__dirname);
 
 webpackConfig.entry.unshift("babel-polyfill");
 
-webpackConfig.resolve.alias = Object.assign({
-  "ky-nice-ui": path.resolve(__dirname, "../es/index"),
-}, webpackConfig.resolve.alias);
+webpackConfig.resolve.alias = Object.assign(
+  {
+    "ky-nice-ui": path.resolve(__dirname, "../es/index"),
+  },
+  webpackConfig.resolve.alias
+);
 
 module.exports = webpackConfig;

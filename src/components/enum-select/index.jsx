@@ -15,7 +15,6 @@ const Option = Select.Option;
 let cache = {}; // 缓存数据
 
 export default class EnumSelect extends React.Component {
-
   static propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
@@ -42,7 +41,7 @@ export default class EnumSelect extends React.Component {
     hasAll: false,
     promiseCondition: "",
     showSearch: false,
-    searchPromise: () => new Promise(resolve => resolve([])),
+    searchPromise: () => new Promise((resolve) => resolve([])),
     searchDelay: 500,
     style: {
       width: "100%",
@@ -69,7 +68,9 @@ export default class EnumSelect extends React.Component {
         }
       }
       const timer = setInterval(() => {
-        if (Object.prototype.toString.call(cache[cacheKey]) === "[object Array]") {
+        if (
+          Object.prototype.toString.call(cache[cacheKey]) === "[object Array]"
+        ) {
           this.setState({ list: cache[cacheKey] });
           clearInterval(timer);
         }
@@ -92,13 +93,16 @@ export default class EnumSelect extends React.Component {
   }
 
   componentWillUnmount() {
-    this.setState = () => { };
+    this.setState = () => {};
   }
 
-  load = async enumPromise => {
+  load = async (enumPromise) => {
     const { cacheKey } = this.props;
     const list = await enumPromise;
-    if (Object.prototype.toString.call(list) === "[object Array]" && list.length > 0) {
+    if (
+      Object.prototype.toString.call(list) === "[object Array]" &&
+      list.length > 0
+    ) {
       this.setState({ list });
       if (cacheKey) {
         cache[cacheKey] = list;
@@ -127,7 +131,7 @@ export default class EnumSelect extends React.Component {
   /**
    * 执行搜索
    */
-  doSearch = async value => {
+  doSearch = async (value) => {
     if (!value) {
       return;
     }
@@ -145,11 +149,20 @@ export default class EnumSelect extends React.Component {
   render() {
     const { list: slist } = this.state;
     const { list: plist } = this.props;
-    const { className, codeKey, labelKey, hasAll, hasAllText, readOnly, value, render } = this.props;
+    const {
+      className,
+      codeKey,
+      labelKey,
+      hasAll,
+      hasAllText,
+      readOnly,
+      value,
+      render,
+    } = this.props;
     const list = slist || plist || [];
 
     if (readOnly) {
-      const t = list.filter(item => item[codeKey] === value);
+      const t = list.filter((item) => item[codeKey] === value);
       if (render) {
         return render(t[0]);
       }

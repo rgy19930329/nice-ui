@@ -9,12 +9,11 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 
 export default class InlineList extends React.Component {
-
   static propTypes = {
     list: PropTypes.array, // 数据源
     split: PropTypes.node, // 数据间隔元素，默认为中文顿号
     render: PropTypes.func, // 元数据渲染函数
-  }
+  };
 
   static defaultProps = {
     list: [],
@@ -26,7 +25,7 @@ export default class InlineList extends React.Component {
         return JSON.stringify(item);
       }
     },
-  }
+  };
 
   render() {
     const { className, list, split, render } = this.props;
@@ -35,17 +34,18 @@ export default class InlineList extends React.Component {
       <div
         className={classNames({
           ["comp-inline-list-wrapper"]: true,
-          [className]: !!className
+          [className]: !!className,
         })}
       >
         {list.map((item, index) => {
           return (
             <Fragment key={index}>
-              {render(item)}{index < len - 1 && split}
+              {render(item)}
+              {index < len - 1 && split}
             </Fragment>
           );
         })}
       </div>
-    )
+    );
   }
 }

@@ -6,4 +6,4 @@ export default [
     name: "MultiItems",
     component: HocAsync(() => import("./index")),
   },
-]
+];

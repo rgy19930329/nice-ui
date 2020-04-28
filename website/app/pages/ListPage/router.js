@@ -6,4 +6,4 @@ export default [
     name: "ListPage",
     component: HocAsync(() => import("./index")),
   },
-]
+];

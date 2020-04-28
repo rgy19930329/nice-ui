@@ -6,4 +6,4 @@ export default [
     name: "ValidateWrapper",
     component: HocAsync(() => import("./index")),
   },
-]
+];

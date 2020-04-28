@@ -11,22 +11,21 @@ import HocLoading from "../../hoc-loading/index.jsx";
 import classNames from "classnames";
 
 @HocLoading()
-export default class EnumCheckbox extends React.Component {
-  
+class EnumCheckbox extends React.Component {
   static propTypes = {
     list: PropTypes.array, // 数据源列表
     codeKey: PropTypes.string, // code 键名
     labelKey: PropTypes.string, // label 键名
     createPromise: PropTypes.func, // 传入一个生成promise的函数
     promiseCondition: PropTypes.string, // promise重复触发条件标识
-  }
+  };
 
   static defaultProps = {
     list: [],
     codeKey: "code",
     labelKey: "name",
     promiseCondition: "",
-  }
+  };
 
   state = {
     loaded: true,
@@ -39,7 +38,7 @@ export default class EnumCheckbox extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const { createPromise } = nextProps;
-    if(this.props.promiseCondition !== nextProps.promiseCondition) {
+    if (this.props.promiseCondition !== nextProps.promiseCondition) {
       createPromise && this.load(createPromise());
     }
   }
@@ -51,22 +50,24 @@ export default class EnumCheckbox extends React.Component {
       this.setState({ list });
     }
     this.setState({ loaded: true });
-  }
+  };
 
   render() {
     const { codeKey, labelKey } = this.props;
     const list = this.state.list || this.props.list || [];
-    const checkboxs = list.map(item => {
-      if(typeof item !== "object") {
+    const checkboxs = list.map((item) => {
+      if (typeof item !== "object") {
         return (
-          <Checkbox value={item} key={`checkbox-${item}`}>{item}</Checkbox>
-        )
-      }else{
+          <Checkbox value={item} key={`checkbox-${item}`}>
+            {item}
+          </Checkbox>
+        );
+      } else {
         return (
           <Checkbox value={item[codeKey]} key={`checkbox-${item[codeKey]}`}>
             {item[labelKey]}
           </Checkbox>
-        )
+        );
       }
     });
 
@@ -74,7 +75,7 @@ export default class EnumCheckbox extends React.Component {
     const cls = classNames({
       ["comp-enum-choice-wrapper"]: true,
       ["comp-enum-checkbox-wrapper"]: true,
-      [className]: className
+      [className]: className,
     });
 
     let props = { ...this.props };
@@ -82,11 +83,13 @@ export default class EnumCheckbox extends React.Component {
     delete props.labelKey;
     delete props.createPromise;
     delete props.promiseCondition;
-    
+
     return (
       <div className={cls}>
         <Checkbox.Group {...props}>{checkboxs}</Checkbox.Group>
       </div>
-    )
+    );
   }
-} 
+}
+
+export default EnumCheckbox;

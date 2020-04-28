@@ -22,21 +22,21 @@ static defaultProps = {
 import { RCheckbox } from "ky-nice-ui";
 
 // 未映射
-{getFieldDecorator("isAudit")(
-  <RCheckbox>
-    是否开启审核
-  </RCheckbox>
-)}
+{
+  getFieldDecorator("isAudit")(<RCheckbox>是否开启审核</RCheckbox>);
+}
 
 // 映射
-{getFieldDecorator("isAudit2")(
-  <RCheckbox
-    map={{
-      "1": true,
-      "0": false,
-    }}
-  >
-    是否开启审核
-  </RCheckbox>
-)}
+{
+  getFieldDecorator("isAudit2")(
+    <RCheckbox
+      map={{
+        "1": true,
+        "0": false,
+      }}
+    >
+      是否开启审核
+    </RCheckbox>
+  );
+}
 ```

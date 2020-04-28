@@ -11,17 +11,16 @@ import Wrapper from "../Wrapper/index.jsx";
 import isArray from "lodash/isArray";
 
 export default class RItem extends React.Component {
-  
   static propTypes = {
     label: PropTypes.node,
     required: PropTypes.bool,
     labelWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     valueWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  }
+  };
 
   static defaultProps = {
     label: "",
-  }
+  };
 
   static contextTypes = {
     max: PropTypes.number,
@@ -29,13 +28,13 @@ export default class RItem extends React.Component {
     labelWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     valueWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     form: PropTypes.object,
-  }
+  };
 
   genColSpan = () => {
     const { max, siblings } = this.context;
     let supply = (max * 2 - siblings) / siblings;
-    return supply; 
-  }
+    return supply;
+  };
 
   isRequired = () => {
     const { children, required } = this.props;
@@ -43,8 +42,8 @@ export default class RItem extends React.Component {
       return true;
     } else {
       if (
-        children && 
-        typeof children === "object" && 
+        children &&
+        typeof children === "object" &&
         children.props &&
         children.props["data-__meta"]
       ) {
@@ -59,7 +58,7 @@ export default class RItem extends React.Component {
       }
     }
     return false;
-  }
+  };
 
   getChildField = (child) => {
     if (typeof child !== "object") {
@@ -74,25 +73,22 @@ export default class RItem extends React.Component {
     if (id) {
       const validateStatus = getValidateStatus(id, form);
       field = (
-        <Wrapper
-          key={id}
-          validateStatus={validateStatus}
-        >
+        <Wrapper key={id} validateStatus={validateStatus}>
           {child}
         </Wrapper>
-      )
+      );
     } else {
       field = child;
     }
     return field;
-  }
+  };
 
   render() {
     const { label, labelWidth, valueWidth, children } = this.props;
 
     let field = null;
     if (isArray(children)) {
-      field = children.map(child => this.getChildField(child));
+      field = children.map((child) => this.getChildField(child));
     } else {
       field = this.getChildField(children);
     }
@@ -100,16 +96,20 @@ export default class RItem extends React.Component {
     return (
       <Fragment>
         <td width={labelWidth || this.context.labelWidth} className="label">
-          {this.isRequired()
-            ? <i className="star is-required">*</i>
-            : <i className="star"></i>
-          }
+          {this.isRequired() ? (
+            <i className="star is-required">*</i>
+          ) : (
+            <i className="star"></i>
+          )}
           {label}
         </td>
-        <td width={valueWidth || this.context.valueWidth} colSpan={this.genColSpan()}>
+        <td
+          width={valueWidth || this.context.valueWidth}
+          colSpan={this.genColSpan()}
+        >
           {field}
         </td>
       </Fragment>
-    )
+    );
   }
 }

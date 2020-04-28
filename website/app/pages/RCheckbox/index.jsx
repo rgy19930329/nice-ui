@@ -10,7 +10,6 @@ import { RCheckbox, Section } from "ky-nice-ui";
 
 @Form.create()
 export default class RCheckboxPreview extends PureComponent {
-
   render() {
     const { getFieldDecorator, getFieldsValue } = this.props.form;
 
@@ -19,11 +18,7 @@ export default class RCheckboxPreview extends PureComponent {
         <h1>RCheckbox</h1>
 
         <Section title="测试 未映射">
-          {getFieldDecorator("isAudit")(
-            <RCheckbox>
-              是否开启审核
-            </RCheckbox>
-          )}
+          {getFieldDecorator("isAudit")(<RCheckbox>是否开启审核</RCheckbox>)}
         </Section>
 
         <Section title="测试 映射">
@@ -40,9 +35,12 @@ export default class RCheckboxPreview extends PureComponent {
         </Section>
 
         <Section title="打印结果">
-          <Input.TextArea autosize value={JSON.stringify(getFieldsValue(), null, 4)} />
+          <Input.TextArea
+            autosize
+            value={JSON.stringify(getFieldsValue(), null, 4)}
+          />
         </Section>
       </React.Fragment>
-    )
+    );
   }
 }

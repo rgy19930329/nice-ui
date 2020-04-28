@@ -11,22 +11,21 @@ import HocLoading from "../../hoc-loading/index.jsx";
 import classNames from "classnames";
 
 @HocLoading()
-export default class EnumRadio extends React.Component {
-  
+class EnumRadio extends React.Component {
   static propTypes = {
     list: PropTypes.array, // 数据源列表
     codeKey: PropTypes.string, // code 键名
     labelKey: PropTypes.string, // label 键名
     createPromise: PropTypes.func, // 传入一个生成promise的函数
     promiseCondition: PropTypes.string, // promise重复触发条件标识
-  }
+  };
 
   static defaultProps = {
     list: [],
     codeKey: "code",
     labelKey: "name",
     promiseCondition: "",
-  }
+  };
 
   state = {
     loaded: true,
@@ -39,7 +38,7 @@ export default class EnumRadio extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const { createPromise } = nextProps;
-    if(this.props.promiseCondition !== nextProps.promiseCondition) {
+    if (this.props.promiseCondition !== nextProps.promiseCondition) {
       createPromise && this.load(createPromise());
     }
   }
@@ -51,22 +50,24 @@ export default class EnumRadio extends React.Component {
       this.setState({ list });
     }
     this.setState({ loaded: true });
-  }
+  };
 
   render() {
     const { codeKey, labelKey } = this.props;
     const list = this.state.list || this.props.list || [];
-    const radios = list.map(item => {
-      if(typeof item !== "object") {
+    const radios = list.map((item) => {
+      if (typeof item !== "object") {
         return (
-          <Radio value={item} key={`radio-${item}`}>{item}</Radio>
-        )
-      }else{
+          <Radio value={item} key={`radio-${item}`}>
+            {item}
+          </Radio>
+        );
+      } else {
         return (
           <Radio value={item[codeKey]} key={`radio-${item[codeKey]}`}>
             {item[labelKey]}
           </Radio>
-        )
+        );
       }
     });
 
@@ -74,7 +75,7 @@ export default class EnumRadio extends React.Component {
     const cls = classNames({
       ["comp-enum-choice-wrapper"]: true,
       ["comp-enum-radio-wrapper"]: true,
-      [className]: className
+      [className]: className,
     });
 
     let props = { ...this.props };
@@ -87,6 +88,8 @@ export default class EnumRadio extends React.Component {
       <div className={cls}>
         <Radio.Group {...props}>{radios}</Radio.Group>
       </div>
-    )
+    );
   }
-} 
+}
+
+export default EnumRadio;

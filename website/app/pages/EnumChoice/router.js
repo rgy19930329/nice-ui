@@ -5,5 +5,5 @@ export default [
     path: "/EnumChoice",
     name: "EnumChoice",
     component: HocAsync(() => import("./index")),
-  }
-]
+  },
+];

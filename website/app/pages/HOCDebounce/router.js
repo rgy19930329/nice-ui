@@ -6,4 +6,4 @@ export default [
     name: "HocDebounce",
     component: HocAsync(() => import("./index")),
   },
-]
+];

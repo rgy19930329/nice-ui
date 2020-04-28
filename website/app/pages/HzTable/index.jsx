@@ -19,9 +19,7 @@ const {
   VALIDATE_TIPS_TYPE_POPOVER,
 } = HzTable;
 
-
 export default class HzTablePreview extends PureComponent {
-
   constructor(props) {
     super(props);
 
@@ -30,7 +28,7 @@ export default class HzTablePreview extends PureComponent {
 
       selectedRowKeys: [],
       selectedRows: [],
-    }
+    };
   }
 
   columns = [
@@ -39,9 +37,7 @@ export default class HzTablePreview extends PureComponent {
       dataIndex: "facilityName",
       width: "20%",
       render: (text, record, index) => {
-        return (
-          <a>{text}</a>
-        )
+        return <a>{text}</a>;
       },
       // createEditComp: ({ text, record, index }, { getFieldDecorator }) => {
       //   return (
@@ -64,8 +60,8 @@ export default class HzTablePreview extends PureComponent {
               required: true,
               message: "请输入设备名称",
             },
-          ]
-        }
+          ],
+        },
       },
       // createEditComp: {
       //   component: (
@@ -86,10 +82,8 @@ export default class HzTablePreview extends PureComponent {
       dataIndex: "images",
       render: (text) => {
         let image = text.replace(/\$\$$/, "");
-        return (
-          <img style={{ width: 50, height: 50 }} src={image} />
-        )
-      }
+        return <img style={{ width: 50, height: 50 }} src={image} />;
+      },
     },
     {
       title: "类别",
@@ -106,15 +100,15 @@ export default class HzTablePreview extends PureComponent {
               required: true,
               message: "请选择类别",
             },
-          ]
-        }
+          ],
+        },
       },
       createNormalComp: (record) => record.facilityCodeName,
     },
     {
       title: "安装地址",
       dataIndex: "address",
-      render: text => <Ellipsis>{text}</Ellipsis>
+      render: (text) => <Ellipsis>{text}</Ellipsis>,
     },
     {
       title: "所属小区",
@@ -127,16 +121,21 @@ export default class HzTablePreview extends PureComponent {
       extendRender: (text, record, index) => {
         return (
           <React.Fragment>
-            <a style={{ marginRight: OPERATE_SPAN }} onClick={() => message.warning(`测试 ${index + 1}`)}>测试</a>
+            <a
+              style={{ marginRight: OPERATE_SPAN }}
+              onClick={() => message.warning(`测试 ${index + 1}`)}
+            >
+              测试
+            </a>
           </React.Fragment>
-        )
-      }
-    }
-  ]
+        );
+      },
+    },
+  ];
 
-  createPromise = params => {
+  createPromise = (params) => {
     console.log(params);
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         if (result.code === "0103010000") {
           const totalCount = result.data.pageParam.total;
@@ -150,7 +149,7 @@ export default class HzTablePreview extends PureComponent {
         }
       }, 500);
     });
-  }
+  };
 
   render() {
     return (
@@ -161,7 +160,7 @@ export default class HzTablePreview extends PureComponent {
           rowKey="facilityId"
           columns={this.columns}
           createPromise={this.createPromise}
-          setRef={listRef => {
+          setRef={(listRef) => {
             this.setState({ listRef });
           }}
           hasSerialNo
@@ -175,17 +174,24 @@ export default class HzTablePreview extends PureComponent {
               console.log("删除成功", record);
               message.success(`删除成功：${record.facilityName}`);
               return { success: true };
-            }
+            },
           }}
           antdProps={{
             rowSelection: {
               onChange: (selectedRowKeys, selectedRows) => {
-                console.log("selectedRowKeys", selectedRowKeys, "selectedRows: ", selectedRows);
+                console.log(
+                  "selectedRowKeys",
+                  selectedRowKeys,
+                  "selectedRows: ",
+                  selectedRows
+                );
                 this.setState({ selectedRowKeys, selectedRows });
-              }
-            }
+              },
+            },
           }}
-          ValidateWrapper={(props) => <ValidateWrapper {...props} tipsType={VALIDATE_TIPS_TYPE_NORMAL} />}
+          ValidateWrapper={(props) => (
+            <ValidateWrapper {...props} tipsType={VALIDATE_TIPS_TYPE_NORMAL} />
+          )}
           handleBarOptions={{
             searchOptions: {
               show: true,
@@ -194,8 +200,8 @@ export default class HzTablePreview extends PureComponent {
                 placeholder: "自定义 placeholder",
                 style: {
                   width: 280,
-                }
-              }
+                },
+              },
             },
             handleOptions: {
               gutter: 10,
@@ -207,8 +213,8 @@ export default class HzTablePreview extends PureComponent {
                     onClick: () => {
                       message.success("新增成功");
                       this.state.listRef.dataLoad();
-                    }
-                  }
+                    },
+                  },
                 },
                 {
                   antdProps: {
@@ -218,54 +224,50 @@ export default class HzTablePreview extends PureComponent {
                     onClick: () => {
                       message.success(`${this.state.selectedRowKeys}删除成功`);
                       this.state.listRef.dataLoad();
-                    }
+                    },
                   },
                 },
                 {
                   elementType: "custom",
                   render: () => {
-                    return <a>导入模板下载</a>
-                  }
+                    return <a>导入模板下载</a>;
+                  },
                 },
-              ]
-            }
+              ],
+            },
           }}
           searchBarOptions={{
             conditions: [
               {
                 label: "设施类别",
                 render: (getFieldDecorator, form) => {
-                  return (
-                    getFieldDecorator("facilityCode")(
-                      <EnumSelect
-                        style={{ width: 200 }}
-                        list={[
-                          { code: "1", name: "高清监控" },
-                          { code: "2", name: "人脸卡口" },
-                          { code: "3", name: "车辆卡口" },
-                          { code: "4", name: "WIFI探针" },
-                          { code: "5", name: "人脸门禁" },
-                          { code: "6", name: "消防感知" },
-                        ]}
-                      />
-                    )
-                  )
-                }
+                  return getFieldDecorator("facilityCode")(
+                    <EnumSelect
+                      style={{ width: 200 }}
+                      list={[
+                        { code: "1", name: "高清监控" },
+                        { code: "2", name: "人脸卡口" },
+                        { code: "3", name: "车辆卡口" },
+                        { code: "4", name: "WIFI探针" },
+                        { code: "5", name: "人脸门禁" },
+                        { code: "6", name: "消防感知" },
+                      ]}
+                    />
+                  );
+                },
               },
               {
                 label: "设施名称",
                 render: (getFieldDecorator, form) => {
-                  return (
-                    getFieldDecorator("facilityName")(
-                      <Input style={{ width: 200 }} />
-                    )
-                  )
-                }
-              }
-            ]
+                  return getFieldDecorator("facilityName")(
+                    <Input style={{ width: 200 }} />
+                  );
+                },
+              },
+            ],
           }}
         />
       </React.Fragment>
-    )
+    );
   }
 }

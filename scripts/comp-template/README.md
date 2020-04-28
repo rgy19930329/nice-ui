@@ -14,13 +14,13 @@ import { {{componentName}} } from "{{libraryName}}";
 
 #### 参数说明
 
-| 属性             | 说明                    | 类型     | 默认值           | 版本 |
-| ---------------- | ---------------------- | ------- | --------------- | --- |
+| 属性 | 说明 | 类型 | 默认值 | 版本 |
+| ---- | ---- | ---- | ------ | ---- |
 
 
 #### 组件用法
 
-```js 
+```js
 import React, { PureComponent } from "react";
 
 import { {{componentName}} } from "{{libraryName}}";

@@ -10,17 +10,16 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 
 export default class Section extends React.Component {
-
   static propTypes = {
     title: PropTypes.node, // 标题
     hasBorder: PropTypes.bool, // 是否有边框
     titleSlot: PropTypes.node, // 标题右侧内容展示
-  }
+  };
 
   static defaultProps = {
     title: "",
     hasBorder: true,
-  }
+  };
 
   render() {
     const { title, titleSlot, children, hasBorder, className } = this.props;
@@ -42,6 +41,6 @@ export default class Section extends React.Component {
         )}
         <div>{children}</div>
       </div>
-    )
+    );
   }
 }

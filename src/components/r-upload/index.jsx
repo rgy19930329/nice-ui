@@ -11,7 +11,6 @@ import classNames from "classnames";
 import { Upload, Button, Icon, message } from "antd";
 
 export default class RUpload extends React.Component {
-
   static propTypes = {
     value: PropTypes.array,
     maxSize: PropTypes.number, // 文件最大多少M
@@ -23,7 +22,7 @@ export default class RUpload extends React.Component {
     tips: PropTypes.object, // 信息提示器
     transformFrom: PropTypes.func, // 将上传接口返回的字段转换成组件内部使用的字段（转成这样 { id(必选), name(必选), url(可选) }）
     transformTo: PropTypes.func, // 将组件内部使用的字段转换成提交接口需要的字段（从这样转 { id(必选), name(必选), url(可选) }）
-  }
+  };
 
   static defaultProps = {
     maxSize: 10, // 10M
@@ -41,7 +40,7 @@ export default class RUpload extends React.Component {
     tips: message, // 默认为antd 的 message（自定义时 至少需要提供 tips.success, tips.error）
     transformFrom: (resp) => ({ id: resp.fileId, name: resp.fileName }),
     transformTo: (file) => ({ fileId: file.id, fileName: file.name }),
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -49,7 +48,7 @@ export default class RUpload extends React.Component {
     this.state = {
       fileList: this.transformFrom(props.value) || [],
       loading: false,
-    }
+    };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -71,7 +70,7 @@ export default class RUpload extends React.Component {
       return false;
     }
     return true;
-  }
+  };
 
   /**
    * 删除文件
@@ -79,26 +78,26 @@ export default class RUpload extends React.Component {
   onRemove = (file) => {
     const { onChange } = this.props;
     let { fileList } = this.state;
-    fileList = fileList.filter(item => item.id !== file.id);
+    fileList = fileList.filter((item) => item.id !== file.id);
     this.setState({ fileList });
     onChange && onChange(this.transformTo(fileList));
-  }
+  };
 
   /**
    * 将上传接口返回的字段转换成组件内部使用的字段
    */
   transformFrom = (fileList = []) => {
     const { transformFrom } = this.props;
-    return fileList.map(file => transformFrom(file));
-  }
+    return fileList.map((file) => transformFrom(file));
+  };
 
   /**
    * 将组件内部使用的字段转换成提交接口需要的字段
    */
   transformTo = (fileList = []) => {
     const { transformTo } = this.props;
-    return fileList.map(file => transformTo(file));
-  }
+    return fileList.map((file) => transformTo(file));
+  };
 
   render() {
     const {
@@ -121,8 +120,11 @@ export default class RUpload extends React.Component {
       name: "file",
       showUploadList: false,
       beforeUpload: (file) => {
-        return this.checkFile(file) &&
-          uploadProps.beforeUpload && uploadProps.beforeUpload(file);
+        return (
+          this.checkFile(file) &&
+          uploadProps.beforeUpload &&
+          uploadProps.beforeUpload(file)
+        );
       },
       onChange: (info) => {
         if (info.file.status === "uploading") {
@@ -147,17 +149,19 @@ export default class RUpload extends React.Component {
         style={style}
         className={classNames({
           ["comp-r-upload-wrapper"]: true,
-          [className]: !!className
+          [className]: !!className,
         })}
       >
         <Upload {...props}>
-          {!readOnly && fileList.length < maxNumber && (
-            triggerArea
-              ? triggerArea(loading)
-              : <Button disabled={loading}>
+          {!readOnly &&
+            fileList.length < maxNumber &&
+            (triggerArea ? (
+              triggerArea(loading)
+            ) : (
+              <Button disabled={loading}>
                 <Icon type={loading ? "loading" : "upload"} /> {text}
               </Button>
-          )}
+            ))}
         </Upload>
         {fileList.length > 0 && (
           <div className="r-upload-list">
@@ -166,21 +170,22 @@ export default class RUpload extends React.Component {
               return (
                 <div className="upload-item" key={id || index}>
                   <Icon type="paper-clip" />
-                  {url
-                    ? (
-                      <a href={url} target="_blank">{name}</a>
-                    )
-                    : name
-                  }
+                  {url ? (
+                    <a href={url} target="_blank">
+                      {name}
+                    </a>
+                  ) : (
+                    name
+                  )}
                   {!readOnly && (
                     <Icon type="close" onClick={() => this.onRemove(file)} />
                   )}
                 </div>
-              )
+              );
             })}
           </div>
         )}
       </div>
-    )
+    );
   }
 }

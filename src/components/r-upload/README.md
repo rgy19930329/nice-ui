@@ -44,22 +44,24 @@ static defaultProps = {
 ```javascript
 import { RUpload } from "ky-nice-ui";
 
-{getFieldDecorator("test", {
-  initialValue: [
-    {
-      fileId: "tgClJZxT94SFBVCAqle4nsOy5XFXQ6hp",
-      fileName: "ranguangyu.txt",
-    }
-  ]
-})(
-  <RUpload
-    transformFrom={(resp) => {
-      return {
-        id: resp.fileId,
-        name: resp.fileName,
-        url: `/yapi/download?id=${resp.fileId}`,
-      }
-    }}
-  />
-)}
+{
+  getFieldDecorator("test", {
+    initialValue: [
+      {
+        fileId: "tgClJZxT94SFBVCAqle4nsOy5XFXQ6hp",
+        fileName: "ranguangyu.txt",
+      },
+    ],
+  })(
+    <RUpload
+      transformFrom={(resp) => {
+        return {
+          id: resp.fileId,
+          name: resp.fileName,
+          url: `/yapi/download?id=${resp.fileId}`,
+        };
+      }}
+    />
+  );
+}
 ```

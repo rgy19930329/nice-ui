@@ -20,13 +20,13 @@ export default class Ellipsis extends PureComponent {
         <span
           className={classNames({
             ["comp-ellipsis-wrapper"]: true,
-            [className]: className
+            [className]: className,
           })}
           style={style}
         >
           {fixEmptyCell(children)}
         </span>
       </Tooltip>
-    )
+    );
   }
 }

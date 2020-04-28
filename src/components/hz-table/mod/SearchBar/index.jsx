@@ -10,24 +10,18 @@ import { Form, Button } from "antd";
 
 import "./index.less";
 
-@Form.create()
-export default class SearchBar extends PureComponent {
-
+class SearchBar extends PureComponent {
   static propTypes = {
     listRef: PropTypes.object.isRequired,
-  }
+  };
 
-  static defaultProps = {
-
-  }
+  static defaultProps = {};
 
   constructor(props) {
     super(props);
   }
 
-  componentDidMount() {
-
-  }
+  componentDidMount() {}
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -39,17 +33,13 @@ export default class SearchBar extends PureComponent {
       }
       this.props.listRef.dataLoad(values);
     });
-  }
+  };
 
   renderForm = () => {
     const {
       form,
-      form: {
-        getFieldDecorator
-      },
-      options: {
-        conditions = []
-      }
+      form: { getFieldDecorator },
+      options: { conditions = [] },
     } = this.props;
 
     return conditions.map((item, index) => {
@@ -57,22 +47,24 @@ export default class SearchBar extends PureComponent {
         <Form.Item label={item.label} key={index}>
           {item.render(getFieldDecorator, form)}
         </Form.Item>
-      )
+      );
     });
-  }
+  };
 
   render() {
     return (
       <div className="comp-search-bar-wrapper">
         <div className="search-bar-buttons">
-          <Button type="primary" onClick={this.onSubmit}>查询</Button>
+          <Button type="primary" onClick={this.onSubmit}>
+            查询
+          </Button>
         </div>
         <div className="search-bar-items">
-          <Form layout="inline">
-            {this.renderForm()}
-          </Form>
+          <Form layout="inline">{this.renderForm()}</Form>
         </div>
       </div>
-    )
+    );
   }
 }
+
+export default Form.create()(SearchBar);

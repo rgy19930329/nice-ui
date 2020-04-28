@@ -24,7 +24,5 @@ static defaultProps = {
 ```javascript
 import { Section } from "ky-nice-ui";
 
-<Section title="xxx Test">
-  xxxxxxx
-</Section>
+<Section title="xxx Test">xxxxxxx</Section>;
 ```

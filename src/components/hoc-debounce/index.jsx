@@ -10,52 +10,52 @@ import debounce from "lodash/debounce";
 import noop from "lodash/noop";
 import { getValueFromEvent } from "rc-form/lib/utils";
 
-export default WrappedComponent => class extends React.Component {
-
-  static propTypes = {
-    onChange: PropTypes.func,
-    debounceTime: PropTypes.number, // 防抖时间（单位：ms） 
-  }
-
-  static defaultProps = {
-    onChange: noop,
-    debounceTime: 300,
-  }
-
-  constructor(props) {
-    super(props);
-
-    const { value, debounceTime } = props;
-
-    this.state = {
-      value,
+export default (WrappedComponent) =>
+  class extends React.Component {
+    static propTypes = {
+      onChange: PropTypes.func,
+      debounceTime: PropTypes.number, // 防抖时间（单位：ms）
     };
 
-    this.debounceChange = debounce(props.onChange, debounceTime);
-  }
+    static defaultProps = {
+      onChange: noop,
+      debounceTime: 300,
+    };
 
-  componentWillReceiveProps(nextProps) {
-    const { value } = this.state;
-    if (value !== nextProps.value) {
-      this.setState({ value: nextProps.value });
+    constructor(props) {
+      super(props);
+
+      const { value, debounceTime } = props;
+
+      this.state = {
+        value,
+      };
+
+      this.debounceChange = debounce(props.onChange, debounceTime);
     }
-  }
 
-  onChange = (...args) => {
-    const value = getValueFromEvent(...args);
+    componentWillReceiveProps(nextProps) {
+      const { value } = this.state;
+      if (value !== nextProps.value) {
+        this.setState({ value: nextProps.value });
+      }
+    }
 
-    this.setState({ value });
-    this.debounceChange(value);
-  }
+    onChange = (...args) => {
+      const value = getValueFromEvent(...args);
 
-  render() {
-    const { value } = this.state;
-    return (
-      <WrappedComponent
-        {...this.props}
-        value={value}
-        onChange={this.onChange}
-      />
-    )
-  }
-}
+      this.setState({ value });
+      this.debounceChange(value);
+    };
+
+    render() {
+      const { value } = this.state;
+      return (
+        <WrappedComponent
+          {...this.props}
+          value={value}
+          onChange={this.onChange}
+        />
+      );
+    }
+  };

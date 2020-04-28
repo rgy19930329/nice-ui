@@ -6,4 +6,4 @@ export default [
     name: "InlineList",
     component: HocAsync(() => import("./index")),
   },
-]
+];

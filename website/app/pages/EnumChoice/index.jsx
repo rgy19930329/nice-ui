@@ -12,9 +12,9 @@ export default class EnumChoicePreview extends React.Component {
   render() {
     return (
       <React.Fragment>
-				<h1>EnumChoice</h1>
+        <h1>EnumChoice</h1>
 
-				<Section title="EnumChoice.Radio">
+        <Section title="EnumChoice.Radio">
           <EnumChoice.Radio
             list={[
               { code: "1", name: "type A" },
@@ -25,12 +25,14 @@ export default class EnumChoicePreview extends React.Component {
 
         <Section title="EnumChoice.Checkbox">
           <EnumChoice.Checkbox
-            createPromise={() => fetch({
-              url: "/example/fruits",
-            }).then(res => res.data.list)}
+            createPromise={() =>
+              fetch({
+                url: "/example/fruits",
+              }).then((res) => res.data.list)
+            }
           />
         </Section>
-			</React.Fragment>
-    )
+      </React.Fragment>
+    );
   }
 }

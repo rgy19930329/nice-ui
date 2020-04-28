@@ -11,11 +11,11 @@ import { Popover } from "antd";
 export default class Wrapper extends React.Component {
   static propTypes = {
     validateStatus: PropTypes.object,
-  }
+  };
 
   static defaultProps = {
     validateStatus: {},
-  }
+  };
 
   render() {
     const { status, message } = this.props.validateStatus;
@@ -30,6 +30,6 @@ export default class Wrapper extends React.Component {
           {this.props.children}
         </div>
       </Popover>
-    )
+    );
   }
-} 
+}

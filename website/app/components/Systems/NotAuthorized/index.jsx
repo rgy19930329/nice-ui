@@ -8,8 +8,6 @@ import React from "react";
 
 export default class NotAuthorized extends React.Component {
   render() {
-    return (
-      <h2>Not Authorized</h2>
-    )
+    return <h2>Not Authorized</h2>;
   }
 }

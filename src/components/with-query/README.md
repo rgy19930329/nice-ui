@@ -23,7 +23,7 @@ export default class User extends React.Component {
       <Section title="测试 withQuery">
         <Label title={title} value={value} />
       </Section>
-    )
+    );
   }
 }
 ```

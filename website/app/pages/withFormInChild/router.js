@@ -6,4 +6,4 @@ export default [
     name: "withFormInChild",
     component: HocAsync(() => import("./index")),
   },
-]
+];

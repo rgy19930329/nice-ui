@@ -15,7 +15,7 @@ req.keys().forEach((mod) => {
   }
   if (v.constructor === Array) {
     routes.push(...v);
-    v.forEach(item => {
+    v.forEach((item) => {
       paths.push(item.path);
     });
   } else {

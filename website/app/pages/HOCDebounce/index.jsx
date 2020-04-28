@@ -11,7 +11,6 @@ import { HocDebounce, Section } from "ky-nice-ui";
 const DebounceInput = HocDebounce(Input);
 
 export default class HocDebouncePreview extends PureComponent {
-
   state = {
     value: "",
   };
@@ -32,11 +31,9 @@ export default class HocDebouncePreview extends PureComponent {
             }}
             debounceTime={1000}
           />
-          <div style={{ padding: "5px 0 5px 12px" }}>
-            {this.state.value}
-          </div>
+          <div style={{ padding: "5px 0 5px 12px" }}>{this.state.value}</div>
         </Section>
       </React.Fragment>
-    )
+    );
   }
 }

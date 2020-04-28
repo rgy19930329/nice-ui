@@ -8,7 +8,6 @@ import React, { PureComponent } from "react";
 import { RTabs, Section } from "ky-nice-ui";
 
 export default class RTabsPreview extends PureComponent {
-
   render() {
     return (
       <React.Fragment>
@@ -21,17 +20,17 @@ export default class RTabsPreview extends PureComponent {
               {
                 tab: "原生表单",
                 key: "1",
-                content: <div>原生表单</div>
+                content: <div>原生表单</div>,
               },
               {
                 tab: "配置表单",
                 key: "2",
-                content: <div>配置表单</div>
-              }
+                content: <div>配置表单</div>,
+              },
             ]}
           />
         </Section>
       </React.Fragment>
-    )
+    );
   }
 }

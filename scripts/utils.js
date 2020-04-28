@@ -2,38 +2,41 @@ const fs = require("fs");
 
 /**
  * @desc 驼峰命名转中划线
- * @param {String} name 
+ * @param {String} name
  * @return {String}
  */
 const camel2line = (name) => {
-  return name.replace(/([A-Z])/g, "-$1").replace(/^-/, "").toLowerCase();
-}
+  return name
+    .replace(/([A-Z])/g, "-$1")
+    .replace(/^-/, "")
+    .toLowerCase();
+};
 
 /**
  * @desc 转驼峰命名
- * @param {String} name 
+ * @param {String} name
  * @return {String}
  */
 const line2camel = (name) => {
   return name.replace(/[-_](\w)/, function (all, $1) {
     return $1.toUpperCase();
   });
-}
+};
 
 /**
  * @desc 首字母大写
- * @param {String} name 
+ * @param {String} name
  * @return {String}
  */
 const firstLetterUpper = (name) => {
   return name.replace(/^\w/, function (all) {
     return all.toUpperCase();
   });
-}
+};
 
 /**
  * 删除整个文件夹及其下属文件
- * @param {*} path 
+ * @param {*} path
  */
 const delDir = (path) => {
   let files = [];
@@ -49,12 +52,12 @@ const delDir = (path) => {
     });
     fs.rmdirSync(path);
   }
-}
+};
 
 /**
  * 遍历文件夹
- * @param {*} path 
- * @param {*} callback 
+ * @param {*} path
+ * @param {*} callback
  */
 const traceDir = (path, { dirCallback, fileCallback }) => {
   let files = [];
@@ -70,7 +73,7 @@ const traceDir = (path, { dirCallback, fileCallback }) => {
       }
     });
   }
-}
+};
 
 exports.camel2line = camel2line;
 exports.line2camel = line2camel;

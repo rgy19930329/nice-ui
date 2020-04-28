@@ -6,4 +6,4 @@ export default [
     name: "withQuery",
     component: HocAsync(() => import("./index")),
   },
-]
+];

@@ -5,7 +5,7 @@
  */
 
 import React, { PureComponent } from "react";
-import { message, Input, InputNumber, DatePicker, Modal, Button, } from "antd";
+import { message, Input, InputNumber, DatePicker, Modal, Button } from "antd";
 import { ListPage, EnumSelect } from "ky-nice-ui";
 import { fetch } from "ky-nice-utils";
 
@@ -13,23 +13,18 @@ const { RangePicker } = DatePicker;
 const { get, post } = fetch;
 
 export default class ListPagePreview extends PureComponent {
-
   createSearchs = () => {
     return [
       [
         {
           label: "流水号",
           fname: "bid",
-          field: (
-            <Input />
-          ),
+          field: <Input />,
         },
         {
           label: "年龄",
           fname: "age",
-          field: (
-            <InputNumber style={{ width: "100%" }} />
-          ),
+          field: <InputNumber style={{ width: "100%" }} />,
         },
         {
           label: "部门",
@@ -37,24 +32,16 @@ export default class ListPagePreview extends PureComponent {
           field: (
             <EnumSelect
               placeholder="请选择"
-              list={[
-                "研发部",
-                "市场部",
-                "客服部",
-                "公关部",
-                "办公室"
-              ]}
+              list={["研发部", "市场部", "客服部", "公关部", "办公室"]}
             />
-          )
-        }
+          ),
+        },
       ],
       [
         {
           label: "创建时间",
           fname: "duringDate",
-          field: (
-            <RangePicker />
-          )
+          field: <RangePicker />,
         },
         {
           label: "状态",
@@ -62,24 +49,19 @@ export default class ListPagePreview extends PureComponent {
           field: (
             <EnumSelect
               placeholder="请选择"
-              list={[
-                "草稿",
-                "代审",
-                "驳回",
-                "办结"
-              ]}
+              list={["草稿", "代审", "驳回", "办结"]}
             />
-          )
-        }
-      ]
-    ]
-  }
+          ),
+        },
+      ],
+    ];
+  };
 
   columns = [
     {
       title: "序号",
       dataIndex: "$no",
-      render: (text, record, index) => <div>{index + 1}</div>
+      render: (text, record, index) => <div>{index + 1}</div>,
     },
     {
       title: "姓名",
@@ -104,23 +86,23 @@ export default class ListPagePreview extends PureComponent {
     {
       title: "操作",
       dataIndex: "bid",
-      render: (text) => <a onClick={() => this.onDelete(text)}>删除</a>
-    }
-  ]
+      render: (text) => <a onClick={() => this.onDelete(text)}>删除</a>,
+    },
+  ];
 
   createPromise = (params) => {
-    return get("/yapi/list-page", params).then(result => {
+    return get("/yapi/list-page", params).then((result) => {
       if (result.success) {
         const { totalCount, currentPageResult } = result.data;
         return {
           totalCount,
           currentPageResult,
-        }
+        };
       } else {
         message.error(result.resultMessage);
       }
     });
-  }
+  };
 
   onDelete = async (bid) => {
     Modal.confirm({
@@ -134,13 +116,13 @@ export default class ListPagePreview extends PureComponent {
           message.success("操作成功");
           this.listRef.dataLoad();
         }
-      }
+      },
     });
-  }
+  };
 
   onAdd = () => {
     message.info("新增数据");
-  }
+  };
 
   onBatchDelete = () => {
     const { selectedRowKeys } = this.state;
@@ -155,9 +137,9 @@ export default class ListPagePreview extends PureComponent {
           message.success("操作成功");
           this.listRef.dataLoad();
         }
-      }
+      },
     });
-  }
+  };
 
   render() {
     return (
@@ -171,24 +153,28 @@ export default class ListPagePreview extends PureComponent {
           createPromise={this.createPromise}
           searchOptions={{
             resetImmediately: true,
-            defaultRowCount: 1
+            defaultRowCount: 1,
           }}
-          setRef={listRef => this.listRef = listRef}
-          extendButtons={(
+          setRef={(listRef) => (this.listRef = listRef)}
+          extendButtons={
             <React.Fragment>
-              <Button icon="plus-circle" onClick={this.onAdd}>新增</Button>
-              <Button icon="delete" onClick={this.onBatchDelete}>批量删除</Button>
+              <Button icon="plus-circle" onClick={this.onAdd}>
+                新增
+              </Button>
+              <Button icon="delete" onClick={this.onBatchDelete}>
+                批量删除
+              </Button>
             </React.Fragment>
-          )}
+          }
           tableProps={{
             rowSelection: {
               onChange: (selectedRowKeys, selectedRows) => {
                 this.setState({ selectedRowKeys });
-              }
-            }
+              },
+            },
           }}
         />
       </React.Fragment>
-    )
+    );
   }
 }

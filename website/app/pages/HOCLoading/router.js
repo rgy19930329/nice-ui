@@ -6,4 +6,4 @@ export default [
     name: "HocLoading",
     component: HocAsync(() => import("./index")),
   },
-]
+];

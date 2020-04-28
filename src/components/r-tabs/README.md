@@ -27,13 +27,13 @@ import { RTabs } from "ky-nice-ui";
     {
       tab: "原生表单",
       key: "1",
-      content: <div>原生表单</div>
+      content: <div>原生表单</div>,
     },
     {
       tab: "配置表单",
       key: "2",
-      content: <div>配置表单</div>
-    }
+      content: <div>配置表单</div>,
+    },
   ]}
-/>
+/>;
 ```

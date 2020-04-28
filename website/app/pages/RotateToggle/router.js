@@ -6,4 +6,4 @@ export default [
     name: "RotateToggle",
     component: HocAsync(() => import("./index")),
   },
-]
+];

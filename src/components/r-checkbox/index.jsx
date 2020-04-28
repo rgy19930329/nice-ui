@@ -9,21 +9,18 @@ import PropTypes from "prop-types";
 import { Checkbox } from "antd";
 
 export default class RCheckbox extends React.Component {
-
   static propTypes = {
     map: PropTypes.object, // 映射表
-  }
+  };
 
   static defaultProps = {
     map: null,
-  }
+  };
 
   render() {
     const { value, onChange, map, children } = this.props;
     if (!map) {
-      return (
-        <Checkbox {...this.props}>{children}</Checkbox>
-      )
+      return <Checkbox {...this.props}>{children}</Checkbox>;
     }
     return (
       <Checkbox
@@ -42,6 +39,6 @@ export default class RCheckbox extends React.Component {
       >
         {children}
       </Checkbox>
-    )
+    );
   }
 }

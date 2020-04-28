@@ -9,28 +9,28 @@ import React from "react";
 import { Section } from "ky-nice-ui";
 
 const req = require.context("@pages", true, /\.jsx$/);
-const list = req.keys()
-            .filter(item => item.match(/\.\/[^/]+\/[^/]+\.jsx$/))
-            .map(item => item.replace(/^\.\//, "")
-						.replace(/\/[^/]+\.jsx$/, ""))
-						.filter(item => item !== "_Home");
+const list = req
+  .keys()
+  .filter((item) => item.match(/\.\/[^/]+\/[^/]+\.jsx$/))
+  .map((item) => item.replace(/^\.\//, "").replace(/\/[^/]+\.jsx$/, ""))
+  .filter((item) => item !== "_Home");
 
 export default class Home extends React.Component {
-	render() {
-		return (
-			<React.Fragment>
-				<h1>ky-nice-ui 组件库</h1>
+  render() {
+    return (
+      <React.Fragment>
+        <h1>ky-nice-ui 组件库</h1>
 
-				<Section>
-					{list.map(item => {
-						return (
-							<div key={item}>
-								<a href={`#/${item}`}>{item}</a>
-							</div>
-						)
-					})}
-				</Section>
-			</React.Fragment>
-		)
-	}
+        <Section>
+          {list.map((item) => {
+            return (
+              <div key={item}>
+                <a href={`#/${item}`}>{item}</a>
+              </div>
+            );
+          })}
+        </Section>
+      </React.Fragment>
+    );
+  }
 }

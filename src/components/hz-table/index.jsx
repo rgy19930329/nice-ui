@@ -16,16 +16,14 @@ import DefaultSearchBar from "./mod/SearchBar/index.jsx";
 import Ellipsis from "./mod/Ellipsis/index.jsx";
 import ValidateWrapper from "./mod/ValidateWrapper/index.jsx";
 import { fixEmptyCell, condition } from "./utils";
-import { 
-  EMPTY_CELL, 
+import {
+  EMPTY_CELL,
   OPERATE_SPAN,
   VALIDATE_TIPS_TYPE_NORMAL,
   VALIDATE_TIPS_TYPE_POPOVER,
 } from "./constant";
 
-@Form.create()
-export default class HzTable extends React.Component {
-
+class HzTable extends React.Component {
   static propTypes = {
     rowKey: PropTypes.string, // Table 组件的rowKey属性
     columns: PropTypes.array, // 列模式（数据结构：[{ title, dataIndex }, ...]）
@@ -39,29 +37,32 @@ export default class HzTable extends React.Component {
     handleBarOptions: PropTypes.object, // 定义操作栏元素（普通对象，详情见 README.md）与 HandleBar 属性，二者配置一个即可
     searchBarOptions: PropTypes.object, // 定义筛选栏元素（普通对象，详情见 README.md）与 SearchBar 属性，二者配置一个即可
     ValidateWrapper: PropTypes.func, // 自定义表单提示组件（React 对象，详情见 README.md）
-  }
+  };
 
   static defaultProps = {
     rowKey: "id",
     columns: [],
-    createPromise: () => new Promise(resolve => resolve({
-      totalCount: 0,
-      currentPageResult: [],
-    })),
+    createPromise: () =>
+      new Promise((resolve) =>
+        resolve({
+          totalCount: 0,
+          currentPageResult: [],
+        })
+      ),
     antdProps: {},
     pagination: {},
     hasSerialNo: false,
     defaultOperate: null,
-  }
+  };
 
   static childContextTypes = {
     form: PropTypes.object,
-  }
+  };
 
   getChildContext() {
     return {
       form: this.props.form,
-    }
+    };
   }
 
   constructor(props) {
@@ -72,25 +73,29 @@ export default class HzTable extends React.Component {
       loaded: false,
       editRow: -1, // 正在编辑的行，-1 表示没有正在编辑的行
       columns: [],
-    }
+    };
 
     props.setRef && props.setRef(this);
 
-    this.pagination = Object.assign({
-      total: 0,
-      current: 1,
-      pageSize: 10,
-      showSizeChanger: true,
-      showQuickJumper: true,
-      showTotal: (total, range) => `共${total}条`,
-    }, props.pagination);
+    this.pagination = Object.assign(
+      {
+        total: 0,
+        current: 1,
+        pageSize: 10,
+        showSizeChanger: true,
+        showQuickJumper: true,
+        showTotal: (total, range) => `共${total}条`,
+      },
+      props.pagination
+    );
 
     // 列表查询参数
     this.query = {};
     // 唯一id
     this.uniqueId = `id-${Date.now()}`;
     // 是否含有操作列
-    this.hasOperateColumn = props.columns.filter(item => condition(item)).length > 0;
+    this.hasOperateColumn =
+      props.columns.filter((item) => condition(item)).length > 0;
   }
 
   componentDidMount() {
@@ -111,21 +116,21 @@ export default class HzTable extends React.Component {
       data = {
         totalCount: 0,
         currentPageResult: [],
-      }
+      };
     }
     this.pagination.total = data.totalCount || 0;
     this.setState({
       dataSource: data.currentPageResult,
       loaded: true,
     });
-  }
+  };
 
   /**
    * 列表数据更新
    */
   updateList = (dataSource) => {
     this.setState({ dataSource });
-  }
+  };
 
   /**
    * 组装查询参数
@@ -136,14 +141,14 @@ export default class HzTable extends React.Component {
       pageIndex,
       pageSize,
     });
-  }
+  };
 
   /**
    * 更新查询条件
    */
   updateQuery = (query) => {
     Object.assign(this.query, query);
-  }
+  };
 
   /**
    * 组装表格列模式
@@ -151,9 +156,7 @@ export default class HzTable extends React.Component {
   fixColumns = () => {
     const {
       form,
-      form: {
-        getFieldDecorator,
-      },
+      form: { getFieldDecorator },
       ValidateWrapper,
     } = this.props;
 
@@ -164,7 +167,7 @@ export default class HzTable extends React.Component {
       if (!item.render) {
         item.render = (text) => {
           return fixEmptyCell(text);
-        }
+        };
       }
       if (this.state.editRow >= 0) {
         if (item.createEditComp) {
@@ -174,25 +177,28 @@ export default class HzTable extends React.Component {
           item.render = (text, record, index) => {
             if (index === this.state.editRow) {
               const renderMap = {
-                "function": () => {
+                function: () => {
                   return (
                     <FormTips>
                       {item.createEditComp({ text, record, index }, form)}
                     </FormTips>
-                  )
+                  );
                 },
-                "object": () => {
+                object: () => {
                   let { component, antdProps, options } = item.createEditComp;
                   component = this.renderEditCell(component, antdProps);
-                  options = Object.assign({
-                    initialValue: text,
-                  }, options);
+                  options = Object.assign(
+                    {
+                      initialValue: text,
+                    },
+                    options
+                  );
 
                   return (
                     <FormTips>
                       {getFieldDecorator(item.dataIndex, options)(component)}
                     </FormTips>
-                  )
+                  );
                 },
               };
               const type = typeof item.createEditComp;
@@ -208,13 +214,13 @@ export default class HzTable extends React.Component {
             }
 
             return fixEmptyCell(text);
-          }
+          };
         }
       } else {
         if (item.createNormalComp) {
           item.render = (text, record, index) => {
             return fixEmptyCell(item.createNormalComp(record));
-          }
+          };
         }
       }
       return item;
@@ -226,7 +232,7 @@ export default class HzTable extends React.Component {
         title: "序号",
         dataIndex: "$no",
         width: 40,
-        render: (text, record, index) => <div>{index + 1}</div>
+        render: (text, record, index) => <div>{index + 1}</div>,
       });
     }
 
@@ -234,7 +240,7 @@ export default class HzTable extends React.Component {
     if (this.props.defaultOperate) {
       // 已有、合并
       if (this.hasOperateColumn) {
-        columns = columns.map(item => {
+        columns = columns.map((item) => {
           if (condition(item)) {
             item.render = (text, record, index) => {
               return (
@@ -242,12 +248,12 @@ export default class HzTable extends React.Component {
                   {this.renderOperateButtons(text, record, index)}
                   {item.extendRender && item.extendRender(text, record, index)}
                 </React.Fragment>
-              )
-            }
+              );
+            };
           }
           return item;
         });
-      } 
+      }
       // 没有、创建
       else {
         columns.push({
@@ -255,13 +261,13 @@ export default class HzTable extends React.Component {
           dataIndex: this.uniqueId,
           render: (text, record, index) => {
             return this.renderOperateButtons(text, record, index);
-          }
+          },
         });
       }
     }
 
     this.setState({ columns });
-  }
+  };
 
   /**
    * 渲染操作列按钮
@@ -271,32 +277,43 @@ export default class HzTable extends React.Component {
     const commonProps = {
       style: {
         marginRight: OPERATE_SPAN,
-      }
-    }
+      },
+    };
 
-    // 编辑状态 
+    // 编辑状态
     if (this.state.editRow === index) {
       return (
         <React.Fragment>
-          <a onClick={() => this.onSave(record, updateFunc)} {...commonProps}>保存</a>
-          <a onClick={() => this.onCancel(index)} {...commonProps}>取消</a>
+          <a onClick={() => this.onSave(record, updateFunc)} {...commonProps}>
+            保存
+          </a>
+          <a onClick={() => this.onCancel(index)} {...commonProps}>
+            取消
+          </a>
         </React.Fragment>
-      )
+      );
     }
     // 非编辑状态
     else {
       return (
         <React.Fragment>
           {updateFunc && (
-            <a onClick={() => this.onEdit(index)} {...commonProps}>编辑</a>
+            <a onClick={() => this.onEdit(index)} {...commonProps}>
+              编辑
+            </a>
           )}
           {deleteFunc && (
-            <a onClick={() => this.onDelete(record, deleteFunc)} {...commonProps}>删除</a>
+            <a
+              onClick={() => this.onDelete(record, deleteFunc)}
+              {...commonProps}
+            >
+              删除
+            </a>
           )}
         </React.Fragment>
-      )
+      );
     }
-  }
+  };
 
   /**
    * 根据类型渲染可编辑表格
@@ -325,27 +342,27 @@ export default class HzTable extends React.Component {
     } else {
       return component;
     }
-  }
+  };
 
   makeEditRow = (editRow) => {
     this.setState({ editRow }, () => {
       this.fixColumns();
     });
-  }
+  };
 
   makeNormalRow = (editRow) => {
     this.setState({ editRow: -1 }, () => {
       this.fixColumns();
     });
-  }
+  };
 
   onEdit = (index) => {
     this.makeEditRow(index);
-  }
+  };
 
   onCancel = (index) => {
     this.makeNormalRow(index);
-  }
+  };
 
   onDelete = (record, deleteFunc) => {
     Modal.confirm({
@@ -356,9 +373,9 @@ export default class HzTable extends React.Component {
         if (result && result.success) {
           this.dataLoad();
         }
-      }
+      },
     });
-  }
+  };
 
   onSave = (record, updateFunc) => {
     this.props.form.validateFieldsAndScroll(async (error, values) => {
@@ -374,7 +391,7 @@ export default class HzTable extends React.Component {
         this.dataLoad();
       }
     });
-  }
+  };
 
   static HandleBar = DefaultHandleBar;
 
@@ -419,24 +436,30 @@ export default class HzTable extends React.Component {
         this.pagination.current = current;
         this.pagination.pageSize = pageSize;
         this.dataLoad();
-      }
-    }
+      },
+    };
 
     return (
       <React.Fragment>
         {HandleBar && <HandleBar listRef={this} />}
-        {handleBarOptions && <DefaultHandleBar options={handleBarOptions} listRef={this} />}
+        {handleBarOptions && (
+          <DefaultHandleBar options={handleBarOptions} listRef={this} />
+        )}
         {SearchBar && <SearchBar listRef={this} />}
-        {searchBarOptions && <DefaultSearchBar options={searchBarOptions} listRef={this} />}
+        {searchBarOptions && (
+          <DefaultSearchBar options={searchBarOptions} listRef={this} />
+        )}
         <div
           className={classNames({
             ["comp-hz-table-wrapper"]: true,
-            [className]: !!className
+            [className]: !!className,
           })}
         >
           <Table {...props} />
         </div>
       </React.Fragment>
-    )
+    );
   }
 }
+
+export default Form.create()(HzTable);

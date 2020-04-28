@@ -6,5 +6,5 @@ module.exports = {
   "/sug": {
     target: "https://suggest.taobao.com",
     changeOrigin: true,
-  }
-}
+  },
+};

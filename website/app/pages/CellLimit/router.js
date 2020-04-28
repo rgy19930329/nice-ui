@@ -5,5 +5,5 @@ export default [
     path: "/CellLimit",
     name: "CellLimit",
     component: HocAsync(() => import("./index")),
-  }
-]
+  },
+];

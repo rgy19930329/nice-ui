@@ -2,7 +2,7 @@
 
 ## 功能描述
 
-高阶组件 - 为组件添加数据加载Loading效果
+高阶组件 - 为组件添加数据加载 Loading 效果
 
 ## 参数说明
 
@@ -17,7 +17,6 @@ import { HocLoading } from "ky-nice-ui";
 
 @HocLoading()
 export default class EnumRadio extends React.Component {
-
   state = {
     loaded: false,
   };
@@ -29,7 +28,7 @@ export default class EnumRadio extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const { createPromise } = nextProps;
-    if(this.props.promiseCondition !== nextProps.promiseCondition) {
+    if (this.props.promiseCondition !== nextProps.promiseCondition) {
       createPromise && this.load(createPromise());
     }
   }
@@ -41,7 +40,7 @@ export default class EnumRadio extends React.Component {
       this.setState({ list });
     }
     this.setState({ loaded: true });
-  }
+  };
 }
 //
 import HocLoading from "ky-nice-ui";

@@ -25,18 +25,13 @@ marked.setOptions({
   smartypants: false,
   highlight: function (code) {
     return hljs.highlightAuto(code).value;
-  }
+  },
 });
 
 export default class MarkDown extends React.Component {
+  static propTypes = {};
 
-  static propTypes = {
-    
-  }
-
-  static defaultProps = {
-    
-  }
+  static defaultProps = {};
 
   render() {
     const { className, children = "" } = this.props;
@@ -45,11 +40,10 @@ export default class MarkDown extends React.Component {
         className={classNames({
           ["comp-mark-down-wrapper"]: true,
           ["markdown-body"]: true,
-          [className]: !!className
+          [className]: !!className,
         })}
         dangerouslySetInnerHTML={{ __html: marked(children) }}
-      >
-      </div>
-    )
+      ></div>
+    );
   }
 }

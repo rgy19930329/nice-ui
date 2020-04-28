@@ -14,8 +14,7 @@ import withFormInChild from "../with-form-in-child/index.jsx";
 
 @Form.create()
 @withFormInChild
-export default class ListPage extends React.Component {
-
+class ListPage extends React.Component {
   static propTypes = {
     rowKey: PropTypes.string, // Table 组件的rowKey属性
     columns: PropTypes.array, // 列模式（数据结构：[{ title, dataIndex }, ...]）
@@ -24,17 +23,20 @@ export default class ListPage extends React.Component {
     searchOptions: PropTypes.object, // SearchWrapper 组件的相关属性
     tableProps: PropTypes.object, // Table 组件的相关属性
     extendButtons: PropTypes.node, // 附加操作区按钮定制
-  }
+  };
 
   static defaultProps = {
     rowKey: "id",
     columns: [],
-    createPromise: () => new Promise(resolve => resolve({
-      totalCount: 0,
-      currentPageResult: [],
-    })),
+    createPromise: () =>
+      new Promise((resolve) =>
+        resolve({
+          totalCount: 0,
+          currentPageResult: [],
+        })
+      ),
     searchOptions: {},
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -42,7 +44,7 @@ export default class ListPage extends React.Component {
     this.state = {
       dataSource: [],
       loaded: false,
-    }
+    };
 
     props.setRef && props.setRef(this);
 
@@ -53,9 +55,9 @@ export default class ListPage extends React.Component {
       showSizeChanger: true,
       showQuickJumper: true,
       showTotal: (total, range) => `共${total}条`,
-    }
+    };
 
-    let columns = props.columns.map(item => {
+    let columns = props.columns.map((item) => {
       item.key = item.dataIndex;
       return item;
     });
@@ -76,14 +78,14 @@ export default class ListPage extends React.Component {
       data = {
         totalCount: 0,
         currentPageResult: [],
-      }
+      };
     }
     this.pagination.total = data.totalCount || 0;
     this.setState({
       dataSource: data.currentPageResult,
       loaded: true,
     });
-  }
+  };
 
   fixQueryParams = () => {
     let query = this.props.form.getFieldsValue();
@@ -92,15 +94,15 @@ export default class ListPage extends React.Component {
       pageNumber,
       pageSize,
     });
-  }
+  };
 
   computeSpan = (list) => {
-    let max = Math.max(...list.map(row => row.length));
+    let max = Math.max(...list.map((row) => row.length));
     if (max == -Infinity) {
       return 8;
     }
     return 24 / max;
-  }
+  };
 
   renderSearchBar = () => {
     const { createSearchs, form, searchOptions } = this.props;
@@ -114,10 +116,10 @@ export default class ListPage extends React.Component {
       <SearchWrapper
         {...searchOptions}
         onSearch={this.dataLoad}
-        setRef={swRef => this.swRef = swRef}
+        setRef={(swRef) => (this.swRef = swRef)}
       >
-        {
-          list && list.map((row, rIdx) => {
+        {list &&
+          list.map((row, rIdx) => {
             return (
               <Row key={rIdx}>
                 {row.map((col, cIdx) => {
@@ -125,24 +127,34 @@ export default class ListPage extends React.Component {
                     <Col span={span} key={cIdx}>
                       <Form.Item label={col.label}>
                         {form.getFieldDecorator(col.fname)(
-                          ["Input"].includes(col.field.type.name)
-                            ? <Input {...col.field.props} onPressEnter={this.swRef && this.swRef.onSearch} />
-                            : col.field
+                          ["Input"].includes(col.field.type.name) ? (
+                            <Input
+                              {...col.field.props}
+                              onPressEnter={this.swRef && this.swRef.onSearch}
+                            />
+                          ) : (
+                            col.field
+                          )
                         )}
                       </Form.Item>
                     </Col>
-                  )
+                  );
                 })}
               </Row>
-            )
-          })
-        }
+            );
+          })}
       </SearchWrapper>
-    )
-  }
+    );
+  };
 
   render() {
-    const { className, rowKey, tableProps, createSearchs, extendButtons } = this.props;
+    const {
+      className,
+      rowKey,
+      tableProps,
+      createSearchs,
+      extendButtons,
+    } = this.props;
 
     let props = {
       bordered: true,
@@ -158,28 +170,26 @@ export default class ListPage extends React.Component {
         this.pagination.current = current;
         this.pagination.pageSize = pageSize;
         this.dataLoad();
-      }
-    }
+      },
+    };
 
     return (
       <div
         className={classNames({
           ["comp-list-page-wrapper"]: true,
-          [className]: !!className
+          [className]: !!className,
         })}
       >
         {createSearchs && (
-          <div className="list-search-bar">
-            {this.renderSearchBar()}
-          </div>
+          <div className="list-search-bar">{this.renderSearchBar()}</div>
         )}
         {extendButtons && (
-          <div className="list-extend-buttons">
-            {extendButtons}
-          </div>
+          <div className="list-extend-buttons">{extendButtons}</div>
         )}
         <Table {...props} />
       </div>
-    )
+    );
   }
 }
+
+export default ListPage;

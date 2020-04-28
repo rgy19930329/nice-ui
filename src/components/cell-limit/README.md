@@ -21,5 +21,5 @@ static defaultProps = {
 ```javascript
 import { CellLimit } from "ky-nice-ui";
 
-<CellLimit>xxxxxxxxxxx</CellLimit>
+<CellLimit>xxxxxxxxxxx</CellLimit>;
 ```

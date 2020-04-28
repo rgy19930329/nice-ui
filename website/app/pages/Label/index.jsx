@@ -8,7 +8,6 @@ import React, { PureComponent } from "react";
 import { Label, Section } from "ky-nice-ui";
 
 export default class LabelPreview extends PureComponent {
-
   render() {
     return (
       <React.Fragment>
@@ -18,6 +17,6 @@ export default class LabelPreview extends PureComponent {
           <Label title="title" value="ranguangyu" />
         </Section>
       </React.Fragment>
-    )
+    );
   }
 }

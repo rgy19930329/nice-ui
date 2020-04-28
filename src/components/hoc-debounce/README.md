@@ -9,7 +9,7 @@
 ```javascript
 static propTypes = {
   onChange: PropTypes.func,
-  debounceTime: PropTypes.number, // 防抖时间（单位：ms） 
+  debounceTime: PropTypes.number, // 防抖时间（单位：ms）
 }
 
 static defaultProps = {
@@ -27,7 +27,7 @@ import { HocDebounce } from "ky-nice-ui";
 const DebounceInput = HocDebounce(Input);
 
 <DebounceInput
-  style={{width: 300}}
+  style={{ width: 300 }}
   placeholder="请输入关键字进行搜索"
   value={this.state.value}
   onChange={(value) => {
@@ -35,5 +35,5 @@ const DebounceInput = HocDebounce(Input);
     this.setState({ value });
   }}
   debounceTime={1000}
-/>
+/>;
 ```

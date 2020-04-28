@@ -8,11 +8,11 @@
 
 ```javascript
 static propTypes = {
-  
+
 }
 
 static defaultProps = {
-  
+
 }
 ```
 
@@ -22,6 +22,6 @@ static defaultProps = {
 import { HzTable } from "ky-nice-ui";
 
 <HzTable
-  // props
-/>
+// props
+/>;
 ```

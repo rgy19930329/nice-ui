@@ -6,4 +6,4 @@ export default [
     name: "RichText",
     component: HocAsync(() => import("./index")),
   },
-]
+];

@@ -10,14 +10,13 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 
 export default class PureField extends React.Component {
-
   static propTypes = {
     transform: PropTypes.func,
-  }
+  };
 
   static defaultProps = {
     transform: null,
-  }
+  };
 
   render() {
     const { className, value, transform } = this.props;
@@ -25,11 +24,11 @@ export default class PureField extends React.Component {
       <div
         className={classNames({
           ["comp-pure-field-wrapper"]: true,
-          [className]: !!className
+          [className]: !!className,
         })}
       >
         {transform ? transform(value) : value}
       </div>
-    )
+    );
   }
 }
