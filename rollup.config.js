@@ -66,7 +66,8 @@ export default [
       "antd", 
       "lodash", 
       "prop-types", 
-      "classnames"
+      "classnames",
+      "stream",
     ],
   },
 ];

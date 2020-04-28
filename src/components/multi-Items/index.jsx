@@ -64,9 +64,9 @@ export default class MultiItems extends React.Component {
       <div
         style={style}
         className={classNames({
-          ["comp-multi-items-wrapper"]: true,
+          ["nice-multi-items-wrapper"]: true,
           [className]: !!className,
-          ["comp-read-only"]: readOnly,
+          ["nice-read-only"]: readOnly,
         })}
         onClick={() => {
           if (!readOnly) {

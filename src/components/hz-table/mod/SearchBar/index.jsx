@@ -53,7 +53,7 @@ class SearchBar extends PureComponent {
 
   render() {
     return (
-      <div className="comp-search-bar-wrapper">
+      <div className="nice-search-bar-wrapper">
         <div className="search-bar-buttons">
           <Button type="primary" onClick={this.onSubmit}>
             查询

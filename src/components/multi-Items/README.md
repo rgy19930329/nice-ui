@@ -86,7 +86,7 @@ render() {
   const { value, onChange } = this.props;
 
   return (
-    <div className="comp-user-select-wrapper">
+    <div className="nice-user-select-wrapper">
       <MultiItems
         value={value}
         onChange={onChange}

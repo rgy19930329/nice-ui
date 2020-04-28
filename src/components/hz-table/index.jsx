@@ -451,7 +451,7 @@ class HzTable extends React.Component {
         )}
         <div
           className={classNames({
-            ["comp-hz-table-wrapper"]: true,
+            ["nice-hz-table-wrapper"]: true,
             [className]: !!className,
           })}
         >

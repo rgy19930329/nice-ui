@@ -64,7 +64,7 @@ class FormTable extends React.Component {
     return (
       <table
         className={classNames({
-          ["comp-form-table-wrapper"]: true,
+          ["nice-form-table-wrapper"]: true,
           [className]: !!className,
         })}
       >

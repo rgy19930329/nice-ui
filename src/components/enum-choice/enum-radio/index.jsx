@@ -73,8 +73,8 @@ class EnumRadio extends React.Component {
 
     const { className } = this.props;
     const cls = classNames({
-      ["comp-enum-choice-wrapper"]: true,
-      ["comp-enum-radio-wrapper"]: true,
+      ["nice-enum-choice-wrapper"]: true,
+      ["nice-enum-radio-wrapper"]: true,
       [className]: className,
     });
 

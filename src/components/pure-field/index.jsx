@@ -23,7 +23,7 @@ export default class PureField extends React.Component {
     return (
       <div
         className={classNames({
-          ["comp-pure-field-wrapper"]: true,
+          ["nice-pure-field-wrapper"]: true,
           [className]: !!className,
         })}
       >

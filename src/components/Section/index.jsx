@@ -26,14 +26,14 @@ export default class Section extends React.Component {
     return (
       <div
         className={classNames({
-          ["comp-section-wrapper"]: true,
-          ["comp-section-wapper-border"]: hasBorder,
+          ["nice-section-wrapper"]: true,
+          ["nice-section-wapper-border"]: hasBorder,
           [className]: !!className,
         })}
       >
         {title && (
-          <div className="comp-section-title">
-            <div className="comp-section-left-title">
+          <div className="nice-section-title">
+            <div className="nice-section-left-title">
               {typeof title === "string" ? <h3>{title}</h3> : title}
             </div>
             {titleSlot && <div className="title-slot">{titleSlot}</div>}

@@ -268,7 +268,7 @@ class EditTable extends React.Component {
     return (
       <div
         className={classNames({
-          ["comp-edit-table-wrapper"]: true,
+          ["nice-edit-table-wrapper"]: true,
           [className]: !!className,
         })}
       >

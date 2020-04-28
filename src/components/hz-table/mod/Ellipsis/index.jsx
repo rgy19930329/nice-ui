@@ -19,7 +19,7 @@ export default class Ellipsis extends PureComponent {
       <Tooltip title={children}>
         <span
           className={classNames({
-            ["comp-ellipsis-wrapper"]: true,
+            ["nice-ellipsis-wrapper"]: true,
             [className]: className,
           })}
           style={style}

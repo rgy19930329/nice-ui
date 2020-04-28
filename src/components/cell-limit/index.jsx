@@ -38,7 +38,7 @@ export default class CellLimit extends React.Component {
   render() {
     const { children, width, className } = this.props;
     const cls = classNames({
-      ["comp-cell-limit-wrapper"]: true,
+      ["nice-cell-limit-wrapper"]: true,
       [className]: className,
     });
     return (

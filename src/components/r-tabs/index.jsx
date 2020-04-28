@@ -25,7 +25,7 @@ export default class RTabs extends React.Component {
     return (
       <div
         className={classNames({
-          ["comp-tabs-wrapper"]: true,
+          ["nice-tabs-wrapper"]: true,
           [className]: !!className,
         })}
       >

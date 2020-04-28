@@ -129,7 +129,7 @@ export default class HandleBar extends PureComponent {
     }
 
     return (
-      <div className="comp-handle-bar-wrapper">
+      <div className="nice-handle-bar-wrapper">
         <div className="handle-bar-search">{this.renderSearch()}</div>
         <div className="handle-bar-elements">{this.renderElements()}</div>
       </div>

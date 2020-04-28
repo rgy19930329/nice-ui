@@ -33,7 +33,7 @@ export default class InlineList extends React.Component {
     return (
       <div
         className={classNames({
-          ["comp-inline-list-wrapper"]: true,
+          ["nice-inline-list-wrapper"]: true,
           [className]: !!className,
         })}
       >

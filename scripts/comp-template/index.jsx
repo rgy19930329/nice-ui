@@ -8,7 +8,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-import { HZ_CSS_PREFIX } from "./constant";
+import { HZ_CSS_PREFIX } from "../constant";
 
 export default class {{componentName}} extends PureComponent {
 

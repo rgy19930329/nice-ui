@@ -173,7 +173,7 @@ export default class SearchWrapper extends React.Component {
     return (
       <div
         className={classNames({
-          ["comp-search-wrapper"]: true,
+          ["nice-search-wrapper"]: true,
           [className]: !!className,
         })}
       >

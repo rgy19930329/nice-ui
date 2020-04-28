@@ -202,7 +202,7 @@ export default class EnumSelect extends React.Component {
     });
     this.fixSearchProps();
     const cls = classNames({
-      ["comp-enum-select-wrapper"]: true,
+      ["nice-enum-select-wrapper"]: true,
       [className]: !!className,
     });
     const props = {

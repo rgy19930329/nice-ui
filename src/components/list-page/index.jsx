@@ -176,7 +176,7 @@ class ListPage extends React.Component {
     return (
       <div
         className={classNames({
-          ["comp-list-page-wrapper"]: true,
+          ["nice-list-page-wrapper"]: true,
           [className]: !!className,
         })}
       >

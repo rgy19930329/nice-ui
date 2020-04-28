@@ -38,7 +38,7 @@ export default class MarkDown extends React.Component {
     return (
       <div
         className={classNames({
-          ["comp-mark-down-wrapper"]: true,
+          ["nice-mark-down-wrapper"]: true,
           ["markdown-body"]: true,
           [className]: !!className,
         })}

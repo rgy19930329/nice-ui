@@ -148,7 +148,7 @@ export default class RUpload extends React.Component {
       <div
         style={style}
         className={classNames({
-          ["comp-r-upload-wrapper"]: true,
+          ["nice-r-upload-wrapper"]: true,
           [className]: !!className,
         })}
       >

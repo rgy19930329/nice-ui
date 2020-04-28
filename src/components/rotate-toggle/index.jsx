@@ -26,7 +26,7 @@ export default class RotateToggle extends React.Component {
     return (
       <div
         className={classNames({
-          ["comp-rotate-toggle-wrapper"]: true,
+          ["nice-rotate-toggle-wrapper"]: true,
           [className]: !!className,
         })}
         style={{ transform: `rotate(${deg}deg)` }}

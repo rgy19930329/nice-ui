@@ -11,7 +11,7 @@
     "watch": "rollup --config rollup.config.js --watch",
     "website": "cd website && npm start",
     "prepublish": "npm run build",
-    "prettier": "prettier --write ./src/**/*.{js,jsx,ts,md,json}"
+    "prettier": "prettier --write **/*.{js,jsx,ts,md,json}"
   },
   "husky": {
     "hooks": {
@@ -19,7 +19,7 @@
     }
   },
   "lint-staged": {
-    "**/*.{js,jsx}": ["eslint --fix", "prettier --write"]
+    "{src,website}/**/*.{js,jsx}": ["eslint --fix", "prettier --write"]
   },
   "author": "rgy",
   "license": "ISC",

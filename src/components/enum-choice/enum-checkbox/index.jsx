@@ -73,8 +73,8 @@ class EnumCheckbox extends React.Component {
 
     const { className } = this.props;
     const cls = classNames({
-      ["comp-enum-choice-wrapper"]: true,
-      ["comp-enum-checkbox-wrapper"]: true,
+      ["nice-enum-choice-wrapper"]: true,
+      ["nice-enum-checkbox-wrapper"]: true,
       [className]: className,
     });
 
