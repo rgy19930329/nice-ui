@@ -10,7 +10,17 @@
     "build": "rollup --config rollup.config.js",
     "watch": "rollup --config rollup.config.js --watch",
     "website": "cd website && npm start",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "lint": "lint-staged"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "lint-staged": {
+    "**/*.js": "eslint --ext .js",
+    "**/*.jsx": "eslint --ext .jsx"
   },
   "author": "rgy",
   "license": "ISC",
