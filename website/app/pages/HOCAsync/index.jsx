@@ -6,7 +6,7 @@
 
 import React, { PureComponent } from "react";
 
-import { HocAsync, Section } from "ky-nice-ui";
+import { HocAsync, Section } from "anice-ui";
 
 export default class HocAsyncPreview extends PureComponent {
   render() {

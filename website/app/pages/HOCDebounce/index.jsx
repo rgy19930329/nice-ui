@@ -6,7 +6,7 @@
 
 import React, { PureComponent } from "react";
 import { Input } from "antd";
-import { HocDebounce, Section } from "ky-nice-ui";
+import { HocDebounce, Section } from "anice-ui";
 
 const DebounceInput = HocDebounce(Input);
 

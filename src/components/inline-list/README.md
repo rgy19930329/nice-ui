@@ -29,7 +29,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import { InlineList } from "ky-nice-ui";
+import { InlineList } from "anice-ui";
 
 <InlineList
   list={["发文", "收文-会议", "收文-案件"]}

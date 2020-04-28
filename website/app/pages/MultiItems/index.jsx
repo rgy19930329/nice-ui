@@ -6,7 +6,7 @@
 
 import React, { PureComponent } from "react";
 import { Form, Input } from "antd";
-import { MultiItems, Section } from "ky-nice-ui";
+import { MultiItems, Section } from "anice-ui";
 
 @Form.create()
 class MultiItemsPreview extends PureComponent {

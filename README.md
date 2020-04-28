@@ -37,11 +37,11 @@ $ npm run build
 ## Install
 
 ```shell
-$ npm install ky-nice-ui@https://github.com/rgy19930329/nice-ui.git#master --save
+$ npm install anice-ui@https://github.com/rgy19930329/nice-ui.git#master --save
 
 或者
 
-$ npm install ky-nice-ui --verbose
+$ npm install anice-ui --verbose
 ```
 
 # Usage
@@ -55,7 +55,7 @@ module: {
       test: /\.(js|jsx)$/,
       include: [
         ...
-        path.resolve(__dirname, 'node_modules/ky-nice-ui/src'),
+        path.resolve(__dirname, 'node_modules/anice-ui/src'),
       ],
     }
   ]
@@ -68,7 +68,7 @@ module: {
 "plugins": [
   [
     "import", {
-      "libraryName": "ky-nice-ui",
+      "libraryName": "anice-ui",
       "libraryDirectory": "es",
     }
   ]
@@ -94,7 +94,7 @@ entry: [
 ## Import
 
 ```js
-import { Label } from "ky-nice-ui";
+import { Label } from "anice-ui";
 ```
 
 ## Components

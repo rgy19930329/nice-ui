@@ -19,7 +19,7 @@ static defaultProps = {
 ## 组件使用
 
 ````javascript
-import { MarkDown } from "ky-nice-ui";
+import { MarkDown } from "anice-ui";
 
 <MarkDown>{"```javascript\nfunction(){\n\tconsole.log(123)\n}\n```"}</MarkDown>;
 ````

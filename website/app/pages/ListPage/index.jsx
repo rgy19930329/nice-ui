@@ -6,7 +6,7 @@
 
 import React, { PureComponent } from "react";
 import { message, Input, InputNumber, DatePicker, Modal, Button } from "antd";
-import { ListPage, EnumSelect } from "ky-nice-ui";
+import { ListPage, EnumSelect } from "anice-ui";
 import { fetch } from "ky-nice-utils";
 
 const { RangePicker } = DatePicker;

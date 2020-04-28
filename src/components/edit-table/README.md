@@ -23,7 +23,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import { EditTable } from "ky-nice-ui";
+import { EditTable } from "anice-ui";
 
 <EditTable
   hasSN={true}

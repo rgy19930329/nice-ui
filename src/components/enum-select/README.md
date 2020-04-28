@@ -42,7 +42,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import { EnumSelect } from "ky-nice-ui";
+import { EnumSelect } from "anice-ui";
 
 <EnumSelect
   placeholder="选择性别"

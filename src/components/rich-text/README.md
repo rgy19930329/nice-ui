@@ -23,7 +23,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import { RichText } from "ky-nice-ui";
+import { RichText } from "anice-ui";
 
 <Form.Item>
   <RichText

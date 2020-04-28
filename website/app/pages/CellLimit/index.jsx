@@ -5,7 +5,7 @@
  */
 
 import React from "react";
-import { Section, CellLimit } from "ky-nice-ui";
+import { Section, CellLimit } from "anice-ui";
 
 export default class CellLimitPreview extends React.Component {
   render() {

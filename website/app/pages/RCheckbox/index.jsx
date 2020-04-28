@@ -6,7 +6,7 @@
 
 import React, { PureComponent } from "react";
 import { Form, Input } from "antd";
-import { RCheckbox, Section } from "ky-nice-ui";
+import { RCheckbox, Section } from "anice-ui";
 
 @Form.create()
 class RCheckboxPreview extends PureComponent {

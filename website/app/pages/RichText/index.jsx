@@ -5,7 +5,7 @@
  */
 
 import React, { PureComponent } from "react";
-import { RichText, Section } from "ky-nice-ui";
+import { RichText, Section } from "anice-ui";
 
 export default class RichTextPreview extends PureComponent {
   render() {

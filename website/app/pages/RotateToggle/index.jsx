@@ -6,7 +6,7 @@
 
 import React, { PureComponent } from "react";
 import { Icon } from "antd";
-import { RotateToggle, Section } from "ky-nice-ui";
+import { RotateToggle, Section } from "anice-ui";
 
 export default class RotateTogglePreview extends PureComponent {
   constructor(props) {

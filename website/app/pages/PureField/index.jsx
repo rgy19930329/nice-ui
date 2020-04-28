@@ -6,7 +6,7 @@
 
 import React, { PureComponent } from "react";
 import { Form } from "antd";
-import { PureField, Section } from "ky-nice-ui";
+import { PureField, Section } from "anice-ui";
 
 @Form.create()
 class PureFieldPreview extends PureComponent {

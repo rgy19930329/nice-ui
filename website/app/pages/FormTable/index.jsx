@@ -6,7 +6,7 @@
 
 import React from "react";
 import { Form, Input, Button } from "antd";
-import { Section, FormTable, EnumSelect, EnumChoice } from "ky-nice-ui";
+import { Section, FormTable, EnumSelect, EnumChoice } from "anice-ui";
 import moment from "moment";
 
 const { RTRow, RItem } = FormTable;

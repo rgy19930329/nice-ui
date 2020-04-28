@@ -6,12 +6,7 @@
 
 import React, { PureComponent } from "react";
 import { Form, Row, Col, Input, InputNumber, DatePicker } from "antd";
-import {
-  SearchWrapper,
-  Section,
-  EnumSelect,
-  withFormInChild,
-} from "ky-nice-ui";
+import { SearchWrapper, Section, EnumSelect, withFormInChild } from "anice-ui";
 import { fetch } from "ky-nice-utils";
 
 const { RangePicker } = DatePicker;

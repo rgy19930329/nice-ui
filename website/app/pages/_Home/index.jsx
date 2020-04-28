@@ -6,7 +6,7 @@
 
 import "./index.less";
 import React from "react";
-import { Section } from "ky-nice-ui";
+import { Section } from "anice-ui";
 
 const req = require.context("@pages", true, /\.jsx$/);
 const list = req
@@ -19,7 +19,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>ky-nice-ui 组件库</h1>
+        <h1>anice-ui 组件库</h1>
 
         <Section>
           {list.map((item) => {

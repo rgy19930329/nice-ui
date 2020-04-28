@@ -13,7 +13,7 @@ mode: "part"（默认）, "cover"
 ## 组件使用
 
 ```javascript
-import { HocLoading } from "ky-nice-ui";
+import { HocLoading } from "anice-ui";
 
 @HocLoading()
 export default class EnumRadio extends React.Component {
@@ -43,7 +43,7 @@ export default class EnumRadio extends React.Component {
   };
 }
 //
-import HocLoading from "ky-nice-ui";
+import HocLoading from "anice-ui";
 
 @HocLoading("all")
 export default class EnumRadio extends React.Component {
@@ -52,7 +52,7 @@ export default class EnumRadio extends React.Component {
   };
 }
 //
-import HocLoading from "ky-nice-ui";
+import HocLoading from "anice-ui";
 
 class EnumRadio extends React.Component {
   state = {

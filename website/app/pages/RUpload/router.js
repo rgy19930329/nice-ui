@@ -1,4 +1,4 @@
-import { HocAsync } from "ky-nice-ui";
+import { HocAsync } from "anice-ui";
 
 export default [
   {

@@ -6,7 +6,7 @@
 
 import React, { PureComponent } from "react";
 import { message, Input } from "antd";
-import { HzTable, EnumSelect } from "ky-nice-ui";
+import { HzTable, EnumSelect } from "anice-ui";
 
 import { facilityType } from "./enum";
 import result from "./data";

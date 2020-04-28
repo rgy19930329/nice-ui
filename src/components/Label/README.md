@@ -23,7 +23,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import { Label } from "ky-nice-ui";
+import { Label } from "anice-ui";
 
 <Label title="发布者" value="张三" />;
 ```

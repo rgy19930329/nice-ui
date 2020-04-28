@@ -5,7 +5,7 @@
  */
 
 import React, { PureComponent } from "react";
-import { InlineList, Section } from "ky-nice-ui";
+import { InlineList, Section } from "anice-ui";
 
 export default class InlineListPreview extends PureComponent {
   render() {

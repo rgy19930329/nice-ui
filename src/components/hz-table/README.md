@@ -19,7 +19,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import { HzTable } from "ky-nice-ui";
+import { HzTable } from "anice-ui";
 
 <HzTable
 // props

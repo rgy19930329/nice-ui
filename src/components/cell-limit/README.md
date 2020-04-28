@@ -19,7 +19,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import { CellLimit } from "ky-nice-ui";
+import { CellLimit } from "anice-ui";
 
 <CellLimit>xxxxxxxxxxx</CellLimit>;
 ```

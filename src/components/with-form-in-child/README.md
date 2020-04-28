@@ -18,7 +18,7 @@ static childContextTypes = {
 
 ```javascript
 import { Form } from "antd";
-import { withFormInChild } from "ky-nice-ui";
+import { withFormInChild } from "anice-ui";
 
 @Form.create()
 @withFormInChild

@@ -5,19 +5,16 @@
  */
 
 import React, { PureComponent } from "react";
-import { withQuery, Section } from "ky-nice-ui";
+import { withQuery, Section } from "anice-ui";
 
 export default class withQueryPreview extends PureComponent {
-
   render() {
     return (
       <React.Fragment>
         <h1>withQuery</h1>
 
-        <Section title="测试一">
-          高阶组件，无法演示
-        </Section>
+        <Section title="测试一">高阶组件，无法演示</Section>
       </React.Fragment>
-    )
+    );
   }
 }

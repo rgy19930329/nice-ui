@@ -6,7 +6,7 @@
 
 import React, { PureComponent } from "react";
 import { Form, Input } from "antd";
-import { ValidateWrapper, Section, withFormInChild } from "ky-nice-ui";
+import { ValidateWrapper, Section, withFormInChild } from "anice-ui";
 
 @Form.create()
 @withFormInChild

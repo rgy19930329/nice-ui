@@ -5,7 +5,7 @@
  */
 
 import React, { PureComponent } from "react";
-import { Label, Section } from "ky-nice-ui";
+import { Label, Section } from "anice-ui";
 
 export default class LabelPreview extends PureComponent {
   render() {

@@ -5,7 +5,7 @@
  */
 
 import React, { PureComponent } from "react";
-import { MarkDown, Section } from "ky-nice-ui";
+import { MarkDown, Section } from "anice-ui";
 
 export default class MarkDownPreview extends PureComponent {
   render() {

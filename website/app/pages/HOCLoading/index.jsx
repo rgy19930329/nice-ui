@@ -5,7 +5,7 @@
  */
 
 import React, { PureComponent } from "react";
-import { HocLoading, Section } from "ky-nice-ui";
+import { HocLoading, Section } from "anice-ui";
 
 export default class HocLoadingPreview extends PureComponent {
   render() {

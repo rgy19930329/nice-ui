@@ -5,7 +5,7 @@
  */
 
 import React from "react";
-import { Section, EnumSelect } from "ky-nice-ui";
+import { Section, EnumSelect } from "anice-ui";
 import { fetch } from "ky-nice-utils";
 
 export default class EnumSelectPreview extends React.Component {

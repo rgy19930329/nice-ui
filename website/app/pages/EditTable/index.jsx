@@ -6,7 +6,7 @@
 
 import React from "react";
 import { DatePicker, Button, Input, message } from "antd";
-import { Section, EditTable, EnumSelect } from "ky-nice-ui";
+import { Section, EditTable, EnumSelect } from "anice-ui";
 import moment from "moment";
 
 export default class EditTablePreview extends React.Component {

@@ -6,7 +6,7 @@
 
 import React, { PureComponent } from "react";
 import { Form, Spin, Icon } from "antd";
-import { RUpload, Section } from "ky-nice-ui";
+import { RUpload, Section } from "anice-ui";
 
 @Form.create()
 class RUploadPreview extends PureComponent {

@@ -29,7 +29,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import { MultiItems } from "ky-nice-ui";
+import { MultiItems } from "anice-ui";
 
 <Section title="测试1">
   {getFieldDecorator("test1")(

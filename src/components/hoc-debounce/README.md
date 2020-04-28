@@ -22,7 +22,7 @@ static defaultProps = {
 
 ```javascript
 import { Input } from "antd";
-import { HocDebounce } from "ky-nice-ui";
+import { HocDebounce } from "anice-ui";
 
 const DebounceInput = HocDebounce(Input);
 

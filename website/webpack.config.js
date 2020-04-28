@@ -7,7 +7,7 @@ webpackConfig.entry.unshift("babel-polyfill");
 
 webpackConfig.resolve.alias = Object.assign(
   {
-    "ky-nice-ui": path.resolve(__dirname, "../es/index"),
+    "anice-ui": path.resolve(__dirname, "../es/index"),
   },
   webpackConfig.resolve.alias
 );

@@ -22,7 +22,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import { Section } from "ky-nice-ui";
+import { Section } from "anice-ui";
 
 <Section title="xxx Test">xxxxxxx</Section>;
 ```

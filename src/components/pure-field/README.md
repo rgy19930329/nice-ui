@@ -19,7 +19,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import { PureField } from "ky-nice-ui";
+import { PureField } from "anice-ui";
 
 {
   getFieldDecorator("name")(

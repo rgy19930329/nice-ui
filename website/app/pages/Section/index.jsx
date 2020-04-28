@@ -5,19 +5,16 @@
  */
 
 import React, { PureComponent } from "react";
-import { Section } from "ky-nice-ui";
+import { Section } from "anice-ui";
 
 export default class SectionPreview extends PureComponent {
-
   render() {
     return (
       <React.Fragment>
         <h1>Section</h1>
 
-        <Section title="测试一">
-          测试测试测试测试测试
-        </Section>
+        <Section title="测试一">测试测试测试测试测试</Section>
       </React.Fragment>
-    )
+    );
   }
 }

@@ -5,7 +5,7 @@
  */
 
 import React, { PureComponent } from "react";
-import { RTabs, Section } from "ky-nice-ui";
+import { RTabs, Section } from "anice-ui";
 
 export default class RTabsPreview extends PureComponent {
   render() {

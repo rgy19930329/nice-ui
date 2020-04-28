@@ -9,7 +9,7 @@
 ## 组件使用
 
 ```javascript
-import { HocAsync } from "ky-nice-ui";
+import { HocAsync } from "anice-ui";
 import { Route } from "react-router-dom";
 
 const AsyncPage = HocAsync(() => import("@pages/async-page"));

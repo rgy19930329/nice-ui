@@ -19,7 +19,7 @@ static defaultProps = {
 ## 组件使用
 
 ```javascript
-import { RCheckbox } from "ky-nice-ui";
+import { RCheckbox } from "anice-ui";
 
 // 未映射
 {
