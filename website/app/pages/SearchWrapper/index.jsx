@@ -6,15 +6,19 @@
 
 import React, { PureComponent } from "react";
 import { Form, Row, Col, Input, InputNumber, DatePicker } from "antd";
-import { SearchWrapper, Section, EnumSelect, withFormInChild } from "ky-nice-ui";
+import {
+  SearchWrapper,
+  Section,
+  EnumSelect,
+  withFormInChild,
+} from "ky-nice-ui";
 import { fetch } from "ky-nice-utils";
 
 const { RangePicker } = DatePicker;
 
 @Form.create()
 @withFormInChild
-export default class SearchWrapperPreview extends PureComponent {
-
+class SearchWrapperPreview extends PureComponent {
   /**
    * 查询
    */
@@ -22,23 +26,19 @@ export default class SearchWrapperPreview extends PureComponent {
     console.log(query);
     let result = await fetch("/yapi/test", query);
     console.log(result);
-  }
+  };
 
   searchs = [
     [
       {
         label: "流水号",
         fname: "bid",
-        field: (
-          <Input />
-        ),
+        field: <Input />,
       },
       {
         label: "年龄",
         fname: "age",
-        field: (
-          <InputNumber style={{ width: "100%" }} />
-        ),
+        field: <InputNumber style={{ width: "100%" }} />,
       },
       {
         label: "部门",
@@ -46,24 +46,16 @@ export default class SearchWrapperPreview extends PureComponent {
         field: (
           <EnumSelect
             placeholder="请选择"
-            list={[
-              "研发部",
-              "市场部",
-              "客服部",
-              "公关部",
-              "办公室"
-            ]}
+            list={["研发部", "市场部", "客服部", "公关部", "办公室"]}
           />
-        )
-      }
+        ),
+      },
     ],
     [
       {
         label: "创建时间",
         fname: "duringDate",
-        field: (
-          <RangePicker style={{width: "100%"}} />
-        )
+        field: <RangePicker style={{ width: "100%" }} />,
       },
       {
         label: "状态",
@@ -71,17 +63,12 @@ export default class SearchWrapperPreview extends PureComponent {
         field: (
           <EnumSelect
             placeholder="请选择"
-            list={[
-              "草稿",
-              "代审",
-              "驳回",
-              "办结"
-            ]}
+            list={["草稿", "代审", "驳回", "办结"]}
           />
-        )
-      }
-    ]
-  ]
+        ),
+      },
+    ],
+  ];
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -98,7 +85,7 @@ export default class SearchWrapperPreview extends PureComponent {
         <Section title="测试一">
           <SearchWrapper
             onSearch={this.onSearch}
-            setRef={(swRef) => this.swRef = swRef}
+            setRef={(swRef) => (this.swRef = swRef)}
           >
             <Row>
               <Col span={8}>
@@ -117,9 +104,7 @@ export default class SearchWrapperPreview extends PureComponent {
               </Col>
               <Col span={8}>
                 <Form.Item label="dept" {...formItemLayout}>
-                  {getFieldDecorator("dept")(
-                    <Input />
-                  )}
+                  {getFieldDecorator("dept")(<Input />)}
                 </Form.Item>
               </Col>
             </Row>
@@ -130,7 +115,7 @@ export default class SearchWrapperPreview extends PureComponent {
                     <EnumSelect
                       list={[
                         { code: "01", name: "男" },
-                        { code: "02", name: "女" }
+                        { code: "02", name: "女" },
                       ]}
                     />
                   )}
@@ -138,32 +123,24 @@ export default class SearchWrapperPreview extends PureComponent {
               </Col>
               <Col span={8}>
                 <Form.Item label="phone" {...formItemLayout}>
-                  {getFieldDecorator("phone")(
-                    <Input />
-                  )}
+                  {getFieldDecorator("phone")(<Input />)}
                 </Form.Item>
               </Col>
               <Col span={8}>
                 <Form.Item label="address" {...formItemLayout}>
-                  {getFieldDecorator("address")(
-                    <Input />
-                  )}
+                  {getFieldDecorator("address")(<Input />)}
                 </Form.Item>
               </Col>
             </Row>
             <Row>
               <Col span={8}>
                 <Form.Item label="id" {...formItemLayout}>
-                  {getFieldDecorator("id")(
-                    <Input />
-                  )}
+                  {getFieldDecorator("id")(<Input />)}
                 </Form.Item>
               </Col>
               <Col span={8}>
                 <Form.Item label="email" {...formItemLayout}>
-                  {getFieldDecorator("email")(
-                    <Input />
-                  )}
+                  {getFieldDecorator("email")(<Input />)}
                 </Form.Item>
               </Col>
             </Row>
@@ -173,12 +150,14 @@ export default class SearchWrapperPreview extends PureComponent {
         <Section title="测试二">
           <SearchWrapper
             onSearch={this.onSearch}
-            setRef={swRef => this.swRef = swRef}
+            setRef={(swRef) => (this.swRef = swRef)}
             searchs={this.searchs}
             defaultRowCount={1}
           />
         </Section>
       </React.Fragment>
-    )
+    );
   }
 }
+
+export default SearchWrapperPreview;

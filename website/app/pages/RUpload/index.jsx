@@ -9,8 +9,7 @@ import { Form, Spin, Icon } from "antd";
 import { RUpload, Section } from "ky-nice-ui";
 
 @Form.create()
-export default class RUploadPreview extends PureComponent {
-  
+class RUploadPreview extends PureComponent {
   render() {
     const { getFieldDecorator } = this.props.form;
 
@@ -24,22 +23,22 @@ export default class RUploadPreview extends PureComponent {
               {
                 fileId: "500000201904076745",
                 fileName: "ranguangyu.txt",
-              }
-            ]
+              },
+            ],
           })(
             <RUpload
               uploadProps={{
                 action: "/yapi/upload",
                 headers: {
                   Authorization: "5cc8019d300000980a055e76",
-                }
+                },
               }}
-              transformFrom={file => {
+              transformFrom={(file) => {
                 return {
                   id: file.fileId,
                   name: file.fileName,
                   url: `/yapi/download?id=${file.fileId}`,
-                }
+                };
               }}
             />
           )}
@@ -53,12 +52,12 @@ export default class RUploadPreview extends PureComponent {
                   id: file.fileId,
                   name: file.fileName,
                   url: `/yapi/download?id=${file.fileId}`,
-                }
+                };
               }}
               triggerArea={(loading) => (
                 <div>
-                  <a style={{marginRight: 20}}>上传</a>
-                  <span style={{marginRight: 10}}>请选择要上传的文件</span>
+                  <a style={{ marginRight: 20 }}>上传</a>
+                  <span style={{ marginRight: 10 }}>请选择要上传的文件</span>
                   <Spin
                     indicator={<Icon type="loading" spin />}
                     spinning={loading}
@@ -75,8 +74,8 @@ export default class RUploadPreview extends PureComponent {
               {
                 fileId: "500000201904076749",
                 fileName: "ranguangyu.docx",
-              }
-            ]
+              },
+            ],
           })(
             <RUpload
               transformFrom={(file) => {
@@ -84,13 +83,15 @@ export default class RUploadPreview extends PureComponent {
                   id: file.fileId,
                   name: file.fileName,
                   url: `/yapi/download?id=${file.fileId}`,
-                }
+                };
               }}
               readOnly
             />
           )}
         </Section>
       </React.Fragment>
-    )
+    );
   }
 }
+
+export default RUploadPreview;

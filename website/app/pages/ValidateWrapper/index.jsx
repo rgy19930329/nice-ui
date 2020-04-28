@@ -10,17 +10,12 @@ import { ValidateWrapper, Section, withFormInChild } from "ky-nice-ui";
 
 @Form.create()
 @withFormInChild
-export default class ValidateWrapperPreview extends PureComponent {
-
+class ValidateWrapperPreview extends PureComponent {
   /**
    * 获取字段校验结果
    */
   getValidateStatus = (field) => {
-    const {
-      isFieldValidating,
-      getFieldError,
-      getFieldValue,
-    } = this.props.form;
+    const { isFieldValidating, getFieldError, getFieldValue } = this.props.form;
     if (!field) {
       return {};
     }
@@ -38,10 +33,10 @@ export default class ValidateWrapperPreview extends PureComponent {
     if (getFieldValue(field)) {
       return {
         status: "success",
-      }
+      };
     }
     return {};
-  }
+  };
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -57,7 +52,7 @@ export default class ValidateWrapperPreview extends PureComponent {
               rules: [
                 { required: true, message: "姓名不能为空" },
                 { max: 5, message: "姓名不能超过5个字符" },
-              ]
+              ],
             })(
               <Input
                 placeholder="请输入姓名"
@@ -70,9 +65,7 @@ export default class ValidateWrapperPreview extends PureComponent {
         <Section title="测试二">
           <ValidateWrapper form={this.props.form}>
             {getFieldDecorator("age", {
-              rules: [
-                { required: true, message: "年龄不能为空" },
-              ]
+              rules: [{ required: true, message: "年龄不能为空" }],
             })(
               <Input
                 placeholder="请输入年龄"
@@ -85,18 +78,13 @@ export default class ValidateWrapperPreview extends PureComponent {
         <Section title="测试三">
           <ValidateWrapper>
             {getFieldDecorator("sex", {
-              rules: [
-                { required: true, message: "性别不能为空" },
-              ]
-            })(
-              <Input
-                placeholder="请输入性别"
-                style={{ width: 200 }}
-              />
-            )}
+              rules: [{ required: true, message: "性别不能为空" }],
+            })(<Input placeholder="请输入性别" style={{ width: 200 }} />)}
           </ValidateWrapper>
         </Section>
       </React.Fragment>
-    )
+    );
   }
 }
+
+export default ValidateWrapperPreview;

@@ -9,7 +9,7 @@ import { Form, Input } from "antd";
 import { RCheckbox, Section } from "ky-nice-ui";
 
 @Form.create()
-export default class RCheckboxPreview extends PureComponent {
+class RCheckboxPreview extends PureComponent {
   render() {
     const { getFieldDecorator, getFieldsValue } = this.props.form;
 
@@ -44,3 +44,5 @@ export default class RCheckboxPreview extends PureComponent {
     );
   }
 }
+
+export default RCheckboxPreview;

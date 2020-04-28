@@ -9,7 +9,7 @@ import { Form, Input } from "antd";
 import { MultiItems, Section } from "ky-nice-ui";
 
 @Form.create()
-export default class MultiItemsPreview extends PureComponent {
+class MultiItemsPreview extends PureComponent {
   constructor(props) {
     super(props);
   }
@@ -59,3 +59,5 @@ export default class MultiItemsPreview extends PureComponent {
     );
   }
 }
+
+export default MultiItemsPreview;

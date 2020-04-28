@@ -9,7 +9,7 @@ import { Form } from "antd";
 import { PureField, Section } from "ky-nice-ui";
 
 @Form.create()
-export default class PureFieldPreview extends PureComponent {
+class PureFieldPreview extends PureComponent {
   componentDidMount() {
     this.props.form.setFieldsValue({
       name: "ranguangyu",
@@ -33,3 +33,5 @@ export default class PureFieldPreview extends PureComponent {
     );
   }
 }
+
+export default PureFieldPreview;

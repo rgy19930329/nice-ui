@@ -12,7 +12,7 @@ import moment from "moment";
 const { RTRow, RItem } = FormTable;
 
 @Form.create()
-export default class FormTablePreview extends React.Component {
+class FormTablePreview extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
@@ -126,3 +126,5 @@ export default class FormTablePreview extends React.Component {
     );
   }
 }
+
+export default FormTablePreview;
