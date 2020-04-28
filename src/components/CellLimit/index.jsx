@@ -22,9 +22,14 @@ export default class CellLimit extends React.Component {
   /**
    * 获取节点文本
    */
-  dfsGetText = (children) => {
-    if (typeof children === "string") {
+  dfsGetText = children => {
+    if (typeof children === "string" || typeof children === "undefined") {
       return children;
+    }
+    if (Array.isArray(children)) {
+      return children.map(item => {
+        return this.dfsGetText(item);
+      }).join("");
     }
     return this.dfsGetText(children.props.children);
   };

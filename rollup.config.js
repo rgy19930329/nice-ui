@@ -16,8 +16,6 @@ const cModuleMap = cModuleNames.reduce((prev, name) => {
   return prev
 }, {})
 
-// console.log(cModuleMap)
-
 export default [{
   input: {
     index: 'src/index.js',
@@ -57,5 +55,5 @@ export default [{
       targets: ['es']
     })
   ],
-  external: ['react', 'antd', 'lodash']
+  external: ['react', 'antd', 'lodash', 'prop-types', 'classnames']
 }]
