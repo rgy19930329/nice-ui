@@ -1,9 +1,9 @@
-import { HOCAsync } from "ky-nice-ui";
+import { HocAsync } from "ky-nice-ui";
 
 export default [
   {
     path: "/withFormInChild",
     name: "withFormInChild",
-    component: HOCAsync(() => import("./index")),
+    component: HocAsync(() => import("./index")),
   },
 ]

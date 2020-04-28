@@ -1,9 +1,9 @@
-import { HOCAsync } from "ky-nice-ui";
+import { HocAsync } from "ky-nice-ui";
 
 export default [
   {
     path: "/MultiItems",
     name: "MultiItems",
-    component: HOCAsync(() => import("./index")),
+    component: HocAsync(() => import("./index")),
   },
 ]

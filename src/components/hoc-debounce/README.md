@@ -1,4 +1,4 @@
-# 组件 - HOCDebounce
+# 组件 - HocDebounce
 
 ## 功能描述
 
@@ -22,9 +22,9 @@ static defaultProps = {
 
 ```javascript
 import { Input } from "antd";
-import { HOCDebounce } from "ky-nice-ui";
+import { HocDebounce } from "ky-nice-ui";
 
-const DebounceInput = HOCDebounce(Input);
+const DebounceInput = HocDebounce(Input);
 
 <DebounceInput
   style={{width: 300}}

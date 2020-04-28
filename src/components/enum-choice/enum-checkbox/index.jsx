@@ -1,17 +1,17 @@
 /**
- * 单选框组件
+ * 复选框组件
  * @author ranguangyu
- * @date 2019-01-26
+ * @date 2019-01-27
  */
 
 import React from "react";
 import PropTypes from "prop-types";
-import { Radio } from "antd";
-import HOCLoading from "../../HOCLoading/index.jsx";
+import { Checkbox } from "antd";
+import HocLoading from "../../hoc-loading/index.jsx";
 import classNames from "classnames";
 
-@HOCLoading()
-export default class EnumRadio extends React.Component {
+@HocLoading()
+export default class EnumCheckbox extends React.Component {
   
   static propTypes = {
     list: PropTypes.array, // 数据源列表
@@ -56,16 +56,16 @@ export default class EnumRadio extends React.Component {
   render() {
     const { codeKey, labelKey } = this.props;
     const list = this.state.list || this.props.list || [];
-    const radios = list.map(item => {
+    const checkboxs = list.map(item => {
       if(typeof item !== "object") {
         return (
-          <Radio value={item} key={`radio-${item}`}>{item}</Radio>
+          <Checkbox value={item} key={`checkbox-${item}`}>{item}</Checkbox>
         )
       }else{
         return (
-          <Radio value={item[codeKey]} key={`radio-${item[codeKey]}`}>
+          <Checkbox value={item[codeKey]} key={`checkbox-${item[codeKey]}`}>
             {item[labelKey]}
-          </Radio>
+          </Checkbox>
         )
       }
     });
@@ -73,7 +73,7 @@ export default class EnumRadio extends React.Component {
     const { className } = this.props;
     const cls = classNames({
       ["comp-enum-choice-wrapper"]: true,
-      ["comp-enum-radio-wrapper"]: true,
+      ["comp-enum-checkbox-wrapper"]: true,
       [className]: className
     });
 
@@ -82,10 +82,10 @@ export default class EnumRadio extends React.Component {
     delete props.labelKey;
     delete props.createPromise;
     delete props.promiseCondition;
-
+    
     return (
       <div className={cls}>
-        <Radio.Group {...props}>{radios}</Radio.Group>
+        <Checkbox.Group {...props}>{checkboxs}</Checkbox.Group>
       </div>
     )
   }

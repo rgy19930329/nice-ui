@@ -9,8 +9,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Table, Empty, Form, Row, Col, Input } from "antd";
-import SearchWrapper from "../SearchWrapper/index.jsx";
-import withFormInChild from "../withFormInChild/index.jsx";
+import SearchWrapper from "../search-wrapper/index.jsx";
+import withFormInChild from "../with-form-in-child/index.jsx";
 
 @Form.create()
 @withFormInChild

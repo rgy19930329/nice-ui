@@ -1,9 +1,9 @@
-import { HOCAsync } from "ky-nice-ui";
+import { HocAsync } from "ky-nice-ui";
 
 export default [
   {
-    path: "/HOCAsync",
-    name: "HOCAsync",
-    component: HOCAsync(() => import("./index")),
+    path: "/HocAsync",
+    name: "HocAsync",
+    component: HocAsync(() => import("./index")),
   },
 ]

@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Table, Empty, Form, Input, InputNumber, Modal } from "antd";
 
-import EnumSelect from "../EnumSelect/index.jsx";
+import EnumSelect from "../enum-select/index.jsx";
 import DefaultHandleBar from "./mod/HandleBar/index.jsx";
 import DefaultSearchBar from "./mod/SearchBar/index.jsx";
 import Ellipsis from "./mod/Ellipsis/index.jsx";

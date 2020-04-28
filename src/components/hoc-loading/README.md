@@ -1,4 +1,4 @@
-# 组件 - HOCLoading
+# 组件 - HocLoading
 
 ## 功能描述
 
@@ -13,9 +13,9 @@ mode: "part"（默认）, "cover"
 ## 组件使用
 
 ```javascript
-import { HOCLoading } from "ky-nice-ui";
+import { HocLoading } from "ky-nice-ui";
 
-@HOCLoading()
+@HocLoading()
 export default class EnumRadio extends React.Component {
 
   state = {
@@ -44,16 +44,16 @@ export default class EnumRadio extends React.Component {
   }
 }
 //
-import HOCLoading from "ky-nice-ui";
+import HocLoading from "ky-nice-ui";
 
-@HOCLoading("all")
+@HocLoading("all")
 export default class EnumRadio extends React.Component {
   state = {
     loaded: false,
   };
 }
 //
-import HOCLoading from "ky-nice-ui";
+import HocLoading from "ky-nice-ui";
 
 class EnumRadio extends React.Component {
   state = {
@@ -61,5 +61,5 @@ class EnumRadio extends React.Component {
   };
 }
 
-export default HOCLoading("all")(EnumRadio);
+export default HocLoading("all")(EnumRadio);
 ```

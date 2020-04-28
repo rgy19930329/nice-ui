@@ -1,16 +1,16 @@
 /**
- * @Desc: HOCDebounce - preview
+ * @Desc: HocDebounce - preview
  * @Author: RGY
  * @Date: 2020-02-26 10:16:41
  */
 
 import React, { PureComponent } from "react";
 import { Input } from "antd";
-import { HOCDebounce, Section } from "ky-nice-ui";
+import { HocDebounce, Section } from "ky-nice-ui";
 
-const DebounceInput = HOCDebounce(Input);
+const DebounceInput = HocDebounce(Input);
 
-export default class HOCDebouncePreview extends PureComponent {
+export default class HocDebouncePreview extends PureComponent {
 
   state = {
     value: "",
@@ -19,7 +19,7 @@ export default class HOCDebouncePreview extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <h1>HOCDebounce</h1>
+        <h1>HocDebounce</h1>
 
         <Section title="测试一">
           <DebounceInput

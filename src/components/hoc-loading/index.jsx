@@ -1,5 +1,5 @@
 /**
- * @desc 组件 - HOCLoading
+ * @desc 组件 - HocLoading
  * @author rgy
  * @date 2019-08-13 14:05:54
  */

@@ -26,7 +26,7 @@ export default [{
     format: 'es',
     sourceMap: true,
     entryFileNames: '[name]/index.js',
-    chunkFileNames: 'common-[name].js'
+    chunkFileNames: '_common/[name].js'
   },
   plugins: [
     resolve(),
@@ -43,7 +43,7 @@ export default [{
     }),
     postcss({
       extensions: ['.less', '.css'],
-      extract : 'es/index/style.css',
+      extract: 'es/index/style.css',
       inject: false,
       use: [
         ['less', {
@@ -55,5 +55,11 @@ export default [{
       targets: ['es']
     })
   ],
-  external: ['react', 'antd', 'lodash', 'prop-types', 'classnames']
+  external: [
+    'react',
+    'antd',
+    'lodash',
+    'prop-types',
+    'classnames'
+  ]
 }]

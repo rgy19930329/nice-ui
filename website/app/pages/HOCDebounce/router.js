@@ -1,9 +1,9 @@
-import { HOCAsync } from "ky-nice-ui";
+import { HocAsync } from "ky-nice-ui";
 
 export default [
   {
-    path: "/HOCDebounce",
-    name: "HOCDebounce",
-    component: HOCAsync(() => import("./index")),
+    path: "/HocDebounce",
+    name: "HocDebounce",
+    component: HocAsync(() => import("./index")),
   },
 ]

@@ -1,4 +1,4 @@
-# 组件 - HOCAsync
+# 组件 - HocAsync
 
 ## 功能描述
 
@@ -10,10 +10,10 @@
 ## 组件使用
 
 ```javascript
-import { HOCAsync } from "ky-nice-ui";
+import { HocAsync } from "ky-nice-ui";
 import { Route } from "react-router-dom";
 
-const AsyncPage = HOCAsync(() => import("@pages/async-page"));
+const AsyncPage = HocAsync(() => import("@pages/async-page"));
 
 <Route path="/async-page" component={AsyncPage} />
 ```

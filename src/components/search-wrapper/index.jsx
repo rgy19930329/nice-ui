@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Form, Row, Col, Button, Icon, Input } from "antd";
 import isArray from "lodash/isArray";
-import RotateToggle from "../RotateToggle/index.jsx";
+import RotateToggle from "../rotate-toggle/index.jsx";
 
 export default class SearchWrapper extends React.Component {
 

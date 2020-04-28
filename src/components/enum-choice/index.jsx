@@ -5,8 +5,8 @@
  */
 
 import React from "react";
-import EnumCheckbox from "./EnumCheckbox/index.jsx";
-import EnumRadio from "./EnumRadio/index.jsx";
+import EnumCheckbox from "./enum-checkbox/index.jsx";
+import EnumRadio from "./enum-radio/index.jsx";
 
 class EnumChoice extends React.Component {}
 

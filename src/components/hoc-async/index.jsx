@@ -1,5 +1,5 @@
 /**
- * @desc 组件 - HOCAsync
+ * @desc 组件 - HocAsync
  * @author rgy
  * @date 2019-08-13 13:58:31
  */

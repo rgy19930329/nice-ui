@@ -1,5 +1,5 @@
 /**
- * @desc 组件 - HOCDebounce
+ * @desc 组件 - HocDebounce
  * @author rgy
  * @date 2019-08-19 14:49:21
  */
