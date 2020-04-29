@@ -2,7 +2,8 @@
   "name": "anice-ui",
   "version": "1.0.0",
   "description": "react ui components base on antd",
-  "main": "index.js",
+  "main": "lib/index/index.js",
+  "module": "es/index/index.js",
   "scripts": {
     "new": "node ./scripts/index.js",
     "remove": "node ./scripts/remove.js",
@@ -19,7 +20,10 @@
     }
   },
   "lint-staged": {
-    "{src,website}/**/*.{js,jsx}": ["eslint --fix", "prettier --write"]
+    "{src,website}/**/*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "author": "rgy",
   "license": "ISC",

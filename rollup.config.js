@@ -7,7 +7,7 @@ import commonjs from "rollup-plugin-commonjs";
 import json from "rollup-plugin-json";
 import alias from "rollup-plugin-alias";
 import postcss from "rollup-plugin-postcss";
-// import copy from 'rollup-plugin-copy'
+// import copy from "rollup-plugin-copy";
 import clear from "rollup-plugin-clear";
 
 const cModuleNames = fs.readdirSync(path.resolve(__dirname, "src/components"));
