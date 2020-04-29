@@ -6,6 +6,7 @@
 
 import "./index.less";
 import React from "react";
+import { Badge } from "antd";
 import { Section } from "anice-ui";
 
 const req = require.context("@pages", true, /\.jsx$/);
@@ -19,7 +20,10 @@ export default class Home extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>anice-ui 组件库</h1>
+        <h1>
+          anice-ui 组件库{" "}
+          <Badge count={list.length} style={{ backgroundColor: "#52c41a" }} />
+        </h1>
 
         <Section>
           {list.map((item) => {

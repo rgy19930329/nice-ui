@@ -11,7 +11,7 @@ export { default as InlineList } from "./components/inline-list/index.jsx";
 export { default as Label } from "./components/label/index.jsx";
 export { default as ListPage } from "./components/list-page/index.jsx";
 export { default as MarkDown } from "./components/mark-down/index.jsx";
-export { default as MultiItems } from "./components/multi-Items/index.jsx";
+export { default as MultiItems } from "./components/multi-items/index.jsx";
 export { default as PureField } from "./components/pure-field/index.jsx";
 export { default as RCheckbox } from "./components/r-checkbox/index.jsx";
 export { default as RichText } from "./components/rich-text/index.jsx";

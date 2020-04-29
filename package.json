@@ -2,8 +2,8 @@
   "name": "anice-ui",
   "version": "1.0.0",
   "description": "react ui components base on antd",
-  "main": "lib/index/index.js",
-  "module": "es/index/index.js",
+  "main": "lib/index",
+  "module": "es/index",
   "scripts": {
     "new": "node ./scripts/index.js",
     "remove": "node ./scripts/remove.js",
