@@ -4,7 +4,6 @@
  * @date 2019-08-16 15:59:24
  */
 
-import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";

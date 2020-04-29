@@ -4,8 +4,6 @@
  * @date 2019-09-04 13:59:17
  */
 
-import "./assets/github-markdown.css";
-import "./assets/github-highlight.css";
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";

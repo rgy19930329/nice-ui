@@ -10,64 +10,94 @@ import postcss from "rollup-plugin-postcss";
 // import copy from "rollup-plugin-copy";
 import clear from "rollup-plugin-clear";
 
-const cModuleNames = fs.readdirSync(path.resolve(__dirname, "src/components"));
-const cModuleMap = cModuleNames.reduce((prev, name) => {
+const moduleNames = fs.readdirSync(path.resolve(__dirname, "src/components"));
+const moduleMap = moduleNames.reduce((prev, name) => {
   prev[name] = path.resolve(__dirname, "src/components", name, "index.jsx");
   return prev;
 }, {});
 
-export default [
-  {
-    input: {
-      index: "src/index.js",
-      ...cModuleMap,
-    },
+const createStyleConfig = moduleName => {
+  return {
+    input: `src/components/${moduleName}/style/index.js`,
     output: {
-      dir: "es",
+      file: `node_modules/_garbage/index.js`,
       format: "es",
-      sourceMap: true,
-      entryFileNames: "[name]/index.js",
-      chunkFileNames: "_common/[name].js",
     },
     plugins: [
-      resolve({
-        preferBuiltins: true,
-      }),
-      commonjs(),
-      json(),
-      babel({
-        exclude: "node_modules/**",
-        runtimeHelpers: true,
-      }),
-      alias({
-        "@src": path.resolve(__dirname, "src"),
-        "@components": path.resolve(__dirname, "src/components"),
-        "@utils": path.resolve(__dirname, "src/utils"),
+      clear({
+        targets: ["node_modules/_garbage"]
       }),
       postcss({
         extensions: [".less", ".css"],
-        extract: "es/index/style.css",
-        inject: false,
+        extract: `es/${moduleName}/style/index.css`,
         use: [
-          [
-            "less",
-            {
-              javascriptEnabled: true,
-            },
-          ],
+          ["less", {
+            javascriptEnabled: true
+          }]
         ],
       }),
-      clear({
-        targets: ["es"],
-      }),
-    ],
-    external: [
-      "react", 
-      "antd", 
-      "lodash", 
-      "prop-types", 
-      "classnames",
-      "stream",
-    ],
+    ]
+  }
+}
+
+const stylesConfig = moduleNames.map(moduleName => createStyleConfig(moduleName)); // 数组
+
+const moduleConfig = { // 对象
+  input: {
+    index: "src/index.js",
+    ...moduleMap,
   },
+  output: {
+    dir: "es",
+    format: "es",
+    sourceMap: true,
+    entryFileNames: "[name]/index.js",
+    chunkFileNames: "_common/[name].js",
+  },
+  plugins: [
+    resolve({
+      preferBuiltins: true,
+    }),
+    commonjs(),
+    json(),
+    babel({
+      exclude: "node_modules/**",
+      runtimeHelpers: true,
+    }),
+    alias({
+      "@src": path.resolve(__dirname, "src"),
+      "@assets": path.resolve(__dirname, "src/assets"),
+      "@components": path.resolve(__dirname, "src/components"),
+      "@utils": path.resolve(__dirname, "src/utils"),
+    }),
+    postcss({
+      extensions: [".less", ".css"],
+      extract: "es/index/style.css",
+      inject: false,
+      use: [
+        [
+          "less",
+          {
+            javascriptEnabled: true,
+          },
+        ],
+      ],
+    }),
+    clear({
+      targets: ["es"],
+    }),
+  ],
+  external: [
+    "react",
+    "antd",
+    "lodash",
+    "prop-types",
+    "classnames",
+    "stream",
+  ],
+}
+
+export default [
+  ...stylesConfig,
+  moduleConfig
 ];

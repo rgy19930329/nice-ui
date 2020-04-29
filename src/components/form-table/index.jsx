@@ -4,12 +4,11 @@
  * @date 2019-08-30 18:00:28
  */
 
-import "./index.less";
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import RTRow from "./RTRow/index.jsx";
-import RItem from "./RItem/index.jsx";
+import RTRow from "./mod/RTRow/index.jsx";
+import RItem from "./mod/RItem/index.jsx";
 import isArray from "lodash/isArray";
 
 class FormTable extends React.Component {

@@ -1,17 +1,17 @@
 /**
- * 单选框组件
+ * 复选框组件
  * @author ranguangyu
- * @date 2019-01-26
+ * @date 2019-01-27
  */
 
 import React from "react";
 import PropTypes from "prop-types";
-import { Radio } from "antd";
-import HocLoading from "../../hoc-loading/index.jsx";
+import { Checkbox } from "antd";
+import HocLoading from "../../../hoc-loading/index.jsx";
 import classNames from "classnames";
 
 @HocLoading()
-class EnumRadio extends React.Component {
+class EnumCheckbox extends React.Component {
   static propTypes = {
     list: PropTypes.array, // 数据源列表
     codeKey: PropTypes.string, // code 键名
@@ -55,18 +55,18 @@ class EnumRadio extends React.Component {
   render() {
     const { codeKey, labelKey } = this.props;
     const list = this.state.list || this.props.list || [];
-    const radios = list.map((item) => {
+    const checkboxs = list.map((item) => {
       if (typeof item !== "object") {
         return (
-          <Radio value={item} key={`radio-${item}`}>
+          <Checkbox value={item} key={`checkbox-${item}`}>
             {item}
-          </Radio>
+          </Checkbox>
         );
       } else {
         return (
-          <Radio value={item[codeKey]} key={`radio-${item[codeKey]}`}>
+          <Checkbox value={item[codeKey]} key={`checkbox-${item[codeKey]}`}>
             {item[labelKey]}
-          </Radio>
+          </Checkbox>
         );
       }
     });
@@ -74,7 +74,7 @@ class EnumRadio extends React.Component {
     const { className } = this.props;
     const cls = classNames({
       ["nice-enum-choice-wrapper"]: true,
-      ["nice-enum-radio-wrapper"]: true,
+      ["nice-enum-checkbox-wrapper"]: true,
       [className]: className,
     });
 
@@ -86,10 +86,10 @@ class EnumRadio extends React.Component {
 
     return (
       <div className={cls}>
-        <Radio.Group {...props}>{radios}</Radio.Group>
+        <Checkbox.Group {...props}>{checkboxs}</Checkbox.Group>
       </div>
     );
   }
 }
 
-export default EnumRadio;
+export default EnumCheckbox;

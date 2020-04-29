@@ -8,7 +8,6 @@ import React, { PureComponent } from "react";
 import classNames from "classnames";
 import { Tooltip } from "antd";
 
-import "./index.less";
 import { fixEmptyCell } from "../../utils";
 
 export default class Ellipsis extends PureComponent {

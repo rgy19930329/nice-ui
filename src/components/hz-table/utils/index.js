@@ -4,7 +4,7 @@
  * @Date: 2019-12-11 15:17:48
  */
 
-import { EMPTY_CELL } from "./constant";
+import { EMPTY_CELL } from "../constant";
 
 /**
  * @desc: 修复空单元格

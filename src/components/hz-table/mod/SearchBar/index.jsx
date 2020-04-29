@@ -8,8 +8,6 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { Form, Button } from "antd";
 
-import "./index.less";
-
 class SearchBar extends PureComponent {
   static propTypes = {
     listRef: PropTypes.object.isRequired,

@@ -9,7 +9,6 @@ import PropTypes from "prop-types";
 import { Icon, Modal, Upload, message } from "antd";
 import uniqueid from "uniqueid";
 import ReactQuill, { Quill } from "react-quill";
-import "react-quill/dist/quill.snow.css";
 
 const uuid = uniqueid("toolbar-");
 

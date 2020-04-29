@@ -8,8 +8,6 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { Button, Input } from "antd";
 
-import "./index.less";
-
 const { Search } = Input;
 
 export default class HandleBar extends PureComponent {
