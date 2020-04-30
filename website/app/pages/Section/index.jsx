@@ -13,7 +13,9 @@ export default class SectionPreview extends PureComponent {
       <React.Fragment>
         <h1>Section</h1>
 
-        <Section title="测试一">测试测试测试测试测试</Section>
+        <Section title="测试一" iconType="power">
+          测试测试测试测试测试
+        </Section>
       </React.Fragment>
     );
   }

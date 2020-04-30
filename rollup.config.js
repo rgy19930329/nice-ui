@@ -7,7 +7,7 @@ import commonjs from "rollup-plugin-commonjs";
 import json from "rollup-plugin-json";
 import alias from "rollup-plugin-alias";
 import postcss from "rollup-plugin-postcss";
-// import copy from "rollup-plugin-copy";
+import copy from "rollup-plugin-copy";
 import clear from "rollup-plugin-clear";
 
 const moduleNames = fs.readdirSync(path.resolve(__dirname, "src/components"));
@@ -59,7 +59,6 @@ const styleCluster = { // 对象
     postcss({
       extensions: [".less", ".css"],
       extract: "es/index/anice-ui.css",
-      inject: false,
       use: [
         [
           "less",
@@ -98,13 +97,15 @@ const moduleConfig = { // 对象
       runtimeHelpers: true,
     }),
     alias({
-      "@src": path.resolve(__dirname, "src"),
-      "@assets": path.resolve(__dirname, "src/assets"),
-      "@components": path.resolve(__dirname, "src/components"),
-      "@utils": path.resolve(__dirname, "src/utils"),
+      "@": path.resolve(__dirname, "src"),
+    }),
+    copy({
+      targets: [
+        { src: "src/assets/*", dest: "assets" },
+      ]
     }),
     clear({
-      targets: ["es"],
+      targets: ["es", "assets"],
     }),
   ],
   external: [

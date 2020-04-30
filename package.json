@@ -1,6 +1,6 @@
 {
   "name": "anice-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "react ui components base on antd",
   "main": "lib/index",
   "module": "es/index",
@@ -69,7 +69,7 @@
   },
   "files": [
     "es",
-    "src",
+    "assets",
     "README.md",
     "VERSION.md"
   ]

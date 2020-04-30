@@ -14,7 +14,9 @@ export default class CellLimitPreview extends React.Component {
         <h1>CellLimit</h1>
 
         <Section title="测试一">
-          <CellLimit>我的内容很长很长很长很长很长很长很长很长很长</CellLimit>
+          <CellLimit width={200}>
+            我的内容很长很长很长很长很长很长很长很长很长
+          </CellLimit>
         </Section>
       </React.Fragment>
     );

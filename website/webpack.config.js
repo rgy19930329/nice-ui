@@ -7,6 +7,7 @@ webpackConfig.entry.unshift("babel-polyfill");
 
 webpackConfig.resolve.alias = Object.assign(
   {
+    "anice-ui/assets": path.resolve(__dirname, "../assets"),
     "anice-ui": path.resolve(__dirname, "../es/index"),
   },
   webpackConfig.resolve.alias

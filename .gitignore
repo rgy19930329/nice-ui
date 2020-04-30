@@ -25,3 +25,4 @@ yarn-error.log*
 # Build
 /cjs
 /es
+/assets
