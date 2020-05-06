@@ -37,58 +37,32 @@ $ npm run build
 ## Install
 
 ```shell
-$ npm install anice-ui@https://github.com/rgy19930329/nice-ui.git#master --save
-
-或者
-
 $ npm install anice-ui --verbose
 ```
 
 # Usage
 
+配置 babel.config.js 中的 plugins
+
 ```js
-// 方案一： 修改 webpack 配置：
-
-module: {
-  loaders: [
+module.exports = function (api) {
+  const presets = [ ... ];
+  const plugins = [
+    'import',
     {
-      test: /\.(js|jsx)$/,
-      include: [
-        ...
-        path.resolve(__dirname, 'node_modules/anice-ui/src'),
-      ],
-    }
-  ]
+      libraryName: 'anice-ui',
+      libraryDirectory: 'es',
+      style: path => {
+        return `${path}/style/index.css`;
+      },
+    },
+  ];
+
+  return {
+    presets,
+    plugins
+  }
 }
-
-// 方案二：配置babel plugins
-
-// 第一步
-
-"plugins": [
-  [
-    "import", {
-      "libraryName": "anice-ui",
-      "libraryDirectory": "es",
-    }
-  ]
-]
-
-// 第二步 入口文件中添加：
-
-import "antd/dist/antd.css";
-
-// 第三步 入口文件中添加：
-
-import "babel-polyfill";
-
-// 或者 在 webpack 配置的 entry 字段最前面添加
-
-entry: [
-  "babel-polyfill",
-  //...
-]
-
 ```
 
 ## Import

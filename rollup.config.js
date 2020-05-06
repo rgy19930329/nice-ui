@@ -16,46 +16,20 @@ const moduleMap = moduleNames.reduce((prev, name) => {
   return prev;
 }, {});
 
-// const createStyleConfig = moduleName => {
-//   return {
-//     input: `src/components/${moduleName}/style/index.js`,
-//     output: {
-//       file: "node_modules/_aniceui_garbage/index.js",
-//       format: "es",
-//     },
-//     plugins: [
-//       clear({
-//         targets: ["node_modules/_aniceui_garbage"]
-//       }),
-//       postcss({
-//         extensions: [".less", ".css"],
-//         extract: `es/${moduleName}/style/index.css`,
-//         use: [
-//           ["less", {
-//             javascriptEnabled: true
-//           }]
-//         ],
-//       }),
-//     ]
-//   }
-// }
-
 const createStyleConfig = moduleName => {
   return {
     input: `src/components/${moduleName}/style/index.js`,
     output: {
-      file: `es/${moduleName}/style/index.js`,
+      file: "node_modules/_aniceui_garbage/index.js",
       format: "es",
     },
     plugins: [
-      copy({
-        targets: [
-          { src: `src/${moduleName}/style/*`, dest: `es/${moduleName}/style` },
-        ]
+      clear({
+        targets: ["node_modules/_aniceui_garbage"]
       }),
       postcss({
         extensions: [".less", ".css"],
-        // extract: `es/${moduleName}/style/index.css`,
+        extract: `es/${moduleName}/style/index.css`,
         use: [
           ["less", {
             javascriptEnabled: true
@@ -71,7 +45,7 @@ const stylesConfig = moduleNames.map(moduleName => createStyleConfig(moduleName)
 const styleCluster = { // 对象
   input: "src/style.js",
   output: {
-    file: "node_modules/_aniceui_garbage_style/index.js",
+    file: "node_modules/_aniceui_garbage/style/index.js",
     format: "es",
   },
   plugins: [
@@ -82,20 +56,20 @@ const styleCluster = { // 对象
       exclude: "node_modules/**",
       runtimeHelpers: true,
     }),
-    // postcss({
-    //   extensions: [".less", ".css"],
-    //   extract: "es/index/anice-ui.css",
-    //   use: [
-    //     [
-    //       "less",
-    //       {
-    //         javascriptEnabled: true,
-    //       },
-    //     ],
-    //   ],
-    // }),
+    postcss({
+      extensions: [".less", ".css"],
+      extract: "es/index/anice-ui.css",
+      use: [
+        [
+          "less",
+          {
+            javascriptEnabled: true,
+          },
+        ],
+      ],
+    }),
     clear({
-      targets: ["node_modules/_aniceui_garbage_style"]
+      targets: ["node_modules/_aniceui_garbage/style"]
     }),
   ]
 }
@@ -145,7 +119,7 @@ const moduleConfig = { // 对象
 }
 
 export default [
-  // styleCluster,
+  styleCluster,
   ...stylesConfig,
   moduleConfig
 ];
