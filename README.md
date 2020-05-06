@@ -40,7 +40,7 @@ $ npm run build
 $ npm install anice-ui --verbose
 ```
 
-# Usage
+## Usage
 
 配置 babel.config.js 中的 plugins
 
